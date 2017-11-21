@@ -17,6 +17,7 @@ Run `npm install` to install all the dependencies.
 Run `npm install -g nodemon` to install Nodemon Globally.
 
 Run `brew install mongodb` to install mongodb
+
 Run `brew services start mongodb` to start the service
 
 Run `npm start` to run the NodeJS Server.

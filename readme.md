@@ -36,7 +36,7 @@ Run `ng serve` to run the Development Server
 ### Plateforme de Recherche
 http://localhost:4200/platform
 
-### Borne
+### Formulaire
 http://localhost:4200/form
 
 ### Ecran de visualisation
