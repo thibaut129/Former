@@ -1,0 +1,53 @@
+.top {
+  height: 20vh;
+
+}
+
+.content {
+height: 60vh;
+}
+
+.bottom {
+  height: 19vh;
+}
+
+.bottom img {
+  margin-top: 2.5vh;
+}
+
+ul {
+  list-style-type: none;
+  //margin: 0;
+  padding: 10px;
+}
+
+li {
+  /*margin-top: 5px;*/
+  margin-bottom: 25px;
+  padding: 10px 0px 10px 0px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+//li a {
+//  text-decoration: none;
+//  border: none;
+//  outline: none;
+//  cursor: pointer;
+//  transition: 0.2s;
+//}
+//
+///* Change background color of buttons on hover */
+//li a:hover {
+//  background-color: #ddd;
+//}
+//
+///* Create an active/current tablink class */
+//li a.active {
+//  background-color: #ccc;
+//}
+//
+//a {color:#42b983;}
+//a:visited {color:#42b983;}
+//a:hover {color:#2c3e50;}
+//a:active {color:#42b983;}
