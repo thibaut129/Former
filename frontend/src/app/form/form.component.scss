@@ -37,18 +37,42 @@ $margin-v : 10vh;
   // box-shadow: 5px 5px 5px rgb(5, 120, 214);
 }
 
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+
+.container-top {
+  //margin: $margin-v $margin-h 0 $margin-h;
+  height: 3vh;
+  margin-top: 1vh;
+  margin-left: 2.5vw;
+  width: ($width - 5vw);
+}
+
+.container-footer {
+  //margin: $margin-v $margin-h 0 $margin-h;
+  height: 6vh;
+  margin-left: 2.5vw;
+  width: ($width - 5vw);
+}
+
+
 .container-content {
   margin: $margin-v $margin-h 0 $margin-h;
-  height: 80vh;
+  height: 60vh;
 }
 
 .container-content-2 {
   margin: 3vh 3vw 3vh 3vw;
-  height: 74vh;
+  height: 64vh;
 }
 
 .container-content-3 {
-  margin: 3vh 3vw 3vh 3vw;
+  margin: $margin-v $margin-h 0 $margin-h;
+  //margin: 3vh 3vw 3vh 3vw;
+  height: 60vh;
 }
 
 .btn-next {
