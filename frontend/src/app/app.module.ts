@@ -16,6 +16,8 @@ import { TypeMobilityComponent } from './form/type-mobility/type-mobility.compon
 import { LegalComponent } from './form/legal/legal.component';
 import { CityComponent } from './form/city/city.component';
 import { CompanyComponent } from './form/company/company.component';
+import { PersonalInfoComponent } from './form/personal-info/personal-info.component';
+import { PhotoComponent } from './form/photo/photo.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CompanyComponent } from './form/company/company.component';
     TypeMobilityComponent,
     LegalComponent,
     CityComponent,
-    CompanyComponent
+    CompanyComponent,
+    PersonalInfoComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
