@@ -1,0 +1,42 @@
+$height-center: 78vh;
+$width-center: 84vw;
+
+$margin-h:0.5vh;
+$margin-w:0.5vw;
+
+app-center {
+  position: absolute;
+  height: $height-center;
+  width: $width-center;
+  top: $margin-h;
+  left: $margin-w;
+
+  background: white;
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+app-right {
+  position: absolute;
+  height: 99vh;
+  width:  98.5vw - $width-center;
+  right:$margin-w;
+  top:$margin-h;
+
+  background-color: white;
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+app-bottom {
+  position: absolute;
+  height: 98vh - $height-center;
+  width: $width-center;
+  bottom: $margin-h;
+  left: $margin-w;
+
+  background-color: white;
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}

@@ -30,8 +30,12 @@
         <app-photo></app-photo>
       </div>
 
+      <div class="container-content-3" [hidden]="id != 7">
+        <app-confirmation-form></app-confirmation-form>
+      </div>
+
       <div class="container-footer">
-        <div class="bottom" [hidden]="id == 1">
+        <div class="bottom" [hidden]="id <= 1 || id >= 7">
           <a class="btn btn-default btn-lg btn-next pull-right" href="form/{{id + 1}}">Suivant</a>
         </div>
       </div>

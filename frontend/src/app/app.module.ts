@@ -18,6 +18,10 @@ import { CityComponent } from './form/city/city.component';
 import { CompanyComponent } from './form/company/company.component';
 import { PersonalInfoComponent } from './form/personal-info/personal-info.component';
 import { PhotoComponent } from './form/photo/photo.component';
+import { ConfirmationFormComponent } from './form/confirmation-form/confirmation-form.component';
+import { BottomComponent } from './platform/bottom/bottom.component';
+import { RightComponent } from './platform/right/right.component';
+import { CenterComponent } from './platform/center/center.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { PhotoComponent } from './form/photo/photo.component';
     CityComponent,
     CompanyComponent,
     PersonalInfoComponent,
-    PhotoComponent
+    PhotoComponent,
+    ConfirmationFormComponent,
+    BottomComponent,
+    RightComponent,
+    CenterComponent
   ],
   imports: [
     BrowserModule,
