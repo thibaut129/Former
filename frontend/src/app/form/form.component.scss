@@ -19,7 +19,7 @@ $margin-v : 10vh;
 }
 
 .container-form {
-  margin: $margin-v $margin-h $margin-v $margin-h;
+  margin: $margin-v $margin-h $margin-v ($margin-h + 2vw);
   background-color: white;
   height: $height;
   width: $width;
@@ -32,4 +32,10 @@ $margin-v : 10vh;
 
 .container-content {
   margin: $margin-v $margin-h $margin-v $margin-h;
+  height: 80vh;
+}
+
+.container-content-2 {
+  margin: 3vh 3vw 3vh 3vw;
+  height: 74vh;
 }
