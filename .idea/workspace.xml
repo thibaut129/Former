@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9af92931-dc97-404d-bdd3-cca699f7969e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/former.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" afterPath="$PROJECT_DIR$/frontend/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/city/city.component.html" afterPath="$PROJECT_DIR$/frontend/src/app/form/city/city.component.html" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/company/company.component.html" afterPath="$PROJECT_DIR$/frontend/src/app/form/company/company.component.html" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/form.component.html" afterPath="$PROJECT_DIR$/frontend/src/app/form/form.component.html" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/form.component.scss" afterPath="$PROJECT_DIR$/frontend/src/app/form/form.component.scss" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/form.component.ts" afterPath="$PROJECT_DIR$/frontend/src/app/form/form.component.ts" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/legal/legal.component.html" afterPath="$PROJECT_DIR$/frontend/src/app/form/legal/legal.component.html" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/personal-info/personal-info.component.html" afterPath="$PROJECT_DIR$/frontend/src/app/form/personal-info/personal-info.component.html" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/photo/photo.component.html" afterPath="$PROJECT_DIR$/frontend/src/app/form/photo/photo.component.html" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/form/type-mobility/type-mobility.component.html" afterPath="$PROJECT_DIR$/frontend/src/app/form/type-mobility/type-mobility.component.html" />
-    </list>
+    <list default="true" id="9af92931-dc97-404d-bdd3-cca699f7969e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -103,8 +87,8 @@
       <file leaf-file-name="personal-info.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/src/app/form/personal-info/personal-info.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="683">
-              <caret line="59" column="68" lean-forward="false" selection-start-line="59" selection-start-column="68" selection-end-line="59" selection-end-column="68" />
+            <state relative-caret-position="113">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -322,16 +306,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511347131818</updated>
-      <workItem from="1511347134474" duration="3669000" />
+      <workItem from="1511347134474" duration="3739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3669000" />
+    <option name="totallyTimeSpent" value="3739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24305555" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -558,8 +541,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/app/form/personal-info/personal-info.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="59" column="68" lean-forward="false" selection-start-line="59" selection-start-column="68" selection-end-line="59" selection-end-column="68" />
+        <state relative-caret-position="113">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
