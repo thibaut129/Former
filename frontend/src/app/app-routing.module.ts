@@ -7,12 +7,12 @@ import { GlobalComponent } from './global/global.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/platform', pathMatch: 'full' },
   { path: 'platform', component: PlatformComponent },
-  { path: 'form', component: FormComponent },
+  { path: 'form/:id', component: FormComponent },
   { path: 'global', component: GlobalComponent },
   // { path: '**', component: PageNotFoundComponent },
-  { path: '**', redirectTo: '/platform', pathMatch: 'full' }
+  { path: 'form', redirectTo: '/form/1', pathMatch: 'full' },
+  { path: '**', redirectTo: '/form/1', pathMatch: 'full' }
 ];
 
 @NgModule({

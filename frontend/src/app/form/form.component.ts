@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
+  id:number;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(){
+    // 'bank' is the name of the route parameter
+    this.id = +this.route.snapshot.paramMap.get('id');
   }
 
 }

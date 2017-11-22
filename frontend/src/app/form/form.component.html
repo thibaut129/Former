@@ -2,26 +2,27 @@
   <div class="row">
   <div class="container-form">
 
-    <!-- <div class="container-content">
+    <div class="container-content" [hidden]="id != 1">
       <app-type-mobility></app-type-mobility>
-    </div> -->
+    </div>
 
-    <!-- <div class="container-content-2">
+    <div class="container-content-2" [hidden]="id != 2">
       <app-legal></app-legal>
-    </div> -->
+    </div>
 
-    <!-- <div class="container-content-3">
+    <div class="container-content-3" [hidden]="id != 3">
       <app-city></app-city>
-    </div> -->
+    </div>
 
-    <!--<div class="container-content-3">-->
-      <!--<app-company></app-company>-->
-    <!--</div>-->
-    <!--<div class="container-content-3">-->
-      <!--<app-personal-info></app-personal-info>-->
-    <!--</div>-->
+    <div class="container-content-3" [hidden]="id != 4">
+      <app-company></app-company>
+    </div>
 
-    <div class="container-content-3">
+    <div class="container-content-3" [hidden]="id != 5">
+      <app-personal-info></app-personal-info>
+    </div>
+
+    <div class="container-content-3" [hidden]="id != 6">
       <app-photo></app-photo>
     </div>
   </div>
