@@ -1,0 +1,47 @@
+.city {
+  border-radius: 10px;
+  margin: 30vh 10vw 30vh 10vw;
+}
+
+input {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}
+
+// ::-webkit-input-placeholder {
+//    text-align: center;
+// }
+//
+// :-moz-placeholder { /* Firefox 18- */
+//    text-align: center;
+// }
+//
+// ::-moz-placeholder {  /* Firefox 19+ */
+//    text-align: center;
+// }
+//
+// :-ms-input-placeholder {
+//    text-align: center;
+// }
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .fa {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.right-addon .fa { right: 0px;}
+
+/* add padding  */
+.right-addon input { padding-right: 30px; }
+
+.btn-next {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}

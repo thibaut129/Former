@@ -14,6 +14,8 @@ import { GlobalComponent } from './global/global.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TypeMobilityComponent } from './form/type-mobility/type-mobility.component';
 import { LegalComponent } from './form/legal/legal.component';
+import { CityComponent } from './form/city/city.component';
+import { CompanyComponent } from './form/company/company.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LegalComponent } from './form/legal/legal.component';
     PlatformComponent,
     PageNotFoundComponent,
     TypeMobilityComponent,
-    LegalComponent
+    LegalComponent,
+    CityComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,

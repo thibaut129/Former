@@ -18,8 +18,13 @@ $margin-v : 10vh;
   height: 100vh;
 }
 
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 .container-form {
-  margin: $margin-v $margin-h $margin-v ($margin-h + 2vw);
+  margin: $margin-v $margin-h $margin-v $margin-h;
   background-color: white;
   height: $height;
   width: $width;
@@ -27,7 +32,9 @@ $margin-v : 10vh;
   border-radius: 10px;
   // margin: 25px;
   // background: #f7f8f9;
-  box-shadow: 5px 5px 5px rgb(5, 120, 214);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+  // box-shadow: 5px 5px 5px rgb(5, 120, 214);
 }
 
 .container-content {
@@ -38,4 +45,14 @@ $margin-v : 10vh;
 .container-content-2 {
   margin: 3vh 3vw 3vh 3vw;
   height: 74vh;
+}
+
+.container-content-3 {
+  margin: 3vh 3vw 3vh 3vw;
+}
+
+.btn-next {
+  // box-shadow: 5px 5px 5px rgb(215, 215, 215);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
