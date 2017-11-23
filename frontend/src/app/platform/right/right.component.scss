@@ -28,6 +28,28 @@ li {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+// dragndrop
+//[mwlDroppable] {
+//  background-color: green;
+//  width: 400px;
+//  height: 400px;
+//  position: relative;
+//  top: 50px;
+//  left: 100px;
+//}
+//[mwlDroppable] {
+//  color: white;
+//  text-align: center;
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//}
+//[mwlDraggable],
+
+.dropOverActive {
+  border: dashed 1px black;
+  background-color: lightgreen;
+}
 
 //li a {
 //  text-decoration: none;

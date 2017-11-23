@@ -5,6 +5,16 @@
 <div class="content">
   <div class="text-center">
 
+    <div
+      [class.dropOverActive]="dropOverActive"
+      mwlDroppable
+      (dragEnter)="dropOverActive = true"
+      (dragLeave)="dropOverActive = false"
+      (drop)="onDrop($event)">
+      <span [hidden]="droppedData">Drop here</span>
+      <span [hidden]="!droppedData">Item dropped here with data: "{{ droppedData }}"!</span>
+    </div>
+
     <ul>
       <li><i class="fa fa-3x fa-eye"></i></li>
       <li><i class="fa fa-3x fa-shopping-basket"></i></li>

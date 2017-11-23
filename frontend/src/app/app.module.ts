@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {DragAndDropModule} from 'angular-draggable-droppable';
 
 import { PlatformComponent } from './platform/platform.component';
 import { FormComponent } from './form/form.component';
@@ -22,6 +23,8 @@ import { ConfirmationFormComponent } from './form/confirmation-form/confirmation
 import { BottomComponent } from './platform/bottom/bottom.component';
 import { RightComponent } from './platform/right/right.component';
 import { CenterComponent } from './platform/center/center.component';
+import { NewCompanyComponent } from './form/new-company/new-company.component';
+import { DemoComponent } from './platform/demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -39,13 +42,16 @@ import { CenterComponent } from './platform/center/center.component';
     ConfirmationFormComponent,
     BottomComponent,
     RightComponent,
-    CenterComponent
+    CenterComponent,
+    NewCompanyComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    DragAndDropModule.forRoot(),
     NgbModule.forRoot()
   ],
   providers: [
