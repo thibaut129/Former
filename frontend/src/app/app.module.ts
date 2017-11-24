@@ -25,6 +25,7 @@ import { RightComponent } from './platform/right/right.component';
 import { CenterComponent } from './platform/center/center.component';
 import { NewCompanyComponent } from './form/new-company/new-company.component';
 import { DemoComponent } from './platform/demo/demo.component';
+import { SubjectComponent } from './form/subject/subject.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DemoComponent } from './platform/demo/demo.component';
     RightComponent,
     CenterComponent,
     NewCompanyComponent,
-    DemoComponent
+    DemoComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,

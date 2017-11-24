@@ -8,14 +8,31 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormComponent implements OnInit {
   id:number;
+  stepName:string;
+  newCompany: boolean;
 
   constructor(
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.newCompany = false;
+  }
+
 
   ngOnInit(){
+    this.id = 1;
     // 'bank' is the name of the route parameter
-    this.id = +this.route.snapshot.paramMap.get('id');
+    // this.id = +this.route.snapshot.paramMap.get('id');
+  }
+
+  previousPage(id) {
+    this.id = id-1;
+
+  }
+
+  nextPage(id) {
+
+    this.id = id+1;
+
   }
 
 }

@@ -1,11 +1,15 @@
 <div class="new-company">
-    <input type="text" class="form-control" placeholder="Entreprise" />
+
+    <input type="text" class="form-control" placeholder="Ajouter une entreprise" />
 </div>
 <br/><br/><br/>
-<div class="company-result text-center">
-  <div class="row">
-    <div class="col-md-4"><img src="http://via.placeholder.com/150x100" class="img-responsive img-rounded"/></div>
-    <div class="col-md-4"><img src="http://via.placeholder.com/150x100" class="img-responsive img-rounded"/></div>
-    <div class="col-md-4"><img src="http://via.placeholder.com/150x100" class="img-responsive img-rounded"/></div>
+<div class="company-result">
+  <div class="" [class.toggled]="getNewCompany">
+    <a class="btn btn-default" (click)="setStatus(false)"><i class="fa fa-chevron-left"></i></a>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4"><img src="http://via.placeholder.com/150x100?text=StartUp" class="img-responsive rounded"/></div>
+    <div class="col-md-4"><img src="http://via.placeholder.com/150x100?text=Labo" class="img-responsive rounded"/></div>
+    <div class="col-md-4"><img src="http://via.placeholder.com/150x100?text=Grande Entr" class="img-responsive rounded"/></div>
   </div>
 </div>
