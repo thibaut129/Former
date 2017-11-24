@@ -4,30 +4,20 @@
 
 <div class="content">
   <div class="text-center">
-
-    <div
-      [class.dropOverActive]="dropOverActive"
-      mwlDroppable
-      (dragEnter)="dropOverActive = true"
-      (dragLeave)="dropOverActive = false"
-      (drop)="onDrop($event)">
-      <span [hidden]="droppedData">Drop here</span>
-      <span [hidden]="!droppedData">Item dropped here with data: "{{ droppedData }}"!</span>
-    </div>
-
     <ul>
-      <li><i class="fa fa-3x fa-eye"></i></li>
-      <li><i class="fa fa-3x fa-shopping-basket"></i></li>
+      <li mwlDraggable dropData="foo">
+        <i class="fa fa-3x fa-eye"></i>
+      </li>
+      <li [class.dropOverActive]="dropOverActive"
+          mwlDroppable
+          (dragEnter)="dropOverActive = true"
+          (dragLeave)="dropOverActive = false"
+          (drop)="onDrop($event)">
+        <i [hidden]="droppedData || dropOverActive" class="fa fa-3x fa-envelope-o"></i>
+        <i [hidden]="!dropOverActive" class="fa fa-3x fa-envelope-open-o"></i>
+        <i [hidden]="!droppedData" class="fa fa-3x fa-check-circle"></i>
+      </li>
     </ul>
-
-    <!--<br/><hr/><br/>-->
-    <!--<br/><hr/><br/>-->
-    <!--<br/><hr/>-->
-    <!--<i class="fa fa-3x fa-eye"></i>-->
-    <!--<br/><hr/>-->
-    <!--<i class="fa fa-3x fa-shopping-basket"></i>-->
-    <!--<br/><hr/><br/>-->
-
   </div>
 </div>
 
