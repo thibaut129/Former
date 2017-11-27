@@ -8,10 +8,6 @@ import * as ol from 'openlayers';
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
-  droppedData: string;
-  dropOverActive: boolean = false;
-
-
   ngOnInit() {
     const container = document.getElementById('popup');
     var content = document.getElementById('popup-content');
@@ -128,19 +124,5 @@ export class DemoComponent implements OnInit {
     });
 
   }
-
-
-   onDrop({ dropData }: { dropData: any }): void {
-    this.dropOverActive = false;
-    this.droppedData = dropData;
-    setTimeout(() => {
-      this.droppedData = '';
-    }, 2000);
-  }
-
-  dragEnd(event) {
-    console.log('Element was dragged', event);
-  }
-
 
 }
