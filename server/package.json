@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "heroku-prebuild": "npm install -g concurrently && npm install -g nodemon && npm install -g @angular/cli",
     "start": "concurrently \"nodemon ./bin/www\" \"cd ../frontend/ && ng serve\""
   },
   "dependencies": {

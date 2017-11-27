@@ -16,9 +16,17 @@ var app = express();
 
 var mongoose = require('mongoose')
 mongoose.Promise = bluebird
-mongoose.connect('mongodb://127.0.0.1:27017/server', { useMongoClient: true})
-.then(()=> { console.log(`Succesfully Connected to the Mongodb Database  at URL : mongodb://127.0.0.1:27017/server`)})
-.catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/server`)})
+// mongoose.connect('mongodb://127.0.0.1:27017/server', { useMongoClient: true})
+// .then(()=> { console.log(`Succesfully Connected to the Mongodb Database  at URL : mongodb://127.0.0.1:27017/server`)})
+// .catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/server`)})
+
+// var DB_PATH = 'mongodb://heroku_tvtrcglb:p1gajeaqol4cf7f83tfq48ekb5@ds011409.mlab.com:11409/heroku_tvtrcglb'
+// var DB_PATH = 'mongodb://polytech-admin:Ge8GzZmD7Bw5@ds011409.mlab.com:11409/heroku_tvtrcglb'
+var DB_PATH = 'mongodb://polytech-admin:Ge8GzZmD7Bw5@ds011409.mlab.com:11409/heroku_tvtrcglb'
+
+mongoose.connect(DB_PATH, { useMongoClient: true})
+.then(()=> { console.log(`Succesfully Connected to the Mongodb Database  at URL :` + DB_PATH)})
+.catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL :`+ DB_PATH)})
 
 
 app.use(function(req, res, next) {
