@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TodoService } from './services/todo.service';
+import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -57,7 +58,8 @@ import { SubjectComponent } from './form/subject/subject.component';
     NgbModule.forRoot()
   ],
   providers: [
-    TodoService
+    TodoService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,17 +1,17 @@
 var mongoose = require('mongoose')
 validator = require('validator'),
+mongoosePaginate = require('mongoose-paginate')
 
-var mongoosePaginate = require('mongoose-paginate')
+var Schema = mongoose.Schema;
 
 
-
-/**
- * A Validation function for local strategy properties
- */
-var validateLocalStrategyProperty = function (property) {
-    return ((this.provider !== 'local' && !this.updated) || property.length);
-};
-
+// /**
+//  * A Validation function for local strategy properties
+//  */
+// var validateLocalStrategyProperty = function (property) {
+//     return ((this.provider !== 'local' && !this.updated) || property.length);
+// };
+//
 /**
  * A Validation function for local strategy email
  */
@@ -20,17 +20,23 @@ var validateLocalStrategyEmail = function (email) {
 };
 
 var UserSchema = new Schema({
-    firstName: {
+    // firstname: String,
+    // lastname: String,
+    // email: String,
+    date: Date,
+    // department: String,
+    // option: String
+    firstname: {
         type: String,
         trim: true,
-        default: '',
-        validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+        // default: '',
+        // validate: [validateLocalStrategyProperty, 'Please fill in your first name']
     },
-    lastName: {
+    lastname: {
         type: String,
         trim: true,
-        default: '',
-        validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+        // default: '',
+        // validate: [validateLocalStrategyProperty, 'Please fill in your last name']
     },
     department: {
         type: String,
@@ -59,19 +65,19 @@ var UserSchema = new Schema({
     //     type: String,
     //     default: 'modules/users/client/img/profile/default.png'
     // },
-    updated: {
-        type: Date
-    },
-    provider: {
-        type: String,
-        required: 'Provider is required'
-    },
-    providerData: {},
-    additionalProvidersData: {},
-    created: {
-        type: Date,
-        default: Date.now
-    }
+    // updated: {
+    //     type: Date
+    // },
+    // provider: {
+    //     type: String,
+    //     required: 'Provider is required'
+    // },
+    // providerData: {},
+    // additionalProvidersData: {},
+    // created: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 });
 
 
