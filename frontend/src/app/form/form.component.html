@@ -1,4 +1,9 @@
 <div class="app-form">
+  {{newUser.firstname}}
+  {{newUser.lastname}}
+  {{newUser.email}}
+  {{newUser.department}}
+
   <div class="row">
     <div class="container-form">
       <div class="container-top" [hidden]="id == 1">
@@ -27,7 +32,7 @@
       </div>
 
       <div class="container-content-3" [hidden]="id != 6">
-        <app-personal-info></app-personal-info>
+        <app-personal-info [(getNewUser)]="newUser"></app-personal-info>
       </div>
 
       <div class="container-content-3" [hidden]="id != 7">
@@ -35,12 +40,18 @@
       </div>
 
       <div class="container-content-3" [hidden]="id != 8">
-        <app-confirmation-form></app-confirmation-form>
+        <app-summary [getNewUser]="newUser"></app-summary>
       </div>
 
+      <div class="container-content-3" [hidden]="id != 9">
+        <app-confirmation-form></app-confirmation-form>
+      </div>
       <div class="container-footer">
         <div class="bottom" [hidden]="id <= 1 || id >= 8">
           <a class="btn btn-default btn-lg btn-next pull-right" (click)="nextPage(id)">Suivant</a>
+        </div>
+        <div class="bottom" [hidden]="id != 8">
+          <a class="btn btn-primary btn-lg btn-next pull-right" (click)="createUser()">Confirmer</a>
         </div>
       </div>
     </div>

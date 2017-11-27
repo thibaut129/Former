@@ -30,6 +30,7 @@ import { CenterComponent } from './platform/center/center.component';
 import { NewCompanyComponent } from './form/new-company/new-company.component';
 import { DemoComponent } from './platform/demo/demo.component';
 import { SubjectComponent } from './form/subject/subject.component';
+import { SummaryComponent } from './form/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SubjectComponent } from './form/subject/subject.component';
     CenterComponent,
     NewCompanyComponent,
     DemoComponent,
-    SubjectComponent
+    SubjectComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
