@@ -1,1 +1,1 @@
-web: npm install -g concurrently && npm start
+web: npm install -g concurrently && npm install -g nodemon && npm install -g @angular/cli && npm start
