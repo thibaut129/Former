@@ -2,6 +2,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TodoService } from './services/todo.service';
 import { UserService } from './services/user.service';
+import { ExperienceService } from './services/experience.service';
+import { MarkerService } from './services/marker.service';
+import { CompanyService } from './services/company.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -59,7 +62,10 @@ import { SubjectComponent } from './form/subject/subject.component';
   ],
   providers: [
     TodoService,
-    UserService
+    UserService,
+    ExperienceService,
+    MarkerService,
+    CompanyService
   ],
   bootstrap: [AppComponent]
 })

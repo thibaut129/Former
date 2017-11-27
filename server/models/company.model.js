@@ -12,7 +12,7 @@ var CompanySchema = new Schema({
         type: String,
         trim: true
     },
-    icone:{
+    icon:{
         type: String,
         default: './images/default-marker.jpg'
     },
