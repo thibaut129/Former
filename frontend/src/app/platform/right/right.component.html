@@ -8,7 +8,8 @@
       <li mwlDraggable dropData="foo">
         <i class="fa fa-3x fa-eye"></i>
       </li>
-      <li [class.dropOverActive]="dropOverActive"
+      <li (click)="openModal()"
+        [class.dropOverActive]="dropOverActive"
           mwlDroppable
           (dragEnter)="dropOverActive = true"
           (dragLeave)="dropOverActive = false"

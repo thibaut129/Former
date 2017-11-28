@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import * as ol from 'openlayers';
 
 
@@ -8,7 +8,16 @@ import * as ol from 'openlayers';
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
+  dropData: string;
+
+  constructor(
+    private cd:ChangeDetectorRef
+  ) {
+    this.dropData = "xx";
+  }
+
   ngOnInit() {
+
     const container = document.getElementById('popup');
     var content = document.getElementById('popup-content');
     const closer = document.getElementById('popup-closer');
@@ -120,7 +129,12 @@ export class DemoComponent implements OnInit {
 
       content.innerHTML = '<p>You clicked here:</p><code>' + hdms +
         '</code>';
+
+      this.dropData = hdms; // try to update the value
+
       overlay.setPosition(coordinate);
+
+      this.cd.detectChanges();
     });
 
   }
