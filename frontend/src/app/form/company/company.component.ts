@@ -65,7 +65,7 @@ export class CompanyComponent implements OnInit {
   createCompany(type: string)  {
     this.newCompany.type = type;
 
-    //todo: mettre une alerte sur le contour de la di v avec bootstrap
+    //todo: mettre une alerte sur le contour de la div avec bootstrap
     if (this.newCompany.name != "") {
       this.companyService.createCompany(this.newCompany)
         .subscribe((res) => {
