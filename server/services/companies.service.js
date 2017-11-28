@@ -21,6 +21,7 @@ exports.createCompany = async function(company){
     var newCompany = new Company({
         name: company.name,
         type: company.type,
+        experiencesID: company.experiencesID,
         date: new Date(),
     })
 
@@ -47,9 +48,10 @@ exports.updateCompany = async function(company){
 
     console.log(oldCompany)
 
-    oldCompany.title = company.title
-    oldCompany.description = company.description
-    oldCompany.status = company.status
+    oldCompany.name = company.name
+    oldCompany.type = company.type
+    oldCompany.experiencesID = company.experiencesID
+    oldCompany.icon = company.icon
 
 
     console.log(oldCompany)

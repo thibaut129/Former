@@ -49,7 +49,8 @@ exports.updateCompany = async function(req, res, next){
         id,
         name: req.body.name ? req.body.name : null,
         type: req.body.type ? req.body.type : null,
-        experience: req.body.experience ? req.body.experience : null,
+        experiencesID: req.body.experiencesID ? req.body.experiencesID : null,
+        icon: req.body.icon ? req.body.icon : null,
         created
     }
 

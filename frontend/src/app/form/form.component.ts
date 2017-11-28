@@ -21,10 +21,8 @@ export class FormComponent implements OnInit {
   newExperience: Experience;
   companySelected: Company;
   // newCompany: Company;
-
   // usersList: User[];
   // experiencesList: Experience[];
-
   constructor(
     private userService: UserService,
     private experienceService: ExperienceService,
@@ -40,7 +38,6 @@ export class FormComponent implements OnInit {
 
 
   // editUsers: User[] = [];
-
   ngOnInit(){
     this.id = 1;
   }
@@ -62,25 +59,64 @@ export class FormComponent implements OnInit {
     this.userService.createUser(this.newUser)
       .subscribe((res) => {
         // this.usersList.push(res.data)
-
         // get UserId for the User created
         console.log(res.data._id);
         this.newExperience.userID = res.data._id;
 
         // then create the experience
         this.experienceService.createExperience(this.newExperience)
-          .subscribe((res) => {
-            // this.experiencesList.push(res.data)
+          .subscribe((res2) => {
+            // this.companiesList.push(res.data)
 
-            // update the company to add the ExperienceID
+            console.log(res2.data._id);
+            this.companySelected.experiencesID.push(res2.data._id);
 
-            this.newExperience = new Experience()
+            this.companyService.editCompany(this.companySelected)
+              .subscribe((res3) => {
+
+            })
           })
 
         this.newUser = new User()
       })
   }
 
+
+  // companiesList: Company[];
+  // editCompanies: Company[] = [];
+  //
+  // editCompany(experience: Company) {
+  //   console.log(experience)
+  //   if(this.companiesList.includes(experience)){
+  //     if(!this.editCompanies.includes(experience)){
+  //       this.editCompanies.push(experience)
+  //     }else{
+  //       this.editCompanies.splice(this.editCompanies.indexOf(experience), 1)
+  //       this.companyService.editCompany(experience).subscribe(res => {
+  //         console.log('Update Succesful')
+  //       }, err => {
+  //         this.editCompany(experience)
+  //         console.error('Update Unsuccesful')
+  //       })
+  //     }
+  //   }
+  // }
+  //
+  // doneCompany(experience:Company){
+  //   // experience.status = 'Done'
+  //   this.experienceService.editCompany(experience).subscribe(res => {
+  //     console.log('Update Succesful')
+  //   }, err => {
+  //     this.editCompany(experience)
+  //     console.error('Update Unsuccesful')
+  //   })
+  // }
+  //
+  // submitCompany(event, experience:Company){
+  //   if(event.keyCode ==13){
+  //     this.editCompany(experience)
+  //   }
+  // }
 
   // createCompany() {
   //   // then create the company

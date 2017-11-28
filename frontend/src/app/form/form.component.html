@@ -1,19 +1,20 @@
 <div class="app-form">
-  <!--{{id}}-->
-  <!--{{newUser.firstname}}-->
-  <!--{{newUser.lastname}}-->
-  <!--{{newUser.email}}-->
-  <!--{{newUser.department}}-->
-  <!--{{newUser.option}}-->
-  <!--<br/>-->
-  <!--{{companySelected.name}}-->
-  <!--{{companySelected.type}}-->
-  <!--<br/>-->
-  <!--{{newExperience.type}}-->
-  <!--{{newExperience.location}}-->
-  <!--({{newExperience.coords.latitude}}, {{newExperience.coords.longitude}})-->
-  <!--{{newExperience.companyID}}-->
-  <!--{{newExperience.userID}}-->
+  {{id}}
+  {{newUser.firstname}}
+  {{newUser.lastname}}
+  {{newUser.email}}
+  {{newUser.department}}
+  {{newUser.option}}
+  <br/>
+  {{companySelected.name}}
+  {{companySelected.type}}
+  {{companySelected.experience}}
+  <br/>
+  {{newExperience.type}}
+  {{newExperience.location}}
+  ({{newExperience.coords.latitude}}, {{newExperience.coords.longitude}})
+  {{newExperience.companyID}}
+  {{newExperience.userID}}
   <div class="row">
     <div class="container-form">
       <div class="container-top" [hidden]="id == 1">

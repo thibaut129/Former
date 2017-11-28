@@ -12,8 +12,8 @@ var CompanySchema = new Schema({
         type: String,
         trim: true,
     },
-    experienceID: {
-        type: Schema.ObjectId,
+    experiencesID: {
+        type: [Schema.ObjectId],
         ref: 'Experience'
     },
     icon:{
