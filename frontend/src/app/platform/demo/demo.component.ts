@@ -1,5 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import * as ol from 'openlayers';
+import Marker from "../../models/marker.model";
+import {MarkerService} from "../../services/marker.service";
 
 
 @Component({
@@ -9,14 +11,20 @@ import * as ol from 'openlayers';
 })
 export class DemoComponent implements OnInit {
   dropData: string;
+  markersList: Marker[]; //getMarkers onInit
 
   constructor(
-    private cd:ChangeDetectorRef
+    private markerService: MarkerService
   ) {
     this.dropData = "xx";
   }
 
   ngOnInit() {
+    this.markerService.getMarkers()
+      .subscribe(markers => {
+        this.markersList = markers
+        console.log(markers)
+      })
 
     const container = document.getElementById('popup');
     var content = document.getElementById('popup-content');
@@ -106,8 +114,6 @@ export class DemoComponent implements OnInit {
       return false;
     };
 
-
-
     const view = new ol.View({
       center: [0, 0],
       zoom: 3
@@ -134,7 +140,6 @@ export class DemoComponent implements OnInit {
 
       overlay.setPosition(coordinate);
 
-      this.cd.detectChanges();
     });
 
   }

@@ -20,12 +20,9 @@ exports.getMarkers = async function(req, res, next){
 
 exports.createMarker = async function(req, res, next){
     var marker = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        date: req.body.date,
-        department: req.body.department,
-        option: req.body.option
+        coords: req.body.coords,
+        experiences: req.body.experiences,
+        created: req.body.created,
     }
 
 
@@ -49,9 +46,8 @@ exports.updateMarker = async function(req, res, next){
 
     var marker = {
         id,
-        title: req.body.title ? req.body.title : null,
-        description: req.body.description ? req.body.description : null,
-        status: req.body.status ? req.body.status : null
+        coords: req.body.coords ? req.body.coords : null,
+        experiences: req.body.experiences ? req.body.experiences : null,
     }
 
     try{

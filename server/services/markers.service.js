@@ -19,12 +19,9 @@ exports.getMarkers = async function(query, page, limit){
 exports.createMarker = async function(marker){
 
     var newMarker = new Marker({
-        firstname: marker.firstname,
-        lastname: marker.lastname,
-        email: marker.email,
-        date: new Date(),
-        department: marker.department,
-        option: marker.option
+        coords: marker.coords,
+        experiences: marker.experiences,
+        created: new Date(),
     })
 
     try{

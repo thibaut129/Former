@@ -1,15 +1,19 @@
 class Marker {
   _id:string;
-  name: string;
-  type: string;
-  icon: string;
+  coords: {
+    longitude:Number,
+    latitude:Number
+  };
+  experiences: string[];
   created: Date;
 
   constructor(
   ){
-    this.name = ""
-    this.type = ""
-    this.icon = ""
+    this.coords = {
+      longitude:0,
+      latitude:0
+    }
+    this.experiences = []
     this.created = new Date()
   }
 }
