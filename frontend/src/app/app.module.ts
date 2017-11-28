@@ -27,7 +27,6 @@ import { ConfirmationFormComponent } from './form/confirmation-form/confirmation
 import { BottomComponent } from './platform/bottom/bottom.component';
 import { RightComponent } from './platform/right/right.component';
 import { CenterComponent } from './platform/center/center.component';
-import { NewCompanyComponent } from './form/new-company/new-company.component';
 import { DemoComponent } from './platform/demo/demo.component';
 import { SubjectComponent } from './form/subject/subject.component';
 import { SummaryComponent } from './form/summary/summary.component';
@@ -49,7 +48,6 @@ import { SummaryComponent } from './form/summary/summary.component';
     BottomComponent,
     RightComponent,
     CenterComponent,
-    NewCompanyComponent,
     DemoComponent,
     SubjectComponent,
     SummaryComponent
