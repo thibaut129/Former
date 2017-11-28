@@ -9,12 +9,16 @@ import Company from "../../models/company.model";
 })
 export class CompanyComponent implements OnInit {
   @Input() newCompanyView: boolean;
-  @Input() companyID: string;
-  @Input() companySelected: Company;
-
   @Output() newCompanyViewChange = new EventEmitter<boolean>();
+
+  @Input() companyID: string;
   @Output() companyIDChange = new EventEmitter<string>();
+
+  @Input() companySelected: Company;
   @Output() companySelectedChange = new EventEmitter<Company>();
+
+  @Input() nextPage: number;
+  @Output() nextPageChange = new EventEmitter<number>();
 
   companiesList: Company[];
 
@@ -24,6 +28,8 @@ export class CompanyComponent implements OnInit {
 
 
   setStatus(status:boolean){
+    this.nextPageChange.emit(this.nextPage+1);
+
     this.newCompanyView=status;
     this.newCompanyViewChange.emit(status);
   }
@@ -33,6 +39,9 @@ export class CompanyComponent implements OnInit {
     this.companySelected=company;
     this.companyIDChange.emit(company._id);
     this.companySelectedChange.emit(company);
+
+    this.nextPageChange.emit(this.nextPage+1);
+
   }
 
   ngOnInit(): void {

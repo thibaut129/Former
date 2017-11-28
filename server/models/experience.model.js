@@ -12,9 +12,20 @@ var ExperienceSchema = new Schema({
         type: String,
         trim: true
     },
-    coords: {
-        type: String,
+    year: {
+        type: Number,
         trim: true
+    },
+    coords: {
+        longitude:{
+            type: Number,
+            default: 0
+
+        },
+        latitude:{
+            type: Number,
+            default: 0
+        }
     },
     companyID: {
         type: Schema.ObjectId,

@@ -1,15 +1,22 @@
 <h1>Récapitulatif</h1>
+<div class="Company" (click)="setId(4)">
+
 <h2>{{newExperience.type}}</h2>
   <p>
   Lieu : {{newExperience.location}}<br/>
   Entreprise : {{companySelected.name}} ({{companySelected.type}})<br/>
   </p>
+</div>
+
+<div class="InfoPerso" (click)="setId(6)">
   <h2>Profil de {{newUser.firstname}}</h2>
-<p>
+  <p>
 
-  {{newUser.firstname}} {{newUser.lastname}}<br/>
-  {{newUser.email}} <br/>
-  {{newUser.department}} - {{newUser.option}}<br/>
-  Photo<br/>
+    {{newUser.firstname}} {{newUser.lastname}}<br/>
+    {{newUser.email}} <br/>
+    {{newUser.department}} - {{newUser.option}}<br/>
+    Photo<br/>
 
-</p>
+  </p>
+
+</div>

@@ -1,4 +1,5 @@
 <div class="app-form">
+  {{id}}
   {{newUser.firstname}}
   {{newUser.lastname}}
   {{newUser.email}}
@@ -10,6 +11,7 @@
   <br/>
   {{newExperience.type}}
   {{newExperience.location}}
+  ({{newExperience.coords.latitude}}, {{newExperience.coords.longitude}})
   {{newExperience.companyID}}
   {{newExperience.userID}}
   <br/>
@@ -20,7 +22,10 @@
       </div>
 
       <div class="container-content" [hidden]="id != 1">
-        <app-type-mobility [(getNextPage)]="id"></app-type-mobility>
+        <app-type-mobility
+          [(nextPage)]="id"
+          [(type)]="newExperience.type"
+        ></app-type-mobility>
       </div>
 
       <div class="container-content-2" [hidden]="id != 2">
@@ -33,6 +38,7 @@
 
       <div class="container-content-3" [hidden]="id != 4">
         <app-company
+          [(nextPage)]="id"
           [(companyID)]="newExperience.companyID"
           [(companySelected)]="companySelected"
           [(newCompanyView)]="newCompanyView"
@@ -57,6 +63,7 @@
           [newExperience]="newExperience"
           [newUser]="newUser"
           [companySelected]="companySelected"
+          [(idPage)]="id"
         ></app-summary>
       </div>
 
@@ -64,7 +71,7 @@
         <app-confirmation-form></app-confirmation-form>
       </div>
       <div class="container-footer">
-        <div class="bottom" [hidden]="id <= 1 || id >= 8">
+        <div class="bottom" [hidden]="id <= 1 || id == 4 || id >= 8">
           <!--<a class="btn btn-default btn-lg btn-next pull-right" (click)="createCompany()">Create Company</a>-->
           <a class="btn btn-default btn-lg btn-next pull-right" (click)="nextPage(id)">Suivant</a>
         </div>

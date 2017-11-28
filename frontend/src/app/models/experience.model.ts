@@ -2,16 +2,24 @@ class Experience {
   _id:string;
   type: string;
   location: string;
-  coords: string;
+  year: Number;
+  coords: {
+    longitude:Number,
+    latitude:Number
+  };
   companyID: string;
   userID: string;
   created: Date;
 
   constructor(
   ){
-    this.type = "Stage"
+    this.type = ""
     this.location = "Nice"
-    this.coords = ""
+    this.year = 2017
+    this.coords = {
+        longitude:0,
+        latitude:0
+      }
     this.companyID = ""
     this.userID = ""
     this.created = new Date()

@@ -6,15 +6,21 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./type-mobility.component.scss']
 })
 export class TypeMobilityComponent implements OnInit {
-  @Input() getNextPage: number;
-  @Output() getNextPageChange = new EventEmitter<number>();
+  @Input() nextPage: number;
+  @Output() nextPageChange = new EventEmitter<number>();
+
+  @Input() type: string;
+  @Output() typeChange = new EventEmitter<string>();
 
   constructor() { }
 
 
-  setStatus(status:number){
-    this.getNextPage=status;
-    this.getNextPageChange.emit(status);
+  setStatus(type:string){
+    // this.nextPage = this.nextPage + 1;
+    this.nextPageChange.emit(this.nextPage+1);
+
+    this.type=type;
+    this.typeChange.emit(type);
   }
 
   ngOnInit(): void {

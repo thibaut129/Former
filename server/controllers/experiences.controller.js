@@ -22,8 +22,9 @@ exports.createExperience = async function(req, res, next){
     var experience = {
         type: req.body.type,
         location: req.body.location,
+        year: req.body.year,
         coords: req.body.coords,
-        companyID: req.body.company,
+        companyID: req.body.companyID,
         userID: req.body.userID,
         created: req.body.date,
     }
