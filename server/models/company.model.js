@@ -6,15 +6,19 @@ var Schema = mongoose.Schema;
 var CompanySchema = new Schema({
     name: {
         type: String,
-        trim: true
+        trim: true,
     },
     type: {
         type: String,
-        trim: true
+        trim: true,
+    },
+    experienceID: {
+        type: Schema.ObjectId,
+        ref: 'Experience'
     },
     icon:{
         type: String,
-        default: './images/default-marker.jpg'
+        default: './assets/former-logo.jpg'
     },
     created: {
         type: Date,

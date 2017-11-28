@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 // import { ActivatedRoute } from '@angular/router';
 import User from "../models/user.model";
+import Experience from "../models/experience.model";
+import Company from "../models/company.model";
+
 import {UserService} from "../services/user.service";
 import {ExperienceService} from "../services/experience.service";
-import Experience from "../models/experience.model";
+import {CompanyService} from "../services/company.service";
 
 @Component({
   selector: 'app-form',
@@ -12,19 +15,22 @@ import Experience from "../models/experience.model";
 })
 export class FormComponent implements OnInit {
   id:number;
-  newCompany: boolean;
+  newCompanyView: boolean;
   newUser: User;
   newExperience: Experience;
+  newCompany: Company;
   // usersList: User[];
   // experiencesList: Experience[];
 
   constructor(
     private userService: UserService,
-    private experienceService: ExperienceService
+    private experienceService: ExperienceService,
+    private companyService: CompanyService
   ) {
-    this.newCompany = false;
+    this.newCompanyView = false;
     this.newUser = new User();
     this.newExperience = new Experience();
+    this.newCompany = new Company();
   }
 
 
@@ -45,16 +51,6 @@ export class FormComponent implements OnInit {
 
   }
 
-  createExp() {
-    this.newExperience.userID = "5a1d16bf31f1d50c5e82913d";
-
-    // then create the experience
-    this.experienceService.createExperience(this.newExperience)
-      .subscribe((res) => {
-        // this.experiencesList.push(res.data)
-        this.newExperience = new Experience()
-      })
-  }
 
   create()  {
     // Create first the user
@@ -70,13 +66,24 @@ export class FormComponent implements OnInit {
         this.experienceService.createExperience(this.newExperience)
           .subscribe((res) => {
             // this.experiencesList.push(res.data)
+
+            // update the company to add the ExperienceID
+
             this.newExperience = new Experience()
           })
 
         this.newUser = new User()
       })
-
-
   }
+
+
+  // createCompany() {
+  //   // then create the company
+  //   this.companyService.createCompany(this.newCompany)
+  //     .subscribe((res) => {
+  //       // this.companiesList.push(res.data)
+  //       this.newCompany = new Company()
+  //     })
+  // }
 
 }

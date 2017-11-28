@@ -12,6 +12,10 @@ var ExperienceSchema = new Schema({
         type: String,
         trim: true
     },
+    coords: {
+        type: String,
+        trim: true
+    },
     companyID: {
         type: Schema.ObjectId,
         ref: 'Company'

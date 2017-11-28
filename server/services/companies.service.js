@@ -19,12 +19,9 @@ exports.getCompanies = async function(query, page, limit){
 exports.createCompany = async function(company){
 
     var newCompany = new Company({
-        firstname: company.firstname,
-        lastname: company.lastname,
-        email: company.email,
+        name: company.name,
+        type: company.type,
         date: new Date(),
-        department: company.department,
-        option: company.option
     })
 
     try{

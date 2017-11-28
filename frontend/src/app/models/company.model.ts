@@ -1,15 +1,14 @@
 class Company {
   _id:string;
   name: string;
+  type: string;
   experience: string;
-  coords: string;
   created: Date;
 
   constructor(
   ){
-    this.name = ""
-    this.experience = ""
-    this.coords = ""
+    this.name = "Former"
+    this.type = "Startup"
     this.created = new Date()
   }
 }

@@ -20,12 +20,9 @@ exports.getCompanies = async function(req, res, next){
 
 exports.createCompany = async function(req, res, next){
     var company = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        date: req.body.date,
-        department: req.body.department,
-        option: req.body.option
+        name: req.body.name,
+        type: req.body.type,
+        created: req.body.date
     }
 
 
@@ -44,14 +41,16 @@ exports.updateCompany = async function(req, res, next){
     }
 
     var id = req.body._id;
+    var created = req.body.created;
 
     console.log(req.body)
 
     var company = {
         id,
-        title: req.body.title ? req.body.title : null,
-        description: req.body.description ? req.body.description : null,
-        status: req.body.status ? req.body.status : null
+        name: req.body.name ? req.body.name : null,
+        type: req.body.type ? req.body.type : null,
+        experience: req.body.experience ? req.body.experience : null,
+        created
     }
 
     try{
