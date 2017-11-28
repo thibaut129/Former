@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+// import { ActivatedRoute } from '@angular/router';
 import User from "../models/user.model";
 import {UserService} from "../services/user.service";
+import {ExperienceService} from "../services/experience.service";
+import Experience from "../models/experience.model";
 
 @Component({
   selector: 'app-form',
@@ -12,13 +14,17 @@ export class FormComponent implements OnInit {
   id:number;
   newCompany: boolean;
   newUser: User;
-  usersList: User[];
+  newExperience: Experience;
+  // usersList: User[];
+  // experiencesList: Experience[];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private experienceService: ExperienceService
   ) {
     this.newCompany = false;
     this.newUser = new User();
+    this.newExperience = new Experience();
   }
 
 
@@ -39,13 +45,38 @@ export class FormComponent implements OnInit {
 
   }
 
+  createExp() {
+    this.newExperience.userID = "5a1d16bf31f1d50c5e82913d";
 
-  createUser() {
+    // then create the experience
+    this.experienceService.createExperience(this.newExperience)
+      .subscribe((res) => {
+        // this.experiencesList.push(res.data)
+        this.newExperience = new Experience()
+      })
+  }
+
+  create()  {
+    // Create first the user
     this.userService.createUser(this.newUser)
       .subscribe((res) => {
-        this.usersList.push(res.data)
+        // this.usersList.push(res.data)
+
+        // get UserId for the User created
+        console.log(res.data._id);
+        this.newExperience.userID = res.data._id;
+
+        // then create the experience
+        this.experienceService.createExperience(this.newExperience)
+          .subscribe((res) => {
+            // this.experiencesList.push(res.data)
+            this.newExperience = new Experience()
+          })
+
         this.newUser = new User()
       })
+
+
   }
 
 }

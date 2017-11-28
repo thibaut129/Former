@@ -4,15 +4,19 @@ var mongoosePaginate = require('mongoose-paginate')
 var Schema = mongoose.Schema;
 
 var ExperienceSchema = new Schema({
-    company: {
-        type: Schema.ObjectId,
-        ref: 'Company'
+    type: {
+        type: String,
+        trim: true
     },
     location: {
         type: String,
         trim: true
     },
-    user: {
+    companyID: {
+        type: Schema.ObjectId,
+        ref: 'Company'
+    },
+    userID: {
         type: Schema.ObjectId,
         ref: 'User'
     },

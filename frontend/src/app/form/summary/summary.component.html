@@ -1,15 +1,15 @@
 <h1>Récapitulatif</h1>
-<h2>Experience</h2>
+<h2>Experience : {{getNewExperience.type}}</h2>
   <p>
-  Type de mobility :<br/>
-  Entreprise : Nom / Type<br/>
+  Lieu : {{getNewExperience.location}}<br/>
+  Entreprise : Nom / Type ({{getNewExperience.companyID}})<br/>
   </p>
-  <h2>Profil</h2>
+  <h2>Profil de {{getNewUser.firstname}}</h2>
 <p>
-  Photo<br/>
-  {{getNewUser.firstname}}, {{getNewUser.lastname}}<br/>
+
+  {{getNewUser.firstname}} {{getNewUser.lastname}}<br/>
   {{getNewUser.email}} <br/>
   {{getNewUser.department}} - {{getNewUser.option}}<br/>
-
+  Photo<br/>
 
 </p>

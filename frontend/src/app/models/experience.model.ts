@@ -1,15 +1,17 @@
 class Experience {
   _id:string;
-  company: string;
+  type: string;
   location: string;
-  user: string;
+  companyID: string;
+  userID: string;
   created: Date;
 
   constructor(
   ){
-    this.company = ""
-    this.location = ""
-    this.user = ""
+    this.type = "Stage"
+    this.location = "Nice"
+    this.companyID = "123Amadeus"
+    this.userID = ""
     this.created = new Date()
   }
 }

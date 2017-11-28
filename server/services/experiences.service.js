@@ -19,12 +19,11 @@ exports.getExperiences = async function(query, page, limit){
 exports.createExperience = async function(experience){
 
     var newExperience = new Experience({
-        firstname: experience.firstname,
-        lastname: experience.lastname,
-        email: experience.email,
-        date: new Date(),
-        department: experience.department,
-        option: experience.option
+        type: experience.type,
+        location: experience.location,
+        companyID: experience.companyID,
+        userID: experience.userID,
+        created: new Date()
     })
 
     try{
@@ -48,14 +47,14 @@ exports.updateExperience = async function(experience){
         return false;
     }
 
-    console.log(oldExperience)
+    // console.log(oldExperience)
 
-    oldExperience.title = experience.title
-    oldExperience.description = experience.description
-    oldExperience.status = experience.status
+    // oldExperience.title = experience.title
+    // oldExperience.description = experience.description
+    // oldExperience.status = experience.status
 
 
-    console.log(oldExperience)
+    // console.log(oldExperience)
 
     try{
         var savedExperience = await oldExperience.save()

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import User from "../../models/user.model";
+import Experience from "../../models/experience.model";
 
 @Component({
   selector: 'app-summary',
@@ -8,6 +9,7 @@ import User from "../../models/user.model";
 })
 export class SummaryComponent implements OnInit {
   @Input() getNewUser: User;
+  @Input() getNewExperience: Experience;
 
   constructor() { }
 

@@ -20,12 +20,11 @@ exports.getExperiences = async function(req, res, next){
 
 exports.createExperience = async function(req, res, next){
     var experience = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        date: req.body.date,
-        department: req.body.department,
-        option: req.body.option
+        type: req.body.type,
+        location: req.body.location,
+        companyID: req.body.company,
+        userID: req.body.userID,
+        created: req.body.date,
     }
 
 
