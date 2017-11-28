@@ -38,10 +38,11 @@
         <app-company
           [(nextPage)]="id"
           [(companyID)]="newExperience.companyID"
-          [(companySelected)]="companySelected"
-          [(newCompanyView)]="newCompanyView"
-          [hidden]="newCompanyView"></app-company>
-        <app-new-company [(newCompanyView)]="newCompanyView" [hidden]="!newCompanyView"></app-new-company>
+          [(companySelected)]="companySelected">
+          <!--[(newCompanyView)]="newCompanyView"-->
+          <!--[hidden]="newCompanyView>"-->
+        </app-company>
+        <!--<app-new-company [(newCompanyView)]="newCompanyView" [hidden]="!newCompanyView"></app-new-company>-->
       </div>
 
       <div class="container-content-3" [hidden]="id != 4">

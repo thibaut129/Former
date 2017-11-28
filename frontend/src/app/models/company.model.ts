@@ -7,8 +7,8 @@ class Company {
 
   constructor(
   ){
-    this.name = "Former"
-    this.type = "Startup"
+    this.name = ""
+    this.type = ""
     this.experiencesID = []
     this.created = new Date()
   }

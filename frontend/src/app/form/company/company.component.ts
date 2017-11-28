@@ -8,8 +8,8 @@ import Company from "../../models/company.model";
   styleUrls: ['./company.component.scss']
 })
 export class CompanyComponent implements OnInit {
-  @Input() newCompanyView: boolean;
-  @Output() newCompanyViewChange = new EventEmitter<boolean>();
+  newCompanyView: boolean;
+  // @Output() newCompanyViewChange = new EventEmitter<boolean>();
 
   @Input() companyID: string;
   @Output() companyIDChange = new EventEmitter<string>();
@@ -22,27 +22,15 @@ export class CompanyComponent implements OnInit {
 
   companiesList: Company[];
 
+  newCompany: Company;
+
   constructor(
     private companyService: CompanyService
-  ) { }
-
-
-  setStatus(status:boolean){
-    this.nextPageChange.emit(this.nextPage+1);
-
-    this.newCompanyView=status;
-    this.newCompanyViewChange.emit(status);
+  ) {
+    this.newCompanyView = false;
+    this.newCompany = new Company(); // new-company div
   }
 
-  getCompany(company:Company){
-    this.companyID=company._id;
-    this.companySelected=company;
-    this.companyIDChange.emit(company._id);
-    this.companySelectedChange.emit(company);
-
-    this.nextPageChange.emit(this.nextPage+1);
-
-  }
 
   ngOnInit(): void {
     // this.todoService.getToDos()
@@ -55,6 +43,39 @@ export class CompanyComponent implements OnInit {
         this.companiesList = companies
         console.log(companies)
       })
+  }
+
+
+  setStatus(status:boolean){
+    this.newCompanyView=status;
+    // this.newCompanyViewChange.emit(status);
+  }
+
+  getCompany(company:Company){
+    this.companyID=company._id;
+    this.companySelected=company;
+    this.companyIDChange.emit(company._id);
+    this.companySelectedChange.emit(company);
+
+    this.nextPageChange.emit(this.nextPage+1);
+
+  }
+
+  // new-company div
+  createCompany(type: string)  {
+    this.newCompany.type = type;
+
+    //todo: mettre une alerte sur le contour de la di v avec bootstrap
+    if (this.newCompany.name != "") {
+      this.companyService.createCompany(this.newCompany)
+        .subscribe((res) => {
+          this.companiesList.push(res.data)
+          // get UserId for the User created
+          console.log(res.data._id);
+
+          this.setStatus(false)
+        })
+    }
   }
 
 }

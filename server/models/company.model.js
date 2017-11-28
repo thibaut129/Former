@@ -6,7 +6,9 @@ var Schema = mongoose.Schema;
 var CompanySchema = new Schema({
     name: {
         type: String,
+        required: 'Veuillez préciser le nom de l\'entreprise',
         trim: true,
+        unique: true
     },
     type: {
         type: String,
