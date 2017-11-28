@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import User from "../../models/user.model";
 import Experience from "../../models/experience.model";
+import Company from "../../models/company.model";
 
 @Component({
   selector: 'app-summary',
@@ -8,8 +9,9 @@ import Experience from "../../models/experience.model";
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-  @Input() getNewUser: User;
-  @Input() getNewExperience: Experience;
+  @Input() newUser: User;
+  @Input() newExperience: Experience;
+  @Input() companySelected: Company;
 
   constructor() { }
 

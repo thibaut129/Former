@@ -6,15 +6,15 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./new-company.component.scss']
 })
 export class NewCompanyComponent implements OnInit {
-  @Input() getNewCompanyView: boolean;
-  @Output() getNewCompanyViewChange = new EventEmitter<boolean>();
+  @Input() newCompanyView: boolean;
+  @Output() newCompanyViewChange = new EventEmitter<boolean>();
 
   constructor() { }
 
 
   setStatus(status:boolean){
-    this.getNewCompanyView=status;
-    this.getNewCompanyViewChange.emit(status);
+    this.newCompanyView=status;
+    this.newCompanyViewChange.emit(status);
   }
 
   ngOnInit() {

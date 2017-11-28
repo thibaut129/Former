@@ -1,15 +1,15 @@
 <h1>Récapitulatif</h1>
-<h2>Experience : {{getNewExperience.type}}</h2>
+<h2>{{newExperience.type}}</h2>
   <p>
-  Lieu : {{getNewExperience.location}}<br/>
-  Entreprise : Nom / Type ({{getNewExperience.companyID}})<br/>
+  Lieu : {{newExperience.location}}<br/>
+  Entreprise : {{companySelected.name}} ({{companySelected.type}})<br/>
   </p>
-  <h2>Profil de {{getNewUser.firstname}}</h2>
+  <h2>Profil de {{newUser.firstname}}</h2>
 <p>
 
-  {{getNewUser.firstname}} {{getNewUser.lastname}}<br/>
-  {{getNewUser.email}} <br/>
-  {{getNewUser.department}} - {{getNewUser.option}}<br/>
+  {{newUser.firstname}} {{newUser.lastname}}<br/>
+  {{newUser.email}} <br/>
+  {{newUser.department}} - {{newUser.option}}<br/>
   Photo<br/>
 
 </p>

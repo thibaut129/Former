@@ -18,7 +18,9 @@ export class FormComponent implements OnInit {
   newCompanyView: boolean;
   newUser: User;
   newExperience: Experience;
-  newCompany: Company;
+  companySelected: Company;
+  // newCompany: Company;
+
   // usersList: User[];
   // experiencesList: Experience[];
 
@@ -30,7 +32,8 @@ export class FormComponent implements OnInit {
     this.newCompanyView = false;
     this.newUser = new User();
     this.newExperience = new Experience();
-    this.newCompany = new Company();
+    this.companySelected = new Company();
+    // this.newCompany = new Company();
   }
 
 

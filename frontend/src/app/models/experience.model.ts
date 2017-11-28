@@ -12,7 +12,7 @@ class Experience {
     this.type = "Stage"
     this.location = "Nice"
     this.coords = ""
-    this.companyID = "123Amadeus"
+    this.companyID = ""
     this.userID = ""
     this.created = new Date()
   }

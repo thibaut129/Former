@@ -4,9 +4,15 @@
   {{newUser.email}}
   {{newUser.department}}
   {{newUser.option}}
-
-  {{newCompany.type}}
-  {{newCompany.name}}
+  <br/>
+  {{companySelected.name}}
+  {{companySelected.type}}
+  <br/>
+  {{newExperience.type}}
+  {{newExperience.location}}
+  {{newExperience.companyID}}
+  {{newExperience.userID}}
+  <br/>
   <div class="row">
     <div class="container-form">
       <div class="container-top" [hidden]="id == 1">
@@ -26,8 +32,12 @@
       </div>
 
       <div class="container-content-3" [hidden]="id != 4">
-        <app-company [(getNewCompanyView)]="newCompanyView" [hidden]="newCompanyView"></app-company>
-        <app-new-company [(getNewCompanyView)]="newCompanyView" [hidden]="!newCompanyView"></app-new-company>
+        <app-company
+          [(companyID)]="newExperience.companyID"
+          [(companySelected)]="companySelected"
+          [(newCompanyView)]="newCompanyView"
+          [hidden]="newCompanyView"></app-company>
+        <app-new-company [(newCompanyView)]="newCompanyView" [hidden]="!newCompanyView"></app-new-company>
       </div>
 
       <div class="container-content-3" [hidden]="id != 5">
@@ -43,7 +53,11 @@
       </div>
 
       <div class="container-content-3" [hidden]="id != 8">
-        <app-summary [getNewExperience]="newExperience" [getNewUser]="newUser"></app-summary>
+        <app-summary
+          [newExperience]="newExperience"
+          [newUser]="newUser"
+          [companySelected]="companySelected"
+        ></app-summary>
       </div>
 
       <div class="container-content-3" [hidden]="id != 9">

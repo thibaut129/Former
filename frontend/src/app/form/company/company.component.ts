@@ -8,8 +8,13 @@ import Company from "../../models/company.model";
   styleUrls: ['./company.component.scss']
 })
 export class CompanyComponent implements OnInit {
-  @Input() getNewCompanyView: boolean;
-  @Output() getNewCompanyViewChange = new EventEmitter<boolean>();
+  @Input() newCompanyView: boolean;
+  @Input() companyID: string;
+  @Input() companySelected: Company;
+
+  @Output() newCompanyViewChange = new EventEmitter<boolean>();
+  @Output() companyIDChange = new EventEmitter<string>();
+  @Output() companySelectedChange = new EventEmitter<Company>();
 
   companiesList: Company[];
 
@@ -19,10 +24,16 @@ export class CompanyComponent implements OnInit {
 
 
   setStatus(status:boolean){
-    this.getNewCompanyView=status;
-    this.getNewCompanyViewChange.emit(status);
+    this.newCompanyView=status;
+    this.newCompanyViewChange.emit(status);
   }
 
+  getCompany(company:Company){
+    this.companyID=company._id;
+    this.companySelected=company;
+    this.companyIDChange.emit(company._id);
+    this.companySelectedChange.emit(company);
+  }
 
   ngOnInit(): void {
     // this.todoService.getToDos()
