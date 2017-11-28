@@ -15,6 +15,7 @@ import {CompanyService} from "../services/company.service";
 })
 export class FormComponent implements OnInit {
   id:number;
+  legalAccepted:boolean;
   newCompanyView: boolean;
   newUser: User;
   newExperience: Experience;
@@ -29,6 +30,7 @@ export class FormComponent implements OnInit {
     private experienceService: ExperienceService,
     private companyService: CompanyService
   ) {
+    this.legalAccepted = false;
     this.newCompanyView = false;
     this.newUser = new User();
     this.newExperience = new Experience();
