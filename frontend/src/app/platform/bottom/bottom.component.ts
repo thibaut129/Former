@@ -23,15 +23,14 @@ export class BottomComponent implements OnInit {
   myselectDepartment: any = ['SI', 'ELEC'];
   settingsDepartment: any = {
     theme: 'ios',
-    display: 'bottom',
     select: 'multiple',
-
+    display: 'inline',
   };
 
   myselectCompany: any = ['A1', 'N2'];
   settingsCompany: any = {
-    theme: 'material',
-    display: 'bottom',
+    theme: 'ios',
+    display: 'inline',
     label: 'Name',
     width: [50, 270],
     group: true,
