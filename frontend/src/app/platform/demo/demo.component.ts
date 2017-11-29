@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as ol from 'openlayers';
+import {ExperienceService} from "../../services/experience.service";
+import Experience from "../../models/experience.model";
 declare var jquery:any;
 declare var $ :any;
 
@@ -9,9 +11,22 @@ declare var $ :any;
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
+  dropDataContent:string
+  experiencesList: Experience[];
 
+  constructor(
+    // private todoService: TodoService,
+    private experienceService: ExperienceService
+  ) { }
 
   ngOnInit(): void {
+    this.dropDataContent = "rien";
+
+    this.experienceService.getExperiences()
+      .subscribe(experiences => {
+        this.experiencesList = experiences
+        console.log(experiences)
+      })
 
     let iconFeature = new ol.Feature({
       geometry: new ol.geom.Point([0, 0]),
@@ -75,14 +90,17 @@ export class DemoComponent implements OnInit {
       if (feature) {
         let coordinates = (<any>feature.getGeometry()).getCoordinates();
         popup.setPosition(coordinates);
-        $(element).popover({
-          'placement': 'top',
-          'html': true,
-          'content': feature.get('name')
-        });
-        $(element).popover('show');
-      } else {
-        $(element).popover('destroy');
+
+        this.dropDataContent = coordinates; // not updated :(
+
+      //   $(element).popover({
+      //     'placement': 'top',
+      //     'html': true,
+      //     'content': feature.get('name')
+      //   });
+      //   $(element).popover('show');
+      // } else {
+      //   $(element).popover('destroy');
       }
     });
 
@@ -94,8 +112,4 @@ export class DemoComponent implements OnInit {
       (<HTMLElement>map.getTarget()).style.cursor = hit ? 'pointer' : '';
     });
   }
-
-
-
-
 }

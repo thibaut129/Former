@@ -38,6 +38,7 @@ import {SchoolComponent} from "./form/school/school.component";
 
 import { SummaryComponent } from './form/summary/summary.component';
 import { CountryComponent } from './form/country/country.component';
+import {AgmSnazzyInfoWindowModule} from "@agm/snazzy-info-window";
 
 mobiscroll.apiKey = 'f8d8cc78';
 
@@ -76,6 +77,7 @@ mobiscroll.apiKey = 'f8d8cc78';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    AgmSnazzyInfoWindowModule,
     DragAndDropModule.forRoot(),
     NgbModule.forRoot()
   ],

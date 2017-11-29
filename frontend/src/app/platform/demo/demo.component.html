@@ -2,10 +2,13 @@
   <div class="row">
     <div class="col-12">
       <div id="map" class="map">
-        <div mwlDraggable id="popup"></div>
+        <div mwlDraggable id="popup" dropData="{{dropDataContent}}" [hidden]="popupOpen" ></div>
       </div>
     </div>
 
+  </div>
+  <div class="row">
+    <div id="info">&nbsp;</div>
   </div>
 </div>
 

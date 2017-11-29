@@ -8,6 +8,7 @@ Run `cd frontend` to go inside the directory
 Run `npm install` to install all the dependencies.
 
 Run `npm install -g @angular/cli` to install Angular CLI globally.
+Run `npm install -g @mobiscroll/cli` to install Angular CLI globally.
 
 Run `ng serve` to run the Development Server
 

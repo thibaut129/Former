@@ -1,1 +1,14 @@
-<app-demo></app-demo>
+<!--<app-demo></app-demo>-->
+<agm-map style="height: 100%" [latitude]="43.6155793" [longitude]="7.0696861" [zoom]="3" [styles]="myStyle">
+
+
+  <agm-marker [latitude]="exp.coords.latitude" [longitude]="exp.coords.longitude" *ngFor="let exp of experiencesList">
+    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+      <ng-template>
+        <div mwlDraggable dropData="{{exp._id}}" class="card">
+          {{exp._id}}
+        </div>
+      </ng-template>
+    </agm-snazzy-info-window>
+  </agm-marker>
+</agm-map>
