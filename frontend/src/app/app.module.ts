@@ -1,5 +1,5 @@
 import { MbscModule, mobiscroll } from '@mobiscroll/angular-trial';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TodoService } from './services/todo.service';
 import { UserService } from './services/user.service';
@@ -7,6 +7,7 @@ import { ExperienceService } from './services/experience.service';
 import { MarkerService } from './services/marker.service';
 import { CompanyService } from './services/company.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -38,7 +39,7 @@ import {SchoolComponent} from "./form/school/school.component";
 import { SummaryComponent } from './form/summary/summary.component';
 import { CountryComponent } from './form/country/country.component';
 
-mobiscroll.apiKey = 'b81b2fcd';
+mobiscroll.apiKey = 'f8d8cc78';
 
 @NgModule({
   declarations: [
@@ -64,10 +65,15 @@ mobiscroll.apiKey = 'b81b2fcd';
     SchoolComponent,
     SwipeTestComponent
   ],
-  imports: [ 
+  imports: [
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyBm2qiQBy-OfNNSYy6vQ6pW3pIv2syva0c",
+      libraries: ["places"]
+    }),
     MbscModule,
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     DragAndDropModule.forRoot(),
