@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DragAndDropModule} from 'angular-draggable-droppable';
 
+
 import { PlatformComponent } from './platform/platform.component';
 import { FormComponent } from './form/form.component';
 import { GlobalComponent } from './global/global.component';
@@ -29,9 +30,12 @@ import { RightComponent } from './platform/right/right.component';
 import { CenterComponent } from './platform/center/center.component';
 import { DemoComponent } from './platform/demo/demo.component';
 import { SubjectComponent } from './form/subject/subject.component';
+import {SwipeTestComponent} from './swipe-test/swipe-test.component';
+import {SchoolComponent} from "./form/school/school.component";
+
+
 import { SummaryComponent } from './form/summary/summary.component';
 import { CountryComponent } from './form/country/country.component';
-import { SchoolComponent } from './form/school/school.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,8 @@ import { SchoolComponent } from './form/school/school.component';
     SubjectComponent,
     SummaryComponent,
     CountryComponent,
-    SchoolComponent
+    SchoolComponent,
+    SwipeTestComponent
   ],
   imports: [
     BrowserModule,
