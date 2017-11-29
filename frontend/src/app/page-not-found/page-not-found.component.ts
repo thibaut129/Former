@@ -3,6 +3,7 @@ import {TodoService} from "../services/todo.service";
 import {UserService} from "../services/user.service";
 import ToDo from "../models/todo.model";
 import User from "../models/user.model";
+import {MbscScrollerOptions} from "@mobiscroll/angular-trial/dist/src/js/core/core";
 
 @Component({
   selector: 'app-page-not-found',
@@ -25,6 +26,25 @@ export class PageNotFoundComponent implements OnInit {
 
   usersList: User[];
   editUsers: User[] = [];
+
+  listInlineSettings: any = {
+    display: 'inline',
+    layout: 'liquid',
+    showInput: false,
+    placeholder: 'Please Select ...'
+  }
+
+  myselectCompany: any = [2, 3, 155, 362];
+  settingsCompany: any = {
+    theme: 'ios',
+    display: 'bottom',
+    label: 'Name',
+    width: [50, 270],
+    group: true,
+    groupLabel: '&nbsp;',
+    select: 'multiple'
+  };
+
 
   ngOnInit(): void {
     // this.todoService.getToDos()

@@ -23,13 +23,42 @@
     <br/><br/>
 
     <div class="row text-center">
-      <div class="col-md-6">
-        <p>
-          BAT<br/>
-          ELEC<br/>
-          GB<br/>
-          SI<br/>
-        </p>
+      <div class="col-md-12">
+        <mbsc-form>
+          <div class="mbsc-form-group">
+            <ul mbsc-treelist [(ngModel)]="inlineList" [mbsc-options]="listInlineSettings" [ngModelOptions]="{standalone: true}">
+              <li data-val="SI">SI
+                <ul>
+                  <li data-val="IHM">IHM</li>
+                  <li data-val="AL">AL</li>
+                  <li data-val="WEB">WEB</li>
+                </ul>
+              </li>
+              <li data-val="Elec">ELEC
+                <ul>
+                  <li data-val="1">1</li>
+                  <li data-val="2">2</li>
+                  <li data-val="3">3</li>
+                </ul>
+              </li>
+              <li data-val="MAM">MAM
+                <ul>
+                  <li data-val="IMAFA">IMAFA</li>
+                  <li data-val="INUM">INUM</li>
+                  <li data-val="SD">SD</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </mbsc-form>
+
+        <!--<p>-->
+          <!--BAT<br/>-->
+          <!--ELEC<br/>-->
+          <!--GB<br/>-->
+          <!--SI<br/>-->
+        <!--</p>-->
+
         <!--<select class="form-control">-->
           <!--<option>BAT</option>-->
           <!--<option>Elec</option>-->
@@ -37,20 +66,20 @@
           <!--<option>SI</option>-->
         <!--</select>-->
       </div>
-      <div class="col-md-6">
-        <p>
-          AL<br/>
-          CASPAR<br/>
-          IHM<br/>
-          WEB<br/>
-        </p>
+      <!--<div class="col-md-6">-->
+        <!--<p>-->
+          <!--AL<br/>-->
+          <!--CASPAR<br/>-->
+          <!--IHM<br/>-->
+          <!--WEB<br/>-->
+        <!--</p>-->
         <!--<select class="form-control">-->
           <!--<option>AL</option>-->
           <!--<option>CASPAR</option>-->
           <!--<option>IHM</option>-->
           <!--<option>WEB</option>-->
         <!--</select>-->
-      </div>
+      <!--</div>-->
     </div>
   </form>
 </div>

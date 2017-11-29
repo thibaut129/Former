@@ -22,4 +22,11 @@ export class PersonalInfoComponent implements OnInit {
   ngOnInit() {
   }
 
+  listInlineSettings: any = {
+    display: 'inline',
+    layout: 'liquid',
+    showInput: false,
+    placeholder: 'Please Select ...'
+  }
+
 }

@@ -1,3 +1,4 @@
+import { MbscModule, mobiscroll } from '@mobiscroll/angular-trial';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TodoService } from './services/todo.service';
@@ -37,6 +38,8 @@ import {SchoolComponent} from "./form/school/school.component";
 import { SummaryComponent } from './form/summary/summary.component';
 import { CountryComponent } from './form/country/country.component';
 
+mobiscroll.apiKey = 'b81b2fcd';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +64,8 @@ import { CountryComponent } from './form/country/country.component';
     SchoolComponent,
     SwipeTestComponent
   ],
-  imports: [
+  imports: [ 
+    MbscModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,

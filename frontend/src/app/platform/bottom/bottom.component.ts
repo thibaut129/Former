@@ -20,6 +20,25 @@ export class BottomComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  myselectDepartment: any = ['SI', 'ELEC'];
+  settingsDepartment: any = {
+    theme: 'ios',
+    display: 'bottom',
+    select: 'multiple',
+
+  };
+
+  myselectCompany: any = ['A1', 'N2'];
+  settingsCompany: any = {
+    theme: 'material',
+    display: 'bottom',
+    label: 'Name',
+    width: [50, 270],
+    group: true,
+    groupLabel: '&nbsp;',
+    select: 'multiple'
+  };
+
   create()  {
 
     this.newMarker.coords= {

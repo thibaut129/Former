@@ -11,18 +11,26 @@
     <!--</p>-->
   </div>
   <div class="col-md-2">
-    <form>
-      <div class="form-group">
-        <select multiple class="form-control">
-          <option>BAT</option>
-          <option>ELEC</option>
-          <option>GB</option>
-          <option>GE</option>
-          <option>MAM</option>
-          <option>SI</option>
-        </select>
-      </div>
-    </form>
+    <select [(ngModel)]="myselectDepartment" mbsc-select [mbsc-options]="settingsDepartment" >
+      <option value="BAT">BAT</option>
+      <option value="ELEC">ELEC</option>
+      <option value="GB">GB</option>
+      <option value="GE">GE</option>
+      <option value="MAM">MAM</option>
+      <option value="SI">SI</option>
+    </select>
+    <!--<form>-->
+      <!--<div class="form-group">-->
+        <!--<select multiple class="form-control">-->
+          <!--<option>BAT</option>-->
+          <!--<option>ELEC</option>-->
+          <!--<option>GB</option>-->
+          <!--<option>GE</option>-->
+          <!--<option>MAM</option>-->
+          <!--<option>SI</option>-->
+        <!--</select>-->
+      <!--</div>-->
+    <!--</form>-->
   </div>
   <div class="col-md-2">
     <!--<form>-->
@@ -37,17 +45,34 @@
     <!--</form>-->
   </div>
   <div class="col-md-3">
-    <div class="inner-addon right-addon">
-      <i class="fa fa-search"></i>
-      <input type="text" class="form-control" placeholder="Entreprise" />
-    </div>
+    <!--<div class="inner-addon right-addon">-->
+      <!--<i class="fa fa-search"></i>-->
+      <!--<input type="text" class="form-control" placeholder="Entreprise" />-->
+    <!--</div>-->
     <div class="card">
-      <div class="card-block">
-        x Monaco Telecom x Thales<br/>
-        x Amadeus x Sogeti
+      <!--<div class="card-block">-->
+        <!--x Monaco Telecom x Thales<br/>-->
+        <!--x Amadeus x Sogeti-->
+      <!--</div>-->
+      <select [(ngModel)]="myselectCompany" mbsc-select [mbsc-options]="settingsCompany" >
+        <optgroup label="A">
+          <option value="A0">Amadeus</option>
+          <option value="A1" >Avisto</option>
+          <option value="A2" >Air France</option>
+        </optgroup>
+        <optgroup label="N">
+          <option value="N1">Nestlé</option>
+          <option value="N2">NXP</option>
+        </optgroup>
+        <optgroup label="S">
+          <option value="S1">Spontex</option>
+          <option value="S2">Sogeti</option>
+        </optgroup>
+        <!-- Showing partial data. Download full source. -->
+      </select>
       </div>
+
     </div>
-  </div>
   <div class="col-md-2">
     <form>
       <div class="form-group">

@@ -1,7 +1,53 @@
 <a class="btn btn-primary" href="/form/1">form</a>
 <a class="btn btn-primary" href="/platform">platform</a>
 <a class="btn btn-primary" href="/global">global</a>
+<div class="row">
 
+  <select [(ngModel)]="myselectCompany" mbsc-select [mbsc-options]="settingsCompany" >
+    <optgroup label="A">
+      <option value="0">Adaline Shiver</option>
+      <option value="1" >Adella Cornell</option>
+      <option value="2" >Adolph Scriber</option>
+      <option value="3" disabled>Adrianna Merritt</option>
+      <option value="4" disabled>Adrianne Marotta</option>
+    </optgroup>
+    <optgroup label="B">
+      <option value="78">Barbara Mackay</option>
+      <option value="79">Barbera Phu</option>
+      <option value="80">Barbie Kaczorowski</option>
+      <option value="81">Barney Flurry</option>
+      <option value="82">Beatriz Remer</option>
+    </optgroup>
+    <!-- Showing partial data. Download full source. -->
+  </select>
+
+  <mbsc-form>
+    <div class="mbsc-form-group">
+      <div class="mbsc-form-group-title">Embedded treelist scroller</div>
+      <ul mbsc-treelist [(ngModel)]="inlineList" [mbsc-options]="listInlineSettings">
+        <li data-val="America">America
+          <ul>
+            <li data-val="Mexico">Mexico</li>
+            <li data-val="Brasil">Brasil</li>
+          </ul>
+        </li>
+        <li data-val="Europe">Europe
+          <ul>
+            <li data-val="Germany">Germany</li>
+            <li data-val="France">France</li>
+            <li data-val="Italy">Italy</li>
+          </ul>
+        </li>
+        <li data-val="Asia">Asia
+          <ul>
+            <li data-val="China">China</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </mbsc-form>
+
+</div>
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
