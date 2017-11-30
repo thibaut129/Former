@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output, ViewChild} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
@@ -9,6 +9,11 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./city.component.scss']
 })
 export class CityComponent  implements OnInit {
+  @Input() coordsExperience: {latitude:number, longitude:number};
+  @Output() coordsExperienceChange= new EventEmitter<{latitude:number, longitude:number}>();
+
+  @Input() locationExperience: string;
+  @Output() locationExperienceChange= new EventEmitter<string>();
 
   public latitude: number;
   public longitude: number;
@@ -26,8 +31,8 @@ export class CityComponent  implements OnInit {
   ngOnInit() {
     //set google maps defaults
     this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    // this.latitude = 39.8282;
+    // this.longitude = -98.5795;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -38,7 +43,8 @@ export class CityComponent  implements OnInit {
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["(cities)"]
+        // types: ["(cities)"]
+        types: ["(regions)"]
       });
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
@@ -54,6 +60,15 @@ export class CityComponent  implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
           this.zoom = 12;
+
+          // update newExperience
+          let coords = {latitude: this.latitude, longitude: this.longitude}
+          this.coordsExperience = coords;
+          this.coordsExperienceChange.emit(coords);
+
+          this.locationExperience = place.name;
+          this.locationExperienceChange.emit(place.name);
+
         });
       });
     });

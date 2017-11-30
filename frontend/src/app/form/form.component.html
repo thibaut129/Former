@@ -10,11 +10,11 @@
   <!--{{companySelected.type}}-->
   <!--{{companySelected.experience}}-->
   <!--<br/>-->
-  <!--{{newExperience.type}}-->
-  <!--{{newExperience.location}}-->
-  <!--({{newExperience.coords.latitude}}, {{newExperience.coords.longitude}})-->
-  <!--{{newExperience.companyID}}-->
-  <!--{{newExperience.userID}}-->
+  {{newExperience.type}}
+  {{newExperience.location}}
+  ({{newExperience.coords.latitude}}, {{newExperience.coords.longitude}})
+  {{newExperience.companyID}}
+  {{newExperience.userID}}
   <div class="row">
     <div class="container-form">
       <div class="container-top" [hidden]="id == 1">
@@ -31,8 +31,8 @@
 
 
       <div class="container-content-3" [hidden]="id != 2">
-        <app-city [hidden]="newExperience.type != 'Emploi'"></app-city>
-        <app-country [hidden]="newExperience.type != 'Echange'"></app-country>
+        <app-city [(locationExperience)]="newExperience.location" [(coordsExperience)]="newExperience.coords"></app-city>
+        <!--<app-country [hidden]="newExperience.type != 'Echange'"></app-country>-->
       </div>
 
       <div class="container-content-3" [hidden]="id != 3">
