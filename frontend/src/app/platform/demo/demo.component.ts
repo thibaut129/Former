@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import * as ol from 'openlayers';
 import {ExperienceService} from "../../services/experience.service";
 import Experience from "../../models/experience.model";
-declare var jquery:any;
-declare var $ :any;
 
 @Component({
   selector: 'app-demo',
@@ -11,7 +9,7 @@ declare var $ :any;
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
-  dropDataContent:string
+  dropDataContent:string;
   experiencesList: Experience[];
 
   constructor(
@@ -24,9 +22,9 @@ export class DemoComponent implements OnInit {
 
     this.experienceService.getExperiences()
       .subscribe(experiences => {
-        this.experiencesList = experiences
+        this.experiencesList = experiences;
         console.log(experiences)
-      })
+      });
 
     let iconFeature = new ol.Feature({
       geometry: new ol.geom.Point([0, 0]),
@@ -83,30 +81,29 @@ export class DemoComponent implements OnInit {
     // display popup on click
     map.on('click', function(evt) {
       let feature = map.forEachFeatureAtPixel(evt.pixel,
-        function (feature) {
+        function(feature) {
           return feature;
         });
-
       if (feature) {
-        let coordinates = (<any>feature.getGeometry()).getCoordinates();
+        let coordinates = (<ol.geom.Point>feature.getGeometry()).getCoordinates();
         popup.setPosition(coordinates);
-
-        this.dropDataContent = coordinates; // not updated :(
-
-      //   $(element).popover({
-      //     'placement': 'top',
-      //     'html': true,
-      //     'content': feature.get('name')
-      //   });
-      //   $(element).popover('show');
-      // } else {
-      //   $(element).popover('destroy');
+        $(element).popover({
+          'placement': 'top',
+          'html': true,
+          'content': feature.get('name')
+        });
+        $(element).popover('show');
+      } else {
+        $(element).popover('dispose');
       }
     });
 
     // change mouse cursor when over marker
     map.on('pointermove', function(e) {
-
+      if (e.dragging) {
+        $(element).popover('dispose');
+        return;
+      }
       let pixel = map.getEventPixel(e.originalEvent);
       let hit = map.hasFeatureAtPixel(pixel);
       (<HTMLElement>map.getTarget()).style.cursor = hit ? 'pointer' : '';

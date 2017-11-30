@@ -22,7 +22,7 @@ export class CenterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dropDataContent = "rien";
+   /* this.dropDataContent = "rien";
 
     this.experienceService.getExperiences()
       .subscribe(experiences => {
@@ -92,14 +92,14 @@ export class CenterComponent implements OnInit {
     }
 
 
-    /**
+    /!**
      * The styling function for the vector layer, will return an array of styles
      * which either contains the aboove gradient or pattern.
      *
      * @param {ol.Feature} feature The feature to style.
      * @param {number} resolution Resolution.
      * @return {ol.style.Style} The style to use for the feature.
-     */
+     *!/
     var i=0;
     var getStackedStyle = function(feature, resolution) {
       var id = feature.getId();
@@ -133,7 +133,7 @@ export class CenterComponent implements OnInit {
         center: ol.proj.fromLonLat([7, 52]),
         zoom: 3
       })
-    });
+    });*/
   }
 
 }
