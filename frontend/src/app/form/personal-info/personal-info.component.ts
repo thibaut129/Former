@@ -22,10 +22,11 @@ export class PersonalInfoComponent implements OnInit {
   ngOnInit() {
   }
 
+  inlineList="";
   listInlineSettings: any = {
     display: 'inline',
     layout: 'liquid',
-    showInput: false,
+    showInput: true,
     placeholder: 'Please Select ...'
   }
 

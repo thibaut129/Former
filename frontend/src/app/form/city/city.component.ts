@@ -9,6 +9,9 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./city.component.scss']
 })
 export class CityComponent  implements OnInit {
+  @Input() nextPage: number;
+  @Output() nextPageChange = new EventEmitter<number>();
+
   @Input() coordsExperience: {latitude:number, longitude:number};
   @Output() coordsExperienceChange= new EventEmitter<{latitude:number, longitude:number}>();
 
@@ -47,6 +50,7 @@ export class CityComponent  implements OnInit {
         types: ["(regions)"]
       });
       autocomplete.addListener("place_changed", () => {
+
         this.ngZone.run(() => {
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
@@ -68,6 +72,9 @@ export class CityComponent  implements OnInit {
 
           this.locationExperience = place.name;
           this.locationExperienceChange.emit(place.name);
+
+          // next Page
+          this.nextPageChange.emit(this.nextPage+1);
 
         });
       });
