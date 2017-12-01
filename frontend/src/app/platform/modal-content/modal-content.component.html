@@ -7,27 +7,28 @@
 <div class="modal-body">
   <div class="" [hidden]="idModal != 0">
     <div class="row text-center">
-      <!--<div class="col-md-6" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Emploi" class="img-responsive rounded"/></div>-->
-      <div class="col-md-6" (click)="setTypeMobility('Emploi')"><img src="http://via.placeholder.com/150x100?text=Emploi" class="img-responsive rounded"/></div>
-      <!--<div class="col-md-6" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Etude" class="img-responsive rounded"/></div>-->
-      <div class="col-md-6" (click)="setTypeMobility('Etude')"><img src="http://via.placeholder.com/150x100?text=Etude" class="img-responsive rounded"/></div>
+      <div class="col-md-6" *ngFor="let mob of keysMobilityEnum()" (click)="setTypeMobility(mob)"><img [src]="'http://via.placeholder.com/150x100?text='+mob" class="img-responsive rounded"/></div>
+      <!--<div class="col-md-6" (click)="setTypeMobility('Emploi')"><img src="http://via.placeholder.com/150x100?text=Emploi" class="img-responsive rounded"/></div>-->
+      <!--<div class="col-md-6" (click)="setTypeMobility('Etude')"><img src="http://via.placeholder.com/150x100?text=Etude" class="img-responsive rounded"/></div>-->
     </div>
   </div>
 
   <div class="text-center" [hidden]="idModal != 1">
     <!--do a ngFor-->
 
-    <div (click)="setDepartment('BAT')">BAT <span class="badge badge-info">12</span></div>
-    <div (click)="setDepartment('ELEC')">ELEC <span class="badge badge-info">23</span></div>
-    <div (click)="setDepartment('SI')">SI <span class="badge badge-info">65</span></div>
-    <div (click)="setDepartment('MAM')">MAM <span class="badge badge-info">36</span></div>
+    <div *ngFor="let dpt of keysDepartmentEnum()" (click)="setDepartment(dpt.toString())">{{dpt.toString()}} <span class="badge badge-info">12</span></div>
+    <!--<div (click)="setDepartment('BAT')">BAT <span class="badge badge-info">12</span></div>-->
+    <!--<div (click)="setDepartment('ELEC')">ELEC <span class="badge badge-info">23</span></div>-->
+    <!--<div (click)="setDepartment('SI')">SI <span class="badge badge-info">65</span></div>-->
+    <!--<div (click)="setDepartment('MAM')">MAM <span class="badge badge-info">36</span></div>-->
   </div>
 
   <div class="" [hidden]="idModal != 2">
     <div class="row text-center">
-      <div class="col-md-4" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Etranger48" class="img-responsive rounded"/></div>
-      <div class="col-md-4" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=France88" class="img-responsive rounded"/></div>
-      <div class="col-md-4" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Local45" class="img-responsive rounded"/></div>
+      <div class="col-md-4" *ngFor="let res of keysResearchEnum()" (click)="setTypeResearch(res)"><img [src]="'http://via.placeholder.com/150x100?text='+res+'48'" class="img-responsive rounded"/></div>
+      <!--<div class="col-md-4" (click)="setTypeResearch('Etranger')"><img src="http://via.placeholder.com/150x100?text=Etranger48" class="img-responsive rounded"/></div>-->
+      <!--<div class="col-md-4" (click)="setTypeResearch('France')"><img src="http://via.placeholder.com/150x100?text=France88" class="img-responsive rounded"/></div>-->
+      <!--<div class="col-md-4" (click)="setTypeResearch('Local')"><img src="http://via.placeholder.com/150x100?text=Local45" class="img-responsive rounded"/></div>-->
     </div>
   </div>
 
@@ -81,8 +82,8 @@
   </div>
 </div>
 <div class="modal-footer">
-  {{aboutUser}}
-  <button (click)="newMessage()">New Message</button>
+  <!--{{aboutUser}}-->
+  <!--<button (click)="newMessage()">New Message</button>-->
   <button type="button" class="btn btn-outline-primary" (click)="nextModal()" [hidden]="idModal !=2 ">Passer</button>
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')" [hidden]="idModal != 3">Terminer</button><br/>
 </div>

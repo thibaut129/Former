@@ -5,6 +5,10 @@ import Company from "../../models/company.model";
 import {DataService} from "../../services/data.service";
 import AboutUser from "../../models/aboutUser.model";
 
+import {typeMobilityEnum} from "../../../environments/environment";
+import {departmentEnum} from "../../../environments/environment";
+import {typeResearchEnum} from "../../../environments/environment";
+
 @Component({
   selector: 'app-modal-content',
   templateUrl: './modal-content.component.html',
@@ -20,6 +24,22 @@ export class ModalContentComponent implements OnInit {
   @Output() aboutUserEvent = new EventEmitter<AboutUser>();
 
 
+  // convert enum into iterable Array
+  keysMobilityEnum() : Array<string> {
+    var keys = Object.keys(typeMobilityEnum);
+    return keys.slice(keys.length / 2);
+  }
+
+  keysDepartmentEnum() : Array<string> {
+    var keys = Object.keys(departmentEnum);
+    return keys.slice(keys.length / 2);
+  }
+
+  keysResearchEnum() : Array<string> {
+    var keys = Object.keys(typeResearchEnum);
+    return keys.slice(keys.length / 2);
+  }
+
   constructor(
     public activeModal: NgbActiveModal,
     private data: DataService
@@ -31,8 +51,6 @@ export class ModalContentComponent implements OnInit {
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => this.message = message)
   }
-
-
 
   nextModal() {
     this.idModal++;
@@ -58,9 +76,14 @@ export class ModalContentComponent implements OnInit {
   }
 
   setTypeResearch(typeResearch: string) {
-    this.aboutUser.typeMobility = typeResearch;
+    this.aboutUser.typeResearch = typeResearch;
 
     this.newMessage(this.aboutUser);
     this.nextModal();
+  }
+
+  addKeyword(keyword:string) {
+    // if present : remove
+    // else : add
   }
 }

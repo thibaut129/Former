@@ -7,14 +7,18 @@ export const environment = {
   production: false
 };
 
-export enum department{
-  'Bat', 'Elec', 'SI', 'MAM', 'ITII', 'GB', "GE"
+export enum departmentEnum{
+  'Bat', 'Elec', 'SI', 'MAM', 'ITII', 'GB', 'GE'
 }
 
-export enum typeMobility{
+export enum typeMobilityEnum{
   'Echange', 'Emploi'
 }
 
-export enum typeCompany{
+export enum typeCompanyEnum{
   'Grande Entreprise', 'Labo', 'PME', 'Start Up'
+}
+
+export enum typeResearchEnum{
+  'Etranger', 'France', 'Local'
 }
