@@ -1,7 +1,40 @@
+<br/>
 <div class="row">
+
+  <div class="col-md-3">
+    <!--<div class="inner-addon right-addon">-->
+    <!--<i class="fa fa-search"></i>-->
+    <!--<input type="text" class="form-control" placeholder="Entreprise" />-->
+    <!--</div>-->
+    <!--<div class="card">-->
+    <!--<div class="card-block">-->
+    <!--x Monaco Telecom x Thales<br/>-->
+    <!--x Amadeus x Sogeti-->
+    <!--</div>-->
+    <select [(ngModel)]="myselectCompany" mbsc-select [mbsc-options]="settingsCompany" >
+      <optgroup label="A">
+        <option value="A0">Amadeus</option>
+        <option value="A1" >Avisto</option>
+        <option value="A2" >Air France</option>
+      </optgroup>
+      <optgroup label="N">
+        <option value="N1">Nestlé</option>
+        <option value="N2">NXP</option>
+      </optgroup>
+      <optgroup label="S">
+        <option value="S1">Spontex</option>
+        <option value="S2">Sogeti</option>
+        <option value="S2">Supralog</option>
+      </optgroup>
+      <!-- Showing partial data. Download full source. -->
+    </select>
+    <!--</div>-->
+
+  </div>
+
   <div class="col-md-2">
 
-    <button class="btn btn-warning" (click)="create()">Generer Marker</button>
+    <!--<button class="btn btn-warning" (click)="create()">Generer Marker</button>-->
     <!--<p class="text-center">-->
     <!--Toutes les années <br/>-->
     <!--2017 <br/>-->
@@ -9,15 +42,16 @@
     <!--2015 <br/>-->
     <!--</p>-->
   </div>
-  <div class="col-md-2">
-    <select [(ngModel)]="myselectDepartment" mbsc-select [mbsc-options]="settingsDepartment" >
-      <option value="BAT">BAT</option>
-      <option value="ELEC">ELEC</option>
-      <option value="GB">GB</option>
-      <option value="GE">GE</option>
-      <option value="MAM">MAM</option>
-      <option value="SI">SI</option>
-    </select>
+  <!--<div class="col-md-2">-->
+    <!--<select [(ngModel)]="myselectDepartment" mbsc-select [mbsc-options]="settingsDepartment" >-->
+      <!--<option value="BAT">BAT</option>-->
+      <!--<option value="ELEC">ELEC</option>-->
+      <!--<option value="GB">GB</option>-->
+      <!--<option value="GE">GE</option>-->
+      <!--<option value="MAM">MAM</option>-->
+      <!--<option value="SI">SI</option>-->
+    <!--</select>-->
+
     <!--<form>-->
       <!--<div class="form-group">-->
         <!--<select multiple class="form-control">-->
@@ -30,8 +64,43 @@
         <!--</select>-->
       <!--</div>-->
     <!--</form>-->
-  </div>
-  <div class="col-md-2">
+  <!--</div>-->
+  <div class="col-md-4">
+    <div class="card">
+    <div class="card-block">
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-primary">Primary</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-danger">Danger</span>
+      <span class="badge badge-danger">Danger</span>
+      <span class="badge badge-danger">Danger</span>
+      <span class="badge badge-danger">Danger</span>
+      <span class="badge badge-danger">Danger</span>
+      <span class="badge badge-info" [hidden]="!currentYear">2017</span>
+
+    </div>
+    </div>
+
     <!--<form>-->
       <!--<div class="form-group">-->
         <!--<select multiple class="form-control">-->
@@ -43,45 +112,38 @@
       <!--</div>-->
     <!--</form>-->
   </div>
-  <div class="col-md-3">
-    <!--<div class="inner-addon right-addon">-->
-      <!--<i class="fa fa-search"></i>-->
-      <!--<input type="text" class="form-control" placeholder="Entreprise" />-->
-    <!--</div>-->
-    <!--<div class="card">-->
-      <!--<div class="card-block">-->
-        <!--x Monaco Telecom x Thales<br/>-->
-        <!--x Amadeus x Sogeti-->
-      <!--</div>-->
-      <select [(ngModel)]="myselectCompany" mbsc-select [mbsc-options]="settingsCompany" >
-        <optgroup label="A">
-          <option value="A0">Amadeus</option>
-          <option value="A1" >Avisto</option>
-          <option value="A2" >Air France</option>
-        </optgroup>
-        <optgroup label="N">
-          <option value="N1">Nestlé</option>
-          <option value="N2">NXP</option>
-        </optgroup>
-        <optgroup label="S">
-          <option value="S1">Spontex</option>
-          <option value="S2">Sogeti</option>
-          <option value="S2">Supralog</option>
-        </optgroup>
-        <!-- Showing partial data. Download full source. -->
-      </select>
-      <!--</div>-->
 
-    </div>
   <div class="col-md-2">
-    <form>
-      <div class="form-group">
-        <select multiple class="form-control">
-          <option>Stage</option>
-          <option>Emploi</option>
-          <option>Echange</option>
-        </select>
-      </div>
-    </form>
+    <div class="btn-group" [hidden]="currentYear">
+      <button class="btn btn-default shadow" (click)="changeBoolCurrent(true)" >Année courante</button>
+      <button class="btn btn-default shadow" (click)="changeBoolCurrent(true)"><i class="fa fa-circle-o"></i></button>
+    </div>
+    <div class="btn-group" [hidden]="!currentYear">
+      <button class="btn btn-default shadow" (click)="changeBoolCurrent(false)">Année courante</button>
+      <button class="btn btn-primary shadow" (click)="changeBoolCurrent(false)"><i class="fa fa-check-circle-o"></i></button>
+    </div>
+      <!-- Rounded switch -->
+    <!--Année Courante-->
+
+    <!--<label class="switch">-->
+      <!--<input type="checkbox">-->
+      <!--<span class="slider round"></span>-->
+    <!--</label>-->
+
+    <!--<mbsc-form [options]="settingsCurrent">-->
+      <!--<div class="mbsc-form-group">-->
+       <!--<mbsc-switch [(ngModel)]="currentYear"></mbsc-switch>-->
+      <!--</div>-->
+    <!--</mbsc-form>-->
+
+    <!--<form>-->
+      <!--<div class="form-group">-->
+        <!--<select multiple class="form-control">-->
+          <!--<option>Stage</option>-->
+          <!--<option>Emploi</option>-->
+          <!--<option>Echange</option>-->
+        <!--</select>-->
+      <!--</div>-->
+    <!--</form>-->
   </div>
 </div>

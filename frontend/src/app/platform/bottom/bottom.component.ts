@@ -10,6 +10,7 @@ import Marker from "../../models/marker.model";
 })
 export class BottomComponent implements OnInit {
   newMarker: Marker;
+  currentYear: boolean;
 
   constructor(
     private markerService: MarkerService,
@@ -21,12 +22,16 @@ export class BottomComponent implements OnInit {
 
   }
 
-  myselectDepartment: any = ['SI', 'ELEC'];
-  settingsDepartment: any = {
-    theme: 'ios',
-    select: 'multiple',
-    display: 'inline',
-  };
+  // settingsCurrent = {
+  //   theme: 'ios'
+  // };
+
+  // myselectDepartment: any = ['SI', 'ELEC'];
+  // settingsDepartment: any = {
+  //   theme: 'ios',
+  //   select: 'multiple',
+  //   display: 'inline',
+  // };
 
   myselectCompany: any = ['A1', 'N2'];
   settingsCompany: any = {
@@ -38,6 +43,10 @@ export class BottomComponent implements OnInit {
     groupLabel: '&nbsp;',
     select: 'multiple'
   };
+
+  changeBoolCurrent(bool:boolean) {
+    this.currentYear = bool;
+  }
 
   create()  {
 

@@ -18,6 +18,6 @@ export class ModalComponent implements OnInit {
   }
   open() {
     const modalRef = this.modalService.open(ModalContentComponent);
-    modalRef.componentInstance.name = 'World';
+    // modalRef.componentInstance.name = 'World';
   }
 }
