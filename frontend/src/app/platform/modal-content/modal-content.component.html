@@ -7,18 +7,20 @@
 <div class="modal-body">
   <div class="" [hidden]="idModal != 0">
     <div class="row text-center">
-      <div class="col-md-6" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Emploi" class="img-responsive rounded"/></div>
-      <div class="col-md-6" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Etude" class="img-responsive rounded"/></div>
+      <!--<div class="col-md-6" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Emploi" class="img-responsive rounded"/></div>-->
+      <div class="col-md-6" (click)="setTypeMobility('Emploi')"><img src="http://via.placeholder.com/150x100?text=Emploi" class="img-responsive rounded"/></div>
+      <!--<div class="col-md-6" (click)="nextModal()"><img src="http://via.placeholder.com/150x100?text=Etude" class="img-responsive rounded"/></div>-->
+      <div class="col-md-6" (click)="setTypeMobility('Etude')"><img src="http://via.placeholder.com/150x100?text=Etude" class="img-responsive rounded"/></div>
     </div>
   </div>
 
   <div class="text-center" [hidden]="idModal != 1">
     <!--do a ngFor-->
 
-    <div (click)="nextModal()">BAT <span class="badge badge-info">12</span></div>
-    <div (click)="nextModal()">ELEC <span class="badge badge-info">23</span></div>
-    <div (click)="nextModal()">SI <span class="badge badge-info">65</span></div>
-    <div (click)="nextModal()">MAM <span class="badge badge-info">36</span></div>
+    <div (click)="setDepartment('BAT')">BAT <span class="badge badge-info">12</span></div>
+    <div (click)="setDepartment('ELEC')">ELEC <span class="badge badge-info">23</span></div>
+    <div (click)="setDepartment('SI')">SI <span class="badge badge-info">65</span></div>
+    <div (click)="setDepartment('MAM')">MAM <span class="badge badge-info">36</span></div>
   </div>
 
   <div class="" [hidden]="idModal != 2">
@@ -69,16 +71,18 @@
   </div>
 <div class="progress">
   <div class="progress-bar bg-primary" [hidden]="idModal < 1" style="width:25%">
-    Emploi
+    {{aboutUser.typeMobility}}
   </div>
   <div class="progress-bar bg-primary" [hidden]="idModal < 2" style="width:25%">
-    SI
+    {{aboutUser.department}}
   </div>
   <div class="progress-bar bg-primary" [hidden]="idModal < 3" style="width:25%">
-    Etranger
+    {{aboutUser.typeResearch}}
   </div>
 </div>
 <div class="modal-footer">
+  {{aboutUser}}
+  <button (click)="newMessage()">New Message</button>
   <button type="button" class="btn btn-outline-primary" (click)="nextModal()" [hidden]="idModal !=2 ">Passer</button>
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')" [hidden]="idModal != 3">Terminer</button><br/>
 </div>

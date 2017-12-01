@@ -41,6 +41,7 @@ import { CountryComponent } from './form/country/country.component';
 import {AgmSnazzyInfoWindowModule} from "@agm/snazzy-info-window";
 import {ModalComponent} from "./platform/modal/modal.component";
 import { ModalContentComponent } from './platform/modal-content/modal-content.component';
+import {DataService} from "./services/data.service";
 
 mobiscroll.apiKey = 'f8d8cc78';
 
@@ -96,6 +97,7 @@ mobiscroll.apiKey = 'f8d8cc78';
     ExperienceService,
     MarkerService,
     CompanyService,
+    DataService,
     NgbActiveModal
   ],
   bootstrap: [AppComponent]

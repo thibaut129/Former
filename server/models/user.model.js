@@ -40,7 +40,8 @@ var UserSchema = new Schema({
     },
     department: {
         type: String,
-        trim: true
+        trim: true,
+        // enum: ['bat', 'elec', 'si', 'mam', 'itii', 'gb', "ge"]
     },
     option: {
         type: String,

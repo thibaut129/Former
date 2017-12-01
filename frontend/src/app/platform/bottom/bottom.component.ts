@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import {MarkerService} from "../../services/marker.service";
 import Marker from "../../models/marker.model";
@@ -11,6 +11,8 @@ import Company from "../../models/company.model";
   styleUrls: ['./bottom.component.scss']
 })
 export class BottomComponent implements OnInit {
+  @Input() aboutUser: {};
+
   newMarker: Marker;
   currentYear: boolean;
 
