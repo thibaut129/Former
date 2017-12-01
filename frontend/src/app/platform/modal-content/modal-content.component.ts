@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {CompanyService} from "../../services/company.service";
+import Company from "../../models/company.model";
 
 @Component({
   selector: 'app-modal-content',
@@ -9,7 +11,9 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 export class ModalContentComponent{
   idModal: number;
 
-  constructor(public activeModal: NgbActiveModal) {
+
+  constructor(public activeModal: NgbActiveModal,
+) {
     this.idModal = 0;
   }
 

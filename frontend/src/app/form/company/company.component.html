@@ -3,7 +3,7 @@
   <div class="company">
     <div class="inner-addon right-addon">
       <i class="fa fa-search"></i>
-      <input type="text" class="form-control" placeholder="Entreprise" />
+      <input type="text" class="form-control" [(ngModel)]="newCompany.name" placeholder="Entreprise" />
     </div>
     <!-- <input type="text" class="form-control" placeholder="Ville"> -->
   </div>
@@ -35,6 +35,7 @@
     </div>
     <div class="row text-center" [hidden]="newCompany.name == ''">
       <div class="col-md-4" (click)="createCompany('Start Up')"><img src="http://via.placeholder.com/150x100?text=StartUp" class="img-responsive rounded"/></div>
+      <div class="col-md-4" (click)="createCompany('PME')"><img src="http://via.placeholder.com/150x100?text=PME" class="img-responsive rounded"/></div>
       <div class="col-md-4" (click)="createCompany('Labo')"><img src="http://via.placeholder.com/150x100?text=Labo" class="img-responsive rounded"/></div>
       <div class="col-md-4" (click)="createCompany('Grande Entreprise')"><img src="http://via.placeholder.com/150x100?text=Grande Entr" class="img-responsive rounded"/></div>
     </div>

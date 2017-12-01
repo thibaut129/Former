@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import {MarkerService} from "../../services/marker.service";
 import Marker from "../../models/marker.model";
+import {CompanyService} from "../../services/company.service";
+import Company from "../../models/company.model";
 
 @Component({
   selector: 'app-bottom',
@@ -12,13 +14,52 @@ export class BottomComponent implements OnInit {
   newMarker: Marker;
   currentYear: boolean;
 
+  companiesList: Company[];
+  companiesDictionnary: {};
+  companiesLabel: any[];
+  companiesListSort: string[][]
+
   constructor(
     private markerService: MarkerService,
+    private companyService: CompanyService
   ) {
     this.newMarker = new Marker();
+    this.companiesDictionnary= {} ;
+
+    this.companiesLabel = [];
+    this.companiesListSort = [];
+
+
   }
 
   ngOnInit(): void {
+    this.companyService.getCompanies()
+      .subscribe(companies => {
+        this.companiesList = companies
+
+        /* All companies transformed into json key:letter, value: [companies]*/
+        for (let c of this.companiesList) {
+          let key = c.name[0];
+
+          // if (!this.companiesLabel.includes(key)) {
+          if (this.companiesDictionnary[key] == null) {
+            // this.companiesLabel.push(key);
+            this.companiesDictionnary[key] = [c.name]; // create list if param doesn't exist in the json
+          } else {
+            this.companiesDictionnary[key].push(c.name); // i.e : {'A' : [..., 'Amadeus']}
+          }
+        }
+
+
+        /* json key:letter, value: [companies] transformed into Array [['A...','A....'], ['G...'], ['N..','N..']]
+         * so that we can iterate with ngFor */
+        for(let key in this.companiesDictionnary)
+        {
+          console.log("key: " + key + ", value: " + this.companiesDictionnary[key])
+          this.companiesListSort.push(this.companiesDictionnary[key]);
+        }
+
+      })
 
   }
 
@@ -33,7 +74,7 @@ export class BottomComponent implements OnInit {
   //   display: 'inline',
   // };
 
-  myselectCompany: any = ['A1', 'N2'];
+  myselectCompany: any = [];
   settingsCompany: any = {
     theme: 'ios',
     display: 'inline',
@@ -43,6 +84,7 @@ export class BottomComponent implements OnInit {
     groupLabel: '&nbsp;',
     select: 'multiple'
   };
+
 
   changeBoolCurrent(bool:boolean) {
     this.currentYear = bool;
