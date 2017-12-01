@@ -12,7 +12,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DragAndDropModule} from 'angular-draggable-droppable';
 
 
@@ -39,6 +39,8 @@ import {SchoolComponent} from "./form/school/school.component";
 import { SummaryComponent } from './form/summary/summary.component';
 import { CountryComponent } from './form/country/country.component';
 import {AgmSnazzyInfoWindowModule} from "@agm/snazzy-info-window";
+import {ModalComponent} from "./platform/modal/modal.component";
+import { ModalContentComponent } from './platform/modal-content/modal-content.component';
 
 mobiscroll.apiKey = 'f8d8cc78';
 
@@ -64,7 +66,10 @@ mobiscroll.apiKey = 'f8d8cc78';
     SummaryComponent,
     CountryComponent,
     SchoolComponent,
-    SwipeTestComponent
+    SwipeTestComponent,
+    ModalComponent,
+    // NgbdModalContent,
+    ModalContentComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -81,12 +86,17 @@ mobiscroll.apiKey = 'f8d8cc78';
     DragAndDropModule.forRoot(),
     NgbModule.forRoot()
   ],
+  entryComponents: [
+    // NgbdModalContent,
+    ModalContentComponent
+  ],
   providers: [
     TodoService,
     UserService,
     ExperienceService,
     MarkerService,
-    CompanyService
+    CompanyService,
+    NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })

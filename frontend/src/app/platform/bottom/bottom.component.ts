@@ -18,6 +18,7 @@ export class BottomComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   myselectDepartment: any = ['SI', 'ELEC'];
