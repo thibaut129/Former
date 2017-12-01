@@ -36,34 +36,38 @@
 
     <div class="card">
       <div class="card-block">
-        <span class="badge badge-default">Default</span>
-        <span class="badge badge-default">Default</span>
-        <span class="badge badge-default">Default</span>
-        <span class="badge badge-default">Default</span>
-        <span class="badge badge-default">Default</span>
-        <span class="badge badge-default">Default</span>
-        <span class="badge badge-primary">Primary</span>
-        <span class="badge badge-success">Success</span>
-        <span class="badge badge-success">Success</span>
-        <span class="badge badge-success">Success</span>
-        <span class="badge badge-success">Success</span>
-        <span class="badge badge-success">Success</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge badge-success">Success</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge badge-warning">Warning</span>
-        <span class="badge badge-warning">Warning</span>
-        <span class="badge badge-warning">Warning</span>
-        <span class="badge badge-danger">Danger</span>
-        <span class="badge badge-danger">Danger</span>
-        <span class="badge badge-danger">Danger</span>
-        <span class="badge badge-danger">Danger</span>
-        <span class="badge badge-danger">Danger</span>
+        <span *ngFor="let key of keywordsList">
+          <span class="badge badge-default" (click)="addKeyword(key)" [hidden]="keywordsSelected.includes(key)">{{key}}</span>
+          <span class="badge badge-primary" (click)="removeKeyword(key)" [hidden]="!keywordsSelected.includes(key)">{{key}}</span>
+        </span>
+        <!--<span class="badge badge-default">Default</span>-->
+        <!--<span class="badge badge-default">Default</span>-->
+        <!--<span class="badge badge-default">Default</span>-->
+        <!--<span class="badge badge-default">Default</span>-->
+        <!--<span class="badge badge-default">Default</span>-->
+        <!--<span class="badge badge-default">Default</span>-->
+        <!--<span class="badge badge-primary">Primary</span>-->
+        <!--<span class="badge badge-success">Success</span>-->
+        <!--<span class="badge badge-success">Success</span>-->
+        <!--<span class="badge badge-success">Success</span>-->
+        <!--<span class="badge badge-success">Success</span>-->
+        <!--<span class="badge badge-success">Success</span>-->
+        <!--<span class="badge badge-info">Info</span>-->
+        <!--<span class="badge badge-info">Info</span>-->
+        <!--<span class="badge badge-info">Info</span>-->
+        <!--<span class="badge badge-success">Success</span>-->
+        <!--<span class="badge badge-info">Info</span>-->
+        <!--<span class="badge badge-info">Info</span>-->
+        <!--<span class="badge badge-info">Info</span>-->
+        <!--<span class="badge badge-info">Info</span>-->
+        <!--<span class="badge badge-warning">Warning</span>-->
+        <!--<span class="badge badge-warning">Warning</span>-->
+        <!--<span class="badge badge-warning">Warning</span>-->
+        <!--<span class="badge badge-danger">Danger</span>-->
+        <!--<span class="badge badge-danger">Danger</span>-->
+        <!--<span class="badge badge-danger">Danger</span>-->
+        <!--<span class="badge badge-danger">Danger</span>-->
+        <!--<span class="badge badge-danger">Danger</span>-->
       </div>
     </div>
 

@@ -4,6 +4,7 @@ import {MarkerService} from "../../services/marker.service";
 import Marker from "../../models/marker.model";
 import {CompanyService} from "../../services/company.service";
 import Company from "../../models/company.model";
+import AboutUser from "../../models/aboutUser.model";
 
 @Component({
   selector: 'app-bottom',
@@ -11,7 +12,7 @@ import Company from "../../models/company.model";
   styleUrls: ['./bottom.component.scss']
 })
 export class BottomComponent implements OnInit {
-  @Input() aboutUser: {};
+  @Input() aboutUser: AboutUser;
 
   newMarker: Marker;
   currentYear: boolean;

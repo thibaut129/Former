@@ -20,6 +20,9 @@ export class ModalContentComponent implements OnInit {
   message:string;
   aboutUser: AboutUser;
 
+  keywordsList: string[];
+  keywordsSelected: string[];
+
   @Output() messageEvent = new EventEmitter<string>();
   @Output() aboutUserEvent = new EventEmitter<AboutUser>();
 
@@ -46,6 +49,26 @@ export class ModalContentComponent implements OnInit {
 ) {
     this.idModal = 0;
     this.aboutUser = new AboutUser();
+    this.keywordsList = ["childlike", "worried",
+      "arch",
+      "hellish",
+      "ask",
+      "dazzling",
+      "tacky",
+      "apparel",
+      "quill",
+      "wiggly",
+      "food",
+      "field",
+      "delightful",
+      "roasted",
+      "class",
+      "walk",
+      "current",
+      "pointless",
+      "work"]
+
+    this.keywordsSelected = []
   }
 
   ngOnInit(): void {
@@ -83,7 +106,17 @@ export class ModalContentComponent implements OnInit {
   }
 
   addKeyword(keyword:string) {
-    // if present : remove
-    // else : add
+    this.keywordsSelected.push(keyword);
+
+    this.aboutUser.filters = this.keywordsSelected;
+  }
+
+  removeKeyword(keyword:string) {
+    let index = this.keywordsSelected.indexOf(keyword, 0);
+    if (index > -1) {
+      this.keywordsSelected.splice(index, 1);
+    }
+
+    this.aboutUser.filters = this.keywordsSelected;
   }
 }
