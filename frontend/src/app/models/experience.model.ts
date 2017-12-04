@@ -15,7 +15,7 @@ class Experience {
   ){
     this.type = ""
     this.location = "Nice"
-    this.year = 2017
+    this.year = new Date().getFullYear();
     this.coords = {
         longitude:0,
         latitude:0

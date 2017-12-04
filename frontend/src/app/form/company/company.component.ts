@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CompanyService} from "../../services/company.service";
 import Company from "../../models/company.model";
 
+import {FilterPipe, SortByPipe} from '../pipes'
+
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
@@ -24,12 +26,29 @@ export class CompanyComponent implements OnInit {
 
   newCompany: Company;
 
+  name:string;
+  songs = [
+    {
+      name: 'Song 1',
+      likes: 25
+    },
+    {
+      name: 'Song 5',
+      likes: 50
+    },
+    {
+      name: 'Song 10',
+      likes: 10
+    }
+  ]
+
   constructor(
     private companyService: CompanyService
   ) {
     this.newCompanyView = false;
     this.newCompany = new Company(); // new-company div
   }
+
 
 
   ngOnInit(): void {

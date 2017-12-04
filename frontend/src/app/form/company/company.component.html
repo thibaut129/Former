@@ -1,5 +1,14 @@
 <div class="" [hidden]="newCompanyView">
 
+  <!--<input name="term" [(ngModel)]="term">-->
+
+  <!--<table>-->
+    <!--<tr *ngFor="let song of songs | filter : term | sortBy: 'likes'">-->
+      <!--<td>{{song.name}}</td>-->
+      <!--<td>{{song.likes}}</td>-->
+    <!--</tr>-->
+  <!--</table>-->
+
   <div class="company">
     <div class="inner-addon right-addon">
       <i class="fa fa-search"></i>
@@ -11,7 +20,8 @@
   <div class="company-result text-center">
     <div class="row">
 
-      <div class="col-md-4" *ngFor="let company of companiesList" (click)="getCompany(company)">
+      <!--<div class="col-md-4" *ngFor="let company of companiesList" (click)="getCompany(company)">-->
+      <div class="col-md-4" *ngFor="let company of companiesList | filter : newCompany.name | slice:0:6; let i=index" (click)="getCompany(company)">
         <img src="http://via.placeholder.com/150x100" class="img-responsive rounded"/><br/>
         {{company.name}} - {{company.type}}
       </div>
