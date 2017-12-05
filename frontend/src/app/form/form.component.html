@@ -46,7 +46,8 @@
         </app-company>
         <app-school [hidden]="newExperience.type != 'Echange'"
                      [(nextPage)]="id"
-        ></app-school>
+                    [(companySelected)]="companySelected">
+        </app-school>
         <!--<app-new-company [(newCompanyView)]="newCompanyView" [hidden]="!newCompanyView"></app-new-company>-->
       </div>
 
@@ -87,7 +88,7 @@
           <div class="checkbox">
             <label><input type="checkbox" [(ngModel)]="legalAccepted">J'ai lu et j'accepte les conditions générales d'utilisation</label>
           </div>
-          <button class="btn btn-primary btn-lg btn-next pull-right" (click)="create()" [disabled]="!legalAccepted">Confirmer</button>
+          <button class="btn btn-primary btn-lg btn-next pull-right" (click)="create(); nextPage(id)" [disabled]="!legalAccepted">Confirmer</button>
         </div>
       </div>
     </div>

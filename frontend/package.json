@@ -30,6 +30,7 @@
     "angular-draggable-droppable": "^1.1.1",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
+    "ngx-openlayers": "^0.8.15",
     "openlayers": "^4.5.0",
     "popper.js": "^1.13.0",
     "resolve-url-loader": "^2.2.0",

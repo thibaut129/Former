@@ -16,7 +16,7 @@ export enum typeMobilityEnum{
 }
 
 export enum typeCompanyEnum{
-  'Grande Entreprise', 'Labo', 'PME', 'Start Up'
+  'Grande Entreprise', 'Labo', 'PME', 'Start Up', 'Ecole'
 }
 
 export enum typeResearchEnum{

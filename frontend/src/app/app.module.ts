@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /** Routing **/
 import { AppRoutingModule } from './app-routing.module';
@@ -47,6 +48,8 @@ import {DragAndDropModule} from 'angular-draggable-droppable';
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
+import { AngularOpenlayersModule } from 'ngx-openlayers';
+
 /** Map **/
 import {AgmSnazzyInfoWindowModule} from "@agm/snazzy-info-window";
 import { MbscModule, mobiscroll } from '@mobiscroll/angular-trial';
@@ -88,7 +91,7 @@ mobiscroll.apiKey = 'f8d8cc78';
     ModalComponent,
     // NgbdModalContent,
     ModalContentComponent,
-    FilterPipe, SortByPipe
+    FilterPipe, SortByPipe,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -97,11 +100,13 @@ mobiscroll.apiKey = 'f8d8cc78';
     }),
     MbscModule,
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     AgmSnazzyInfoWindowModule,
+    AngularOpenlayersModule,
     DragAndDropModule.forRoot(),
     NgbModule.forRoot()
   ],

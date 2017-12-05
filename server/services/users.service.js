@@ -16,6 +16,16 @@ exports.getUsers = async function(query, page, limit){
     }
 }
 
+
+exports.getUserById = async function(id){
+    try{
+        var user = await User.findById(id);
+        return user;
+    }catch(e){
+        throw Error("Error occured while Finding the User")
+    }
+}
+
 exports.createUser = async function(user){
 
     var newUser = new User({

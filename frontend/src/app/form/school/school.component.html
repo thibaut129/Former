@@ -5,6 +5,6 @@
   <label><input type="checkbox" value="">2eme semestre</label>
 </div>
 
-<input type="text" class="form-control" placeholder="Ecole" />
-<button class="btn btn-default" (click)="nextId()">Suivant</button>
+<input type="text" class="form-control" [(ngModel)]="companySelected.name" placeholder="Ecole" />
+<button class="btn btn-default" (click)="nextId(); companySelected.type = 'Ecole'">Suivant</button>
 

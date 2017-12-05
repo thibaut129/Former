@@ -20,7 +20,9 @@ exports.createExperience = async function(experience){
 
     var newExperience = new Experience({
         type: experience.type,
+        year: experience.year,
         location: experience.location,
+        coords: experience.coords,
         companyID: experience.companyID,
         userID: experience.userID,
         created: new Date()

@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import Company from "../../models/company.model";
 
 @Component({
   selector: 'app-school',
@@ -8,6 +9,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class SchoolComponent implements OnInit {
   @Input() nextPage: number;
   @Output() nextPageChange = new EventEmitter<number>();
+
+  @Input() companySelected: Company;
+  @Output() companySelectedChange = new EventEmitter<Company>();
 
   constructor() { }
 

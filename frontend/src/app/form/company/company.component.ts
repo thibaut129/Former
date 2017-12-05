@@ -26,22 +26,6 @@ export class CompanyComponent implements OnInit {
 
   newCompany: Company;
 
-  name:string;
-  songs = [
-    {
-      name: 'Song 1',
-      likes: 25
-    },
-    {
-      name: 'Song 5',
-      likes: 50
-    },
-    {
-      name: 'Song 10',
-      likes: 10
-    }
-  ]
-
   constructor(
     private companyService: CompanyService
   ) {

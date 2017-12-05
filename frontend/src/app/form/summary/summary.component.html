@@ -4,8 +4,11 @@
 <h2>{{newExperience.type}}</h2>
   <p>
   Lieu : {{newExperience.location}}<br/>
-  <span class="" [hidden]="">
+  <span class="" [hidden]="newExperience.type != 'Emploi'">
     Entreprise : {{companySelected.name}} ({{companySelected.type}})<br/>
+  </span>
+  <span class="" [hidden]="newExperience.type != 'Echange'">
+    Ecole : {{companySelected.name}}<br/>
   </span>
   <!--<div class="" [hidden]="">-->
     <!--Entreprise : {{companySelected.name}} ({{companySelected.type}})<br/>-->
