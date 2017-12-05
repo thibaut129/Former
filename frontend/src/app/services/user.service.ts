@@ -29,12 +29,19 @@ export class UserService {
       })
   }
 
-  // getUserById(id:string): Observable<User>{
-  //   return this.http.get(this.userUrl+"/"+id)
-  //     .map(res  => {
-  //       return res["data"].docs as User;
-  //     })
-  // }
+  getUserById(id:string): Observable<User>{
+    return this.http.get(this.userUrl+"/"+id)
+      .map(res  => {
+        return res["data"] as User;
+      })
+  }
+
+  getUsersByDepartment(department:string): Observable<User[]>{
+    return this.http.get(this.userUrl+"/dept/"+department.toUpperCase())
+      .map(res  => {
+        return res["data"].docs as User[];
+      })
+  }
 
   editUser(user:User){
     let editUrl = `${this.userUrl}`

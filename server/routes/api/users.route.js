@@ -5,7 +5,8 @@ var router = express.Router()
 var UserController = require('../../controllers/users.controller');
 
 router.get('/', UserController.getUsers)
-// router.get('/:id', UserController.getUsersById)
+router.get('/:id', UserController.getUsersById)
+router.get('/dept/:department', UserController.getUsersByDepartment)
 
 router.post('/', UserController.createUser)
 router.put('/', UserController.updateUser)

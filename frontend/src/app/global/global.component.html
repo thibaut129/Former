@@ -16,43 +16,31 @@
           </aol-coordinate>
           <aol-content>
             <!--<div class="container">-->
-              <div class="row">
-                <div class="col-md-2">
-                  <img class="rounded img-fluid" src="../../assets/former-logo.jpg" />
-                </div>
-                <div class="col-md-6">
-                  <h3>{{experienceSelected.companyID}}</h3>
-                  <b><h6>{{experienceSelected.location}}</h6></b>
-                  <i><h6>{{experienceSelected.userID}}</h6></i>
-                  <p>Lorem ipsum</p>
-                </div>
+            <div class="card" style="width: 15rem;" *ngIf="experienceSelected.user != null">
+              <div class="card-block">
+                <h4 class="card-title">{{experienceSelected.companyID}}</h4>
+
+                <h6 class="card-subtitle mb-2 text-muted">{{experienceSelected.location}}</h6>
+                <p class="card-text">{{experienceSelected.user.department}} - {{experienceSelected.user.option}}<br/>
+                <i>{{experienceSelected.user.firstname}} - {{experienceSelected.user.lastname}}</i></p>
+                <img class="card-img-bottom" src="../../assets/former-logo.jpg" alt="Card image cap">
+
               </div>
+            </div>
+              <!--<div class="row" >-->
+                <!--<div class="col-md-2">-->
+                  <!--<img class="rounded img-fluid" src="../../assets/former-logo.jpg" />-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                  <!--<h3>{{experienceSelected.companyID}}</h3>-->
+                  <!--<b><h6>{{experienceSelected.location}}</h6></b>-->
+                  <!--<h6>{{experienceSelected.user.department}} - {{experienceSelected.user.option}}</h6>-->
+                  <!--<i><p>{{experienceSelected.user.lastname}} - {{experienceSelected.user.firstname}}</p></i>-->
+                <!--</div>-->
+              <!--</div>-->
             <!--</div>-->
           </aol-content>
         </aol-overlay>
-
-        <!--<aol-layer-vectortile-->
-          <!--[renderMode]="'vector'"-->
-          <!--[maxResolution]="312"-->
-          <!--[style]="myStyle"-->
-          <!--[zIndex]="20"-->
-        <!--&gt;-->
-          <!--<aol-source-vectortile-->
-            <!--[tilePixelRatio]="16"-->
-            <!--[tileUrlFunction]="tileUrlFn"-->
-            <!--aol-url="https://openlayers.org/en/v4.5.0/examples/data/geojson/countries.geojson"-->
-          <!--&gt;-->
-            <!--<aol-attributions>-->
-              <!--<aol-attribution>&copy; by me</aol-attribution>-->
-            <!--</aol-attributions>-->
-            <!--<aol-format-mvt></aol-format-mvt>-->
-            <!--<aol-tilegrid-->
-              <!--[minZoom]="5"-->
-              <!--[extent]="tileGridExtent"-->
-            <!--&gt;-->
-            <!--</aol-tilegrid>-->
-          <!--</aol-source-vectortile>-->
-        <!--</aol-layer-vectortile>-->
 
         <aol-layer-tile>
           <aol-layer-vector>
@@ -65,34 +53,38 @@
           <aol-layer-vector>
           <aol-source-vector>
 
-            <aol-feature *ngFor="let exp of experiencesList">
+            <aol-feature *ngFor="let exp of filteredExperiencesListSI">
               <aol-geometry-point>
                 <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
               </aol-geometry-point>
               <aol-style>
                 <!-- get(loc.userID) -->
-                <aol-style-icon [src]="'../../assets/marker.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
-                <!--<aol-style-icon [src]="'../../assets/marker-'+toLowerCase(getUserById(exp.userID).department)+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>-->
-                <!--<aol-style-circle [radius]="10">-->
-                  <!--<aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>-->
-                  <!--<aol-style-fill [color]="'green'"></aol-style-fill>-->
-                <!--</aol-style-circle>-->
+                <aol-style-icon [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
+
               </aol-style>
             </aol-feature>
-            <!--<aol-feature>-->
+            <aol-feature *ngFor="let exp of filteredExperiencesListMAM">
+              <aol-geometry-point>
+                <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+              </aol-geometry-point>
+              <aol-style>
+                <!-- get(loc.userID) -->
+                <aol-style-icon [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
+
+              </aol-style>
+            </aol-feature>
+            <!---->
+            <!--<aol-feature *ngFor="let exp of experiencesList">-->
               <!--<aol-geometry-point>-->
-                <!--<aol-coordinate [x]="5.1" [y]="45.1" [srid]="'EPSG:4326'"></aol-coordinate>-->
+                <!--<aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>-->
               <!--</aol-geometry-point>-->
               <!--<aol-style>-->
-                <!--<aol-style-icon-->
-                  <!--[src]="'assets/marker.png'"-->
-                  <!--[anchor]="[0.5, 1]"-->
-                  <!--[anchorXUnits]="'fraction'" [anchorYUnits]="'fraction'"-->
-                  <!--[scale]="0.1"-->
-                  <!--[anchorOrigin]="'top-left'">-->
-                <!--</aol-style-icon>-->
+                <!--&lt;!&ndash; get(loc.userID) &ndash;&gt;-->
+                <!--<aol-style-icon [src]="'../../assets/marker.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>-->
+
               <!--</aol-style>-->
             <!--</aol-feature>-->
+
           </aol-source-vector>
         </aol-layer-vector>
       </aol-map>
