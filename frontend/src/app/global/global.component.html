@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-12">
       <!--<aol-map (onPointerMove)="highlightCountry($event)" [width]="'100vw'" [height]="'100vh'" [loadTilesWhileAnimating]="true">-->
-      <aol-map [@popOverState]="stateName" [width]="'100vw'" [height]="'100vh'" [loadTilesWhileAnimating]="true">
+      <aol-map [width]="'100vw'" [height]="'100vh'" [loadTilesWhileAnimating]="true">
         <aol-view #myView [zoom]="zoom">
           <aol-coordinate [x]="0" [y]="43.710172" [srid]="'EPSG:4326'"></aol-coordinate>
         </aol-view>
@@ -16,14 +16,14 @@
           </aol-coordinate>
           <aol-content>
             <!--<div class="container">-->
-            <div class="card" style="width: 15rem;" *ngIf="experienceSelected.user != null">
+            <div class="card" style="width: 15rem;" *ngIf="experienceSelected.user != null" [@popOverState]="stateName">
               <div class="card-block">
-                <h4 class="card-title">{{experienceSelected.companyID}}</h4>
+                <h4 class="card-title">{{experienceSelected.company.name}}</h4>
 
                 <h6 class="card-subtitle mb-2 text-muted">{{experienceSelected.location}}</h6>
                 <p class="card-text">{{experienceSelected.user.department}} - {{experienceSelected.user.option}}<br/>
-                <i>{{experienceSelected.user.firstname}} - {{experienceSelected.user.lastname}}</i></p>
-                <img class="card-img-bottom" src="../../assets/former-logo.jpg" alt="Card image cap">
+                <i>{{experienceSelected.user.firstname}} {{experienceSelected.user.lastname}}</i></p>
+                <!--<img class="card-img-bottom" src="../../assets/former-logo.jpg" alt="Card image cap">-->
 
               </div>
             </div>
@@ -53,44 +53,40 @@
           <aol-layer-vector>
           <aol-source-vector>
 
+
             <aol-feature *ngFor="let exp of filteredExperiencesListSI">
               <aol-geometry-point>
                 <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
               </aol-geometry-point>
               <aol-style>
-                <!-- get(loc.userID) -->
-                <aol-style-icon [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
-
+                <aol-style-icon *ngIf="exp.user != null" [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
               </aol-style>
             </aol-feature>
-            <aol-feature *ngFor="let exp of filteredExperiencesListMAM">
-              <aol-geometry-point>
-                <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
-              </aol-geometry-point>
-              <aol-style>
-                <!-- get(loc.userID) -->
-                <aol-style-icon [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
 
-              </aol-style>
-            </aol-feature>
-            <!---->
-            <!--<aol-feature *ngFor="let exp of experiencesList">-->
-              <!--<aol-geometry-point>-->
-                <!--<aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>-->
-              <!--</aol-geometry-point>-->
-              <!--<aol-style>-->
-                <!--&lt;!&ndash; get(loc.userID) &ndash;&gt;-->
-                <!--<aol-style-icon [src]="'../../assets/marker.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>-->
+              <aol-feature *ngFor="let exp of filteredExperiencesListMAM">
+                <aol-geometry-point>
+                  <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+                </aol-geometry-point>
+                <aol-style>
+                  <!--il prend le style d'en haut-->
+                </aol-style>
+              </aol-feature>
 
-              <!--</aol-style>-->
-            <!--</aol-feature>-->
+              <aol-feature *ngFor="let exp of filteredExperiencesListElec">
+                <aol-geometry-point>
+                  <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+                </aol-geometry-point>
+                <aol-style>
+                  <!--il prend le style d'en haut-->
+                </aol-style>
+              </aol-feature>
 
           </aol-source-vector>
         </aol-layer-vector>
       </aol-map>
     </div>
 
-    <button (click)="takeTour(0)">Take a tour</button>
+    <button (click)="takeTour(0);">Take a tour</button>
     <div [@popOverState]="stateName">
       <p>Hello! I'm a helpful message.</p>
     </div>

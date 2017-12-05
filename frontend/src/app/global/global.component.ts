@@ -13,22 +13,14 @@ import {
 } from '@angular/animations';
 import User from "../models/user.model";
 import {UserService} from "../services/user.service";
+import {CompanyService} from "../services/company.service";
+import Company from "../models/company.model";
 
 @Component({
   selector: 'app-global',
   templateUrl: './global.component.html',
   styleUrls: ['./global.component.scss'],
   animations: [
-    // trigger('popOverState', [
-    //   state('show', style({
-    //     opacity: 1
-    //   })),
-    //   state('hide',   style({
-    //     opacity: 0
-    //   })),
-    //   transition('show => hide', animate('600ms ease-out')),
-    //   transition('hide => show', animate('1000ms ease-in'))
-    // ])
     trigger('popOverState', [
       state('show', style({
         opacity: 1
@@ -43,11 +35,13 @@ import {UserService} from "../services/user.service";
 })
 export class GlobalComponent implements OnInit {
   // usersList: User[];
-  // experiencesList: Experience[];
+  experiencesList: Experience[];
+  companiesList: Company[];
   usersListDpt: User[];
   filteredExperiencesList: Experience[];
   filteredExperiencesListSI: Experience[];
   filteredExperiencesListMAM: Experience[];
+  filteredExperiencesListElec: Experience[];
 
   center: {x:Number, y:Number}
   url = "https://openlayers.org/en/v4.5.0/examples/data/geojson/countries.geojson";
@@ -65,6 +59,7 @@ export class GlobalComponent implements OnInit {
 
   constructor(
     private experienceService: ExperienceService,
+    private companyService: CompanyService,
     private userService: UserService
   ) {
     this.experienceSelected = new Experience();
@@ -72,15 +67,27 @@ export class GlobalComponent implements OnInit {
     this.filteredExperiencesList = [];
     this.filteredExperiencesListSI = [];
     this.filteredExperiencesListMAM = [];
+    this.filteredExperiencesListElec = [];
   }
-
-
-
 
   ngOnInit() {
 
-    this.parseFilter("SI", this.filteredExperiencesListSI);
-    this.parseFilter("MAM", this.filteredExperiencesListMAM);
+        this.companyService.getCompanies()
+          .subscribe(companies => {
+            this.companiesList = companies;
+
+            this.experienceService.getExperiences()
+              .subscribe(experiences => {
+                this.experiencesList = experiences;
+
+                this.parseFilter("SI", this.filteredExperiencesListSI, experiences, companies);
+                this.parseFilter("MAM", this.filteredExperiencesListMAM, experiences, companies);
+                this.parseFilter("ELEC", this.filteredExperiencesListElec, experiences, companies);
+
+              });
+
+          });
+
 
     // this.userService.getUsers()
     //   .subscribe(users => {
@@ -96,40 +103,39 @@ export class GlobalComponent implements OnInit {
 
   }
 
-  parseFilter(department:string, list:Experience[]) {
+  parseFilter(department:string, list:Experience[], experiences:Experience[], companies:Company[]) {
     this.userService.getUsersByDepartment(department)
       .subscribe(users => {
-        // this.usersListDpt = users
-        // console.log(users)
+        for (let exp of experiences) {
+          let expUser = exp;
 
-        this.experienceService.getExperiences()
-          .subscribe(experiences => {
-            // this.experiencesList = experiences;
-
-            for (let exp of experiences) {
-
-              for (let user of users) {
-                if (exp.userID == user._id) {
-                  let expUser = exp;
-                  expUser['dpt'] = user.department;
-                  expUser['user'] = user;
-
-                  list.push(expUser);
-
-                  this.filteredExperiencesList.push(expUser);
-
-                }
-              }
+          for (let user of users) {
+            if (exp.userID == user._id) {
+              expUser['dpt'] = user.department;
+              expUser['user'] = user;
+              break;
             }
-            console.log(list);
-          });
+          }
 
-      })
+          for (let comp of companies) {
+            if (exp.companyID == comp._id) {
+              expUser['company'] = comp;
+              break;
+            }
+          }
+
+          list.push(expUser);
+          this.filteredExperiencesList.push(expUser);
+
+        }
+    })
   }
   public zoom = 3;
 
   takeTour(index: number) {
-    const delay = 1000;//index === 0 ? 0 : 1000;
+    this.toggle();
+
+    const delay = 2000;//index === 0 ? 0 : 1000;
 
     // if (index < this.experiencesList.length) {
     //   this.experienceSelected = this.experiencesList[index];
@@ -142,8 +148,9 @@ export class GlobalComponent implements OnInit {
       this.experienceSelected = list[index];
       console.log(this.experienceSelected);
       this.center={x:list[index].coords.longitude , y:list[index].coords.latitude}
+
       setTimeout(() =>
-          this.takeTour(index+1),
+          this.nextTour(index+1),
         delay);
 
 
@@ -169,6 +176,13 @@ export class GlobalComponent implements OnInit {
       console.log("end of tour");
       this.experienceSelected = new Experience();
     }
+  }
+
+  nextTour(index:number) {
+    this.toggle();
+    setTimeout(() =>
+        this.takeTour(index),
+      600);
   }
 
   highlightCountry(event) {
