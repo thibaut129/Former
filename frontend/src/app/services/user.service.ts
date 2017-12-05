@@ -29,6 +29,13 @@ export class UserService {
       })
   }
 
+  // getUserById(id:string): Observable<User>{
+  //   return this.http.get(this.userUrl+"/"+id)
+  //     .map(res  => {
+  //       return res["data"].docs as User;
+  //     })
+  // }
+
   editUser(user:User){
     let editUrl = `${this.userUrl}`
     return this.http.put(editUrl, user);

@@ -65,13 +65,14 @@
           <aol-layer-vector>
           <aol-source-vector>
 
-            <aol-feature *ngFor="let loc of experiencesList">
+            <aol-feature *ngFor="let exp of experiencesList">
               <aol-geometry-point>
-                <aol-coordinate [x]="loc.coords.longitude" [y]="loc.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+                <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
               </aol-geometry-point>
               <aol-style>
                 <!-- get(loc.userID) -->
-                <aol-style-icon [src]="'../../assets/marker'+loc+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
+                <aol-style-icon [src]="'../../assets/marker.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
+                <!--<aol-style-icon [src]="'../../assets/marker-'+toLowerCase(getUserById(exp.userID).department)+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>-->
                 <!--<aol-style-circle [radius]="10">-->
                   <!--<aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>-->
                   <!--<aol-style-fill [color]="'green'"></aol-style-fill>-->

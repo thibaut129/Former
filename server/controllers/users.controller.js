@@ -18,23 +18,23 @@ exports.getUsers = async function(req, res, next){
     }
 }
 
-exports.getUsersById = async function(req, res, next) {
-
-    if(!req.params.id){
-        return res.status(400).json({status: 400., message: "Id must be present"})
-    }
-
-    var id = req.params.id;
-
-    console.log(req.params)
-
-    try{
-        var user = await UserService.getUserById(id)
-        return res.status(200).json({status: 200, data: user, message: "Succesfully User Received"})
-    }catch(e){
-        return res.status(400).json({status: 400., message: e.message})
-    }
-}
+// exports.getUsersById = async function(req, res, next) {
+//
+//     if(!req.params.id){
+//         return res.status(400).json({status: 400., message: "Id must be present"})
+//     }
+//
+//     var id = req.params.id;
+//
+//     // console.log(req.params)
+//
+//     try{
+//         var user = await UserService.getUserById(id)
+//         return res.status(200).json({status: 200, data: user, message: "Succesfully User Received"})
+//     }catch(e){
+//         return res.status(400).json({status: 400., message: e.message})
+//     }
+// }
 
 
 

@@ -366,7 +366,10 @@ export class GlobalComponent implements OnInit {
     // }
   }
 
-  getUserById(id:string) {
-
-  }
+  // getUserById(id:string) {
+  //   this.userService.getUserById(id)
+  //     .subscribe(user => {
+  //       return user;
+  //     })
+  // }
 }
