@@ -6,7 +6,7 @@ import { FormComponent } from './form/form.component';
 import { GlobalComponent } from './global/global.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {AppComponent} from "./app.component";
-import {SwipeTestComponent} from "./swipe-test/swipe-test.component";
+import {SwipeTestComponent} from "./platform/swipe-test/swipe-test.component";
 
 const routes: Routes = [
   { path: '', component: PageNotFoundComponent },

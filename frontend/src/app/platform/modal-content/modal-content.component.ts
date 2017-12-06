@@ -8,6 +8,7 @@ import AboutUser from "../../models/aboutUser.model";
 import {typeMobilityEnum} from "../../../environments/environment";
 import {departmentEnum} from "../../../environments/environment";
 import {typeResearchEnum} from "../../../environments/environment";
+import Experience from "../../models/experience.model";
 
 @Component({
   selector: 'app-modal-content',
@@ -26,6 +27,10 @@ export class ModalContentComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
   @Output() aboutUserEvent = new EventEmitter<AboutUser>();
 
+  filteredExperiencesList: Experience[];
+  filteredExperiencesListSI: Experience[];
+  filteredExperiencesListMAM: Experience[];
+  filteredExperiencesListElec: Experience[];
 
   // convert enum into iterable Array
   keysMobilityEnum() : Array<string> {
@@ -47,6 +52,11 @@ export class ModalContentComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private data: DataService
 ) {
+    this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
+    this.data.filteredExperiencesListSI.subscribe(message => this.filteredExperiencesListSI = message)
+    this.data.filteredExperiencesListMAM.subscribe(message => this.filteredExperiencesListMAM = message)
+    this.data.filteredExperiencesListElec.subscribe(message => this.filteredExperiencesListElec = message)
+
     this.idModal = 0;
     this.aboutUser = new AboutUser();
     this.keywordsList = ["childlike", "worried",
@@ -79,6 +89,10 @@ export class ModalContentComponent implements OnInit {
     this.idModal++;
   }
 
+  previousPage(idModal) {
+    this.idModal = idModal-1;
+
+  }
 
   newMessage(aboutUserUpdated:AboutUser) {
     this.data.changeAboutUser(aboutUserUpdated);

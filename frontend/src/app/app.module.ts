@@ -37,7 +37,7 @@ import { RightComponent } from './platform/right/right.component';
 import { CenterComponent } from './platform/center/center.component';
 import { DemoComponent } from './platform/demo/demo.component';
 
-import {SwipeTestComponent} from './swipe-test/swipe-test.component';
+import {SwipeTestComponent} from './platform/swipe-test/swipe-test.component';
 
 /** Plug in **/
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';

@@ -93,7 +93,11 @@ export class PlatformComponent implements OnInit {
 
         }
 
-        this.newFilteredExperiencesList(this.filteredExperiencesList);
+        this.data.changefilteredExperiencesList(this.filteredExperiencesList);
+        this.data.changefilteredExperiencesListSI(this.filteredExperiencesListSI);
+        this.data.changefilteredExperiencesListMAM(this.filteredExperiencesListMAM);
+        this.data.changefilteredExperiencesListElec(this.filteredExperiencesListElec);
+
         // console.log(this.filteredExperiencesListElec)
         // console.log(this.filteredExperiencesListMAM)
         // console.log(this.filteredExperiencesListSI)

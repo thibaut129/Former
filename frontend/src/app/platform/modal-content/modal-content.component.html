@@ -1,5 +1,9 @@
-<div class="modal-header">
-  <h4 class="modal-title">Que recherchez-vous ?</h4>
+<div class="modalComponent">
+  <div class="modal-header">
+    <div class="container-top">
+      <a [hidden]="idModal == 0" (click)="previousPage(idModal)"><i class="fa fa-2x fa-chevron-left"></i></a>
+    </div>
+    <h4 class="modal-title">Que recherchez-vous ?</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -7,28 +11,40 @@
 <div class="modal-body">
   <div class="" [hidden]="idModal != 0">
     <div class="row text-center">
-      <div class="col-md-6" *ngFor="let mob of keysMobilityEnum()" (click)="setTypeMobility(mob)"><img [src]="'http://via.placeholder.com/150x100?text='+mob" class="img-responsive rounded"/></div>
-      <!--<div class="col-md-6" (click)="setTypeMobility('Emploi')"><img src="http://via.placeholder.com/150x100?text=Emploi" class="img-responsive rounded"/></div>-->
-      <!--<div class="col-md-6" (click)="setTypeMobility('Etude')"><img src="http://via.placeholder.com/150x100?text=Etude" class="img-responsive rounded"/></div>-->
+      <!--<div class="col-md-6" *ngFor="let mob of keysMobilityEnum()" (click)="setTypeMobility(mob)"><img [src]="'http://via.placeholder.com/150x100?text='+mob" class="img-responsive rounded"/></div>-->
+      <div class="offset-md-2 col-md-4" (click)="setTypeMobility('Emploi')">
+        <img src="../../../assets/emploib.png" class="img-fluid rounded"/>
+        Emploi
+      </div>
+      <div class="col-md-4" (click)="setTypeMobility('Etude')">
+        <img src="../../../assets/ecoleb.png" class="img-fluid rounded"/>
+      Ecole
+      </div>
     </div>
   </div>
 
   <div class="text-center" [hidden]="idModal != 1">
     <!--do a ngFor-->
+<ul>
 
-    <div *ngFor="let dpt of keysDepartmentEnum()" (click)="setDepartment(dpt.toString())">{{dpt.toString()}} <span class="badge badge-info">12</span></div>
-    <!--<div (click)="setDepartment('BAT')">BAT <span class="badge badge-info">12</span></div>-->
-    <!--<div (click)="setDepartment('ELEC')">ELEC <span class="badge badge-info">23</span></div>-->
-    <!--<div (click)="setDepartment('SI')">SI <span class="badge badge-info">65</span></div>-->
-    <!--<div (click)="setDepartment('MAM')">MAM <span class="badge badge-info">36</span></div>-->
+    <!--<div *ngFor="let dpt of keysDepartmentEnum()" (click)="setDepartment(dpt.toString())">{{dpt.toString()}} <span class="badge badge-info">12</span></div>-->
+    <li (click)="setDepartment('BAT')"> BAT <div class="circle-badge pull-left">{{filteredExperiencesListSI.length}}</div></li>
+    <li (click)="setDepartment('ITII')">ITII <span class="badge badge-info">{{filteredExperiencesList.length}}</span></li>
+    <li (click)="setDepartment('ELEC')">ELEC <span class="badge badge-info">{{filteredExperiencesListElec.length}}</span></li>
+    <li (click)="setDepartment('GB')">GB <span class="badge badge-info">{{filteredExperiencesList.length}}</span></li>
+    <li (click)="setDepartment('GE')">GE <span class="badge badge-info">{{filteredExperiencesList.length}}</span></li>
+    <li (click)="setDepartment('SI')">SI <span class="badge badge-info">{{filteredExperiencesListSI.length}}</span></li>
+    <li (click)="setDepartment('MAM')">MAM <span class="badge badge-info">{{filteredExperiencesListMAM.length}}</span></li>
+</ul>
+
   </div>
 
   <div class="" [hidden]="idModal != 2">
     <div class="row text-center">
-      <div class="col-md-4" *ngFor="let res of keysResearchEnum()" (click)="setTypeResearch(res)"><img [src]="'http://via.placeholder.com/150x100?text='+res+'48'" class="img-responsive rounded"/></div>
-      <!--<div class="col-md-4" (click)="setTypeResearch('Etranger')"><img src="http://via.placeholder.com/150x100?text=Etranger48" class="img-responsive rounded"/></div>-->
-      <!--<div class="col-md-4" (click)="setTypeResearch('France')"><img src="http://via.placeholder.com/150x100?text=France88" class="img-responsive rounded"/></div>-->
-      <!--<div class="col-md-4" (click)="setTypeResearch('Local')"><img src="http://via.placeholder.com/150x100?text=Local45" class="img-responsive rounded"/></div>-->
+      <!--<div class="col-md-4" *ngFor="let res of keysResearchEnum()" (click)="setTypeResearch(res)"><img [src]="'http://via.placeholder.com/150x100?text='+res+'48'" class="img-responsive rounded"/></div>-->
+      <div class="col-md-4" (click)="setTypeResearch('Etranger')"><img src="../../../assets/etranger.png" class="img-fluid rounded"/> 46</div>
+      <div class="col-md-4" (click)="setTypeResearch('France')"><img src="../../../assets/france.png" class="img-fluid rounded"/>30</div>
+      <div class="col-md-4" (click)="setTypeResearch('Local')"><img src="../../../assets/local.png" class="img-fluid rounded"/>12</div>
     </div>
   </div>
 
@@ -74,6 +90,7 @@
   </div>
 
   </div>
+
 <div class="progress">
   <div class="progress-bar bg-primary" [hidden]="idModal < 1" style="width:25%">
     {{aboutUser.typeMobility}}
@@ -85,6 +102,7 @@
     {{aboutUser.typeResearch}}
   </div>
 </div>
+
 <div class="modal-footer">
   <!--{{aboutUser}}-->
   <!--<button (click)="newMessage()">New Message</button>-->
@@ -92,5 +110,6 @@
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')" [hidden]="idModal != 3">Terminer</button><br/>
 </div>
 
+</div>
 
 

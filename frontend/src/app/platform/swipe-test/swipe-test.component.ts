@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import Experience from "../models/experience.model";
-import {DataService} from "../services/data.service";
+import Experience from "../../models/experience.model";
+import {DataService} from "../../services/data.service";
 import {trigger, state, style, animate, transition} from '@angular/animations';
-import User from "../models/user.model";
+import User from "../../models/user.model";
 declare var Swiper: any;
 
 
@@ -30,6 +30,11 @@ declare var Swiper: any;
 
 export class SwipeTestComponent implements OnInit {
   filteredExperiencesList: Experience[];
+
+  filteredExperiencesListSI: Experience[];
+  filteredExperiencesListMAM: Experience[];
+  filteredExperiencesListElec: Experience[];
+
   cart: User[];
 
   constructor(
