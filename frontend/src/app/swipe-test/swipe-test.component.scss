@@ -51,7 +51,7 @@ body {
 }
 
 .top-to-bottom {
-  border-width: 2px;
+  border-width: 3px;
   border-style: solid;
   -webkit-border-image:
     -webkit-gradient(linear, 0 0, 0 90%, from($to), to($from)) 1 90%;
@@ -63,4 +63,8 @@ body {
     -o-linear-gradient($from, $to) 1 100%;
   border-image:
     linear-gradient(to bottom, $from, $to) 1;
+}
+
+.shadow {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

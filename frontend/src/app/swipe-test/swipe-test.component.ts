@@ -17,9 +17,9 @@ declare var Swiper: any;
         transform: 'scale(1)'
       })),
       state('selected',   style({
-        // 'border-width': '5px',
+        'border-width': '5px',
         // 'border-radius': '0.25rem',
-        transform: 'scale(0.9)'
+        transform: 'scale(0.95)'
       })),
       transition('* => selected', animate('100ms ease-in')),
       transition('unselected => selected', animate('100ms ease-in')),

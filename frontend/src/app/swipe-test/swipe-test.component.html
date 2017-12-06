@@ -3,7 +3,7 @@
 
       <div (click)="doSelect(exp)" [@selectState]="exp.state" *ngFor="let exp of filteredExperiencesList" class="swiper-slide">
         <i [hidden]="exp.state != 'selected'" class="icon fa fa-2x fa-check-circle"></i>
-        <div class="card top-to-bottom">
+        <div class="card top-to-bottom shadow">
           <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
           <div class="card-block">
             <h4 class="card-title">{{exp.company.name}}</h4>
