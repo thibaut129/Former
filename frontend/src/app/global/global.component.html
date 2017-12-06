@@ -18,12 +18,18 @@
             <!--<div class="container">-->
             <div class="card" style="width: 15rem;" *ngIf="experienceSelected.user != null" [@popOverState]="stateName">
               <div class="card-block">
-                <h4 class="card-title">{{experienceSelected.company.name}}</h4>
+                <div class="row">
+                  <div class="col-lg-8">
+                    <h4 class="card-title">{{experienceSelected.company.name}}</h4>
 
-                <h6 class="card-subtitle mb-2 text-muted">{{experienceSelected.location}}</h6>
-                <p class="card-text">{{experienceSelected.user.department}} - {{experienceSelected.user.option}}<br/>
-                <i>{{experienceSelected.user.firstname}} {{experienceSelected.user.lastname}}</i></p>
-                <!--<img class="card-img-bottom" src="../../assets/former-logo.jpg" alt="Card image cap">-->
+                    <h6 class="card-subtitle mb-2 text-muted">{{experienceSelected.location}}</h6>
+                    <p class="card-text">{{experienceSelected.user.department}} - {{experienceSelected.user.option}}<br/>
+                      <i>{{experienceSelected.user.firstname}} {{experienceSelected.user.lastname}}</i></p>
+                  </div>
+                  <div class="col-lg-4">
+                    <img class="card-img-bottom" src="../../assets/former-logo.jpg" alt="Card image cap">
+                  </div>
+                  </div>
 
               </div>
             </div>

@@ -124,10 +124,14 @@ incrementeIndex() {
                 this.parseFilter("SI", this.filteredExperiencesListSI, experiences, companies);
                 this.parseFilter("MAM", this.filteredExperiencesListMAM, experiences, companies);
                 this.parseFilter("ELEC", this.filteredExperiencesListElec, experiences, companies);
-                
+
               })
 
         });
+
+    setTimeout(() =>
+        this.takeTour(0),
+      5000);
 
 
     // this.userService.getUsers()
@@ -227,6 +231,11 @@ incrementeIndex() {
     } else {
       console.log("end of tour");
       this.experienceSelected = new Experience();
+
+      /** infinite loop **/
+      this.incrementeIndex();
+      this.show = false;
+      this.takeTour(0);
     }
   }
 
