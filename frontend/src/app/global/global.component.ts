@@ -28,6 +28,12 @@ import Company from "../models/company.model";
       state('hide',   style({
         opacity: 0
       })),
+      state('display', style({
+        display: 'inherit'
+      })),
+      state('undisplay',   style({
+        display: 'none'
+      })),
       transition('show => hide', animate('600ms ease-out')),
       transition('hide => show', animate('1000ms ease-in'))
     ])
@@ -46,15 +52,42 @@ export class GlobalComponent implements OnInit {
   center: {x:Number, y:Number}
   url = "https://openlayers.org/en/v4.5.0/examples/data/geojson/countries.geojson";
   @ViewChild ('myView') myView;
+  info: string;
   experienceSelected: Experience;
   // locationsList: any[];
   show = false;
+  display = true;
+
+  index = 0;
+  tableDepartment = ['SI', 'MAM', 'ELEC'];
+
+  stringToFilteredList = {
+    SI: this.filteredExperiencesListSI,
+    MAM: this.filteredExperiencesListMAM,
+    ELEC: this.filteredExperiencesListElec,
+  }
+
+  get stateDisplay() {
+    return this.display ? 'display' : 'undisplay'
+  }
 
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
+
+incrementeIndex() {
+  this.index = (++this.index)%this.tableDepartment.length;
+}
+
   toggle() {
     this.show = !this.show;
+    // console.log(this.filteredExperiencesListElec)
+    // console.log(this.filteredExperiencesListMAM)
+    // console.log(this.filteredExperiencesListSI)
+  }
+
+  toggleDisplay() {
+    this.display = !this.display;
   }
 
   constructor(
@@ -68,6 +101,14 @@ export class GlobalComponent implements OnInit {
     this.filteredExperiencesListSI = [];
     this.filteredExperiencesListMAM = [];
     this.filteredExperiencesListElec = [];
+    this.info="";
+
+    this.stringToFilteredList = {
+      SI: this.filteredExperiencesListSI,
+      MAM: this.filteredExperiencesListMAM,
+      ELEC: this.filteredExperiencesListElec,
+    }
+
   }
 
   ngOnInit() {
@@ -83,10 +124,10 @@ export class GlobalComponent implements OnInit {
                 this.parseFilter("SI", this.filteredExperiencesListSI, experiences, companies);
                 this.parseFilter("MAM", this.filteredExperiencesListMAM, experiences, companies);
                 this.parseFilter("ELEC", this.filteredExperiencesListElec, experiences, companies);
+                
+              })
 
-              });
-
-          });
+        });
 
 
     // this.userService.getUsers()
@@ -106,28 +147,39 @@ export class GlobalComponent implements OnInit {
   parseFilter(department:string, list:Experience[], experiences:Experience[], companies:Company[]) {
     this.userService.getUsersByDepartment(department)
       .subscribe(users => {
+        console.log(users);
         for (let exp of experiences) {
           let expUser = exp;
+          let boolToAdd = false;
 
           for (let user of users) {
             if (exp.userID == user._id) {
               expUser['dpt'] = user.department;
               expUser['user'] = user;
+
+              boolToAdd = true;
               break;
             }
           }
 
-          for (let comp of companies) {
-            if (exp.companyID == comp._id) {
-              expUser['company'] = comp;
-              break;
+          if(boolToAdd) {
+            for (let comp of companies) {
+              if (exp.companyID == comp._id) {
+                expUser['company'] = comp;
+                break;
+              }
             }
           }
 
-          list.push(expUser);
-          this.filteredExperiencesList.push(expUser);
+          if (boolToAdd) {
+            list.push(expUser);
+            this.filteredExperiencesList.push(expUser);
+          }
 
         }
+        // console.log(this.filteredExperiencesListElec)
+        // console.log(this.filteredExperiencesListMAM)
+        // console.log(this.filteredExperiencesListSI)
     })
   }
   public zoom = 3;
@@ -143,7 +195,7 @@ export class GlobalComponent implements OnInit {
     //   setTimeout(() =>
     //     this.takeTour(index+1),
     //     delay);
-    let list = this.filteredExperiencesList;
+    let list = this.stringToFilteredList[this.tableDepartment[this.index]];//this.filteredExperiencesList;
     if (index < list.length) {
       this.experienceSelected = list[index];
       console.log(this.experienceSelected);
@@ -185,9 +237,83 @@ export class GlobalComponent implements OnInit {
       600);
   }
 
+  colorStroke = 'rgba(255,0,0,0.1)';
+  colorFill = '#f00';
+  widthStroke = 1;
+
   highlightCountry(event) {
+
+    this.colorStroke='#f00';
+    this.widthStroke=1;
+    this.colorStroke = 'rgba(255,0,0,0.1)';
+
+    // let highlightStyle = new ol.style.Style({
+    //   stroke: new ol.style.Stroke({
+    //     color: '#f00',
+    //     width: 1
+    //   }),
+    //   fill: new ol.style.Fill({
+    //     color: 'rgba(255,0,0,0.1)'
+    //   }),
+    //   text: new ol.style.Text({
+    //     font: '12px Calibri,sans-serif',
+    //     fill: new ol.style.Fill({
+    //       color: '#000'
+    //     }),
+    //     stroke: new ol.style.Stroke({
+    //       color: '#f00',
+    //       width: 3
+    //     })
+    //   })
+    // });
+
+    // let featureOverlay = new ol.layer.Vector({
+    //   source: new ol.source.Vector(),
+    //   map: event.map,
+    //   style: function(feature) {
+    //     highlightStyle.getText().setText(feature.get('name'));
+    //     return highlightStyle;
+    //   }
+    // });
+
+    // event.map.addOverlay(featureOverlay);
+
+    // let style = new ol.style.Style({
+    //   fill: new ol.style.Fill({
+    //     color: 'rgba(200, 200, 200, 0.6)'
+    //   }),
+    //   stroke: new ol.style.Stroke({
+    //     color: '#A4A4A4',
+    //     width: 2
+    //   })
+    // });
+
     let pixel = event.pixel;
-    let highlight;
+
+    let feature = event.map.forEachFeatureAtPixel(pixel, function(feature) {
+      // console.log(feature.getGeometry());
+      // console.log(feature.getGeometry());
+      return feature;
+    });
+
+    console.log(feature.getProperties());
+
+    if (feature) {
+      this.info = feature.getId() + ': ' + feature.get('name');
+    } else {
+      this.info = '&nbsp;';
+    }
+    //
+    // if (feature !== highlight) {
+    //   if (highlight) {
+    //     featureOverlay.getSource().removeFeature(highlight);
+    //   }
+    //   if (feature) {
+    //     featureOverlay.getSource().addFeature(feature);
+    //   }
+    //   highlight = feature;
+    // }
+
     // console.log(event.map.animate());
 
     // this.displayFeatureInfo(pixel);

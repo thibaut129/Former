@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-12">
       <!--<aol-map (onPointerMove)="highlightCountry($event)" [width]="'100vw'" [height]="'100vh'" [loadTilesWhileAnimating]="true">-->
-      <aol-map [width]="'100vw'" [height]="'100vh'" [loadTilesWhileAnimating]="true">
+      <aol-map (onClick)="highlightCountry($event)" [width]="'100vw'" [height]="'100vh'" [loadTilesWhileAnimating]="true">
         <aol-view #myView [zoom]="zoom">
           <aol-coordinate [x]="0" [y]="43.710172" [srid]="'EPSG:4326'"></aol-coordinate>
         </aol-view>
@@ -27,18 +27,6 @@
 
               </div>
             </div>
-              <!--<div class="row" >-->
-                <!--<div class="col-md-2">-->
-                  <!--<img class="rounded img-fluid" src="../../assets/former-logo.jpg" />-->
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                  <!--<h3>{{experienceSelected.companyID}}</h3>-->
-                  <!--<b><h6>{{experienceSelected.location}}</h6></b>-->
-                  <!--<h6>{{experienceSelected.user.department}} - {{experienceSelected.user.option}}</h6>-->
-                  <!--<i><p>{{experienceSelected.user.lastname}} - {{experienceSelected.user.firstname}}</p></i>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
           </aol-content>
         </aol-overlay>
 
@@ -46,51 +34,98 @@
           <aol-layer-vector>
             <!--<aol-source-osm></aol-source-osm>-->
             <aol-source-geojson [url]="url"></aol-source-geojson>
+
+
+            <!--<aol-style>-->
+              <!--<aol-style-stroke [width]="widthStroke" [color]="colorFill"></aol-style-stroke>-->
+              <!--<aol-style-fill [color]="colorStroke"></aol-style-fill>-->
+            <!--</aol-style>-->
+
           </aol-layer-vector>
+
+          <!--<aol-layer-vector>-->
+            <!--<aol-source-vector>
+
+            </aol-source-vector>-->
+
+
+            <!--<aol-style>-->
+              <!--<aol-style-stroke [width]="1" [color]="'#f00'"></aol-style-stroke>-->
+              <!--<aol-style-fill [color]="'rgba(255,0,0,0.1)'"></aol-style-fill>-->
+              <!--<aol-style-text [font]="'12px Calibri,sans-serif'">-->
+                <!--<aol-style-stroke [width]="3" [color]="'#f00'"></aol-style-stroke>-->
+                <!--<aol-style-fill [color]="'#000'"></aol-style-fill>-->
+              <!--</aol-style-text>-->
+            <!--</aol-style>-->
+          <!--</aol-layer-vector>-->
         </aol-layer-tile>
 
 
           <aol-layer-vector>
-          <aol-source-vector>
+            <!--<aol-source-vector>-->
+              <!--<aol-feature>-->
+                <!--<aol-geometry-point>-->
+                  <!--<aol-coordinate [x]="" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>-->
+                <!--</aol-geometry-point>-->
+              <!--</aol-feature>-->
+              <!--<aol-style>-->
+                <!--<aol-style-stroke [width]="widthStroke" [color]="colorFill"></aol-style-stroke>-->
+                <!--<aol-style-fill [color]="colorStroke"></aol-style-fill>-->
+              <!--</aol-style>-->
+            <!--</aol-source-vector>-->
+
+            <aol-source-vector>
+              <div class="" *ngIf="tableDepartment[index] === 'SI'">
+                <aol-feature *ngFor="let exp of filteredExperiencesListSI" [id]="exp._id" [@popOverState]="stateDisplay">
+                  <aol-geometry-point>
+                    <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+                  </aol-geometry-point>
 
 
-            <aol-feature *ngFor="let exp of filteredExperiencesListSI">
-              <aol-geometry-point>
-                <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
-              </aol-geometry-point>
-              <aol-style>
-                <aol-style-icon *ngIf="exp.user != null" [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
-              </aol-style>
-            </aol-feature>
+                  <aol-style>
+                    <aol-style-icon [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
+                  </aol-style>
+                </aol-feature>
+              </div>
+
+              <div class="" *ngIf="tableDepartment[index] == 'MAM'">
 
               <aol-feature *ngFor="let exp of filteredExperiencesListMAM">
                 <aol-geometry-point>
                   <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
                 </aol-geometry-point>
+
                 <aol-style>
-                  <!--il prend le style d'en haut-->
+                  <aol-style-icon [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
                 </aol-style>
               </aol-feature>
+              </div>
 
-              <aol-feature *ngFor="let exp of filteredExperiencesListElec">
+                <div class="" *ngIf="tableDepartment[index] === 'ELEC'">
+
+                <aol-feature *ngFor="let exp of filteredExperiencesListElec">
                 <aol-geometry-point>
                   <aol-coordinate [x]="exp.coords.longitude" [y]="exp.coords.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
                 </aol-geometry-point>
                 <aol-style>
-                  <!--il prend le style d'en haut-->
+                  <aol-style-icon [src]="'../../assets/marker-'+exp.dpt.toLowerCase()+'.png'" [scale]="0.5" [anchor]="[0.5,1]" [anchorOrigin]="'top-left'"></aol-style-icon>
                 </aol-style>
               </aol-feature>
+                </div>
 
-          </aol-source-vector>
+
+            </aol-source-vector>
         </aol-layer-vector>
       </aol-map>
     </div>
 
-    <button (click)="takeTour(0);">Take a tour</button>
+    <button (click)="show =false; takeTour(0);">Take a tour</button>
+    <p> {{info}}</p>
     <div [@popOverState]="stateName">
       <p>Hello! I'm a helpful message.</p>
     </div>
-    <button (click)="toggle()">Toggle PopOver</button>
+    <button (click)="toggle(); incrementeIndex();">Toggle PopOver</button>
+    <button (click)="toggleDisplay(); incrementeIndex();">Toggle Display</button>
   </div>
   <!--<div class="row">-->
     <!--<div class="col-12">-->
