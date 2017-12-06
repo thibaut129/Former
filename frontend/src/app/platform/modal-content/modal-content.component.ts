@@ -72,7 +72,7 @@ export class ModalContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.currentMessage.subscribe(message => this.message = message)
+
   }
 
   nextModal() {

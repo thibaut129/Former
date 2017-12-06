@@ -67,28 +67,6 @@ export class GlobalComponent implements OnInit {
     ELEC: this.filteredExperiencesListElec,
   }
 
-  get stateDisplay() {
-    return this.display ? 'display' : 'undisplay'
-  }
-
-  get stateName() {
-    return this.show ? 'show' : 'hide'
-  }
-
-incrementeIndex() {
-  this.index = (++this.index)%this.tableDepartment.length;
-}
-
-  toggle() {
-    this.show = !this.show;
-    // console.log(this.filteredExperiencesListElec)
-    // console.log(this.filteredExperiencesListMAM)
-    // console.log(this.filteredExperiencesListSI)
-  }
-
-  toggleDisplay() {
-    this.display = !this.display;
-  }
 
   constructor(
     private experienceService: ExperienceService,
@@ -108,7 +86,6 @@ incrementeIndex() {
       MAM: this.filteredExperiencesListMAM,
       ELEC: this.filteredExperiencesListElec,
     }
-
   }
 
   ngOnInit() {
@@ -249,6 +226,27 @@ incrementeIndex() {
   colorStroke = 'rgba(255,0,0,0.1)';
   colorFill = '#f00';
   widthStroke = 1;
+
+
+  get stateDisplay() {
+    return this.display ? 'display' : 'undisplay'
+  }
+
+  get stateName() {
+    return this.show ? 'show' : 'hide'
+  }
+
+  incrementeIndex() {
+    this.index = (++this.index)%this.tableDepartment.length;
+  }
+
+  toggle() {
+    this.show = !this.show;
+  }
+
+  toggleDisplay() {
+    this.display = !this.display;
+  }
 
   highlightCountry(event) {
 

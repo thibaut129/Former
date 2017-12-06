@@ -1,134 +1,155 @@
   <div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-        <div mwlDraggable class="card">
+    <div class="swiper-wrapper">
+
+      <div (click)="doSelect(exp)" [@selectState]="exp.state" *ngFor="let exp of filteredExperiencesList" class="swiper-slide">
+        <i [hidden]="exp.state != 'selected'" class="icon fa fa-2x fa-check-circle"></i>
+        <div class="card top-to-bottom">
           <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
           <div class="card-block">
-            <h4 class="card-title">Tawshif Ahsan Khan</h4>
+            <h4 class="card-title">{{exp.company.name}}</h4>
             <div class="meta">
-              <a href="#">Friends</a>
+              <a href="#">{{exp.company.type}}</a>
             </div>
             <div class="card-text">
-              Tawshif is a web designer living in Bangladesh.
+              {{exp.user.firstname}} {{exp.user.lastname}}
             </div>
           </div>
           <div class="card-footer">
-            <span class="float-right">Joined in 2013</span>
-            <span><i class=""></i>75 Friends</span>
+            <span class="float-right">{{exp.year}}</span>
+            <span><i class=""></i><b>{{exp.user.department}}</b> {{exp.user.option}}</span>
           </div>
         </div>
-    </div>
-    <div class="swiper-slide">
-        <div mwlDraggable class="card">
-          <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-          <div class="card-block">
-            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-            <div class="meta">
-              <a href="#">Friends</a>
-            </div>
-            <div class="card-text">
-              Tawshif is a web designer living in Bangladesh.
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="float-right">Joined in 2013</span>
-            <span><i class=""></i>75 Friends</span>
-          </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div mwlDraggable class="card">
-          <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-          <div class="card-block">
-            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-            <div class="meta">
-              <a href="#">Friends</a>
-            </div>
-            <div class="card-text">
-              Tawshif is a web designer living in Bangladesh.
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="float-right">Joined in 2013</span>
-            <span><i class=""></i>75 Friends</span>
-          </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div mwlDraggable class="card">
-          <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-          <div class="card-block">
-            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-            <div class="meta">
-              <a href="#">Friends</a>
-            </div>
-            <div class="card-text">
-              Tawshif is a web designer living in Bangladesh.
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="float-right">Joined in 2013</span>
-            <span><i class=""></i>75 Friends</span>
-          </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div mwlDraggable class="card">
-          <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-          <div class="card-block">
-            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-            <div class="meta">
-              <a href="#">Friends</a>
-            </div>
-            <div class="card-text">
-              Tawshif is a web designer living in Bangladesh.
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="float-right">Joined in 2013</span>
-            <span><i class=""></i>75 Friends</span>
-          </div>
       </div>
-    </div>
-    <div class="swiper-slide">
-        <div mwlDraggable class="card">
-          <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-          <div class="card-block">
-            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-            <div class="meta">
-              <a href="#">Friends</a>
-            </div>
-            <div class="card-text">
-              Tawshif is a web designer living in Bangladesh.
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="float-right">Joined in 2013</span>
-            <span><i class=""></i>75 Friends</span>
-          </div>
-        </div>
-    </div>
-    <div class="swiper-slide">
-        <div mwlDraggable class="card">
-          <img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-          <div class="card-block">
-            <h4 class="card-title">Tawshif Ahsan Khan</h4>
-            <div class="meta">
-              <a href="#">Friends</a>
-            </div>
-            <div class="card-text">
-              Tawshif is a web designer living in Bangladesh.
-            </div>
-          </div>
-          <div class="card-footer">
-            <span class="float-right">Joined in 2013</span>
-            <span><i class=""></i>75 Friends</span>
-          </div>
-        </div>
-    </div>
-    <div class="swiper-slide">Slide 8</div>
-    <div class="swiper-slide">Slide 9</div>
-    <div class="swiper-slide">Slide 10</div>
+
+    <!--<div class="swiper-slide">-->
+        <!--<div mwlDraggable class="card">-->
+          <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Tawshif Ahsan Khan</h4>-->
+            <!--<div class="meta">-->
+              <!--<a href="#">Friends</a>-->
+            <!--</div>-->
+            <!--<div class="card-text">-->
+              <!--Tawshif is a web designer living in Bangladesh.-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-footer">-->
+            <!--<span class="float-right">Joined in 2013</span>-->
+            <!--<span><i class=""></i>75 Friends</span>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+        <!--<div mwlDraggable class="card">-->
+          <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Tawshif Ahsan Khan</h4>-->
+            <!--<div class="meta">-->
+              <!--<a href="#">Friends</a>-->
+            <!--</div>-->
+            <!--<div class="card-text">-->
+              <!--Tawshif is a web designer living in Bangladesh.-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-footer">-->
+            <!--<span class="float-right">Joined in 2013</span>-->
+            <!--<span><i class=""></i>75 Friends</span>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+        <!--<div mwlDraggable class="card">-->
+          <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Tawshif Ahsan Khan</h4>-->
+            <!--<div class="meta">-->
+              <!--<a href="#">Friends</a>-->
+            <!--</div>-->
+            <!--<div class="card-text">-->
+              <!--Tawshif is a web designer living in Bangladesh.-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-footer">-->
+            <!--<span class="float-right">Joined in 2013</span>-->
+            <!--<span><i class=""></i>75 Friends</span>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+        <!--<div mwlDraggable class="card">-->
+          <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Tawshif Ahsan Khan</h4>-->
+            <!--<div class="meta">-->
+              <!--<a href="#">Friends</a>-->
+            <!--</div>-->
+            <!--<div class="card-text">-->
+              <!--Tawshif is a web designer living in Bangladesh.-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-footer">-->
+            <!--<span class="float-right">Joined in 2013</span>-->
+            <!--<span><i class=""></i>75 Friends</span>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+        <!--<div mwlDraggable class="card">-->
+          <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Tawshif Ahsan Khan</h4>-->
+            <!--<div class="meta">-->
+              <!--<a href="#">Friends</a>-->
+            <!--</div>-->
+            <!--<div class="card-text">-->
+              <!--Tawshif is a web designer living in Bangladesh.-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-footer">-->
+            <!--<span class="float-right">Joined in 2013</span>-->
+            <!--<span><i class=""></i>75 Friends</span>-->
+          <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+        <!--<div mwlDraggable class="card">-->
+          <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Tawshif Ahsan Khan</h4>-->
+            <!--<div class="meta">-->
+              <!--<a href="#">Friends</a>-->
+            <!--</div>-->
+            <!--<div class="card-text">-->
+              <!--Tawshif is a web designer living in Bangladesh.-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-footer">-->
+            <!--<span class="float-right">Joined in 2013</span>-->
+            <!--<span><i class=""></i>75 Friends</span>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+        <!--<div mwlDraggable class="card">-->
+          <!--<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Tawshif Ahsan Khan</h4>-->
+            <!--<div class="meta">-->
+              <!--<a href="#">Friends</a>-->
+            <!--</div>-->
+            <!--<div class="card-text">-->
+              <!--Tawshif is a web designer living in Bangladesh.-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="card-footer">-->
+            <!--<span class="float-right">Joined in 2013</span>-->
+            <!--<span><i class=""></i>75 Friends</span>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">Slide 8</div>-->
+    <!--<div class="swiper-slide">Slide 9</div>-->
+    <!--<div class="swiper-slide">Slide 10</div>-->
   </div>
   <!-- Add Pagination -->
   <div class="swiper-pagination"></div>
