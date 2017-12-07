@@ -1,4 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {
+  AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit,
+  QueryList, ViewChildren
+} from '@angular/core';
 import Experience from "../../models/experience.model";
 import {DataService} from "../../services/data.service";
 import {trigger, state, style, animate, transition} from '@angular/animations';
@@ -29,6 +32,8 @@ declare var Swiper: any;
 })
 
 export class SwipeTestComponent implements OnInit {
+
+
   filteredExperiencesList: Experience[];
 
   filteredExperiencesListSI: Experience[];
@@ -37,29 +42,16 @@ export class SwipeTestComponent implements OnInit {
 
   cart: User[];
 
-  constructor(
-    private data: DataService
+  @ViewChildren('allTheseThings') things: QueryList<any>;
+
+  constructor(private data: DataService
   ) { }
 
   ngOnInit() {
     this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
     this.data.cart.subscribe(message => this.cart = message)
 
-    var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      keyboard: {
-        enabled: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
+
   }
 
   select = false;
@@ -81,6 +73,29 @@ export class SwipeTestComponent implements OnInit {
       console.log(this.cart);
     }
 
+  }
+
+  shouldDoIt = true; // initialize it to true for the first run
+
+  callFunction(stuff) {
+    if (this.shouldDoIt) {
+      let swiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        keyboard: {
+          enabled: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      this.shouldDoIt = false; // set it to false until you need to trigger again
+    }
   }
 
 }
