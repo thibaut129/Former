@@ -1,21 +1,13 @@
-class Marker {
-  _id:string;
-  coords: {
-    longitude:Number,
-    latitude:Number
-  };
-  experiences: string[];
-  created: Date;
+export class Marker {
+  public _id:string;
+  public coords: { longitude:Number, latitude:Number };
+  public experiences: string[];
+  public created: Date;
 
-  constructor(
-  ){
-    this.coords = {
-      longitude:0,
-      latitude:0
-    }
-    this.experiences = []
-    this.created = new Date()
+  constructor(coords :  { longitude:Number, latitude:Number }){
+    this.coords = coords;
+    this.experiences = [];
+    this.created = new Date();
   }
-}
 
-export default Marker;
+}

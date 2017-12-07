@@ -1,17 +1,48 @@
-<!--<app-demo></app-demo>-->
-<swipe></swipe>
-
-<!--<agm-map style="height: 100%" [latitude]="43.6155793" [longitude]="7.0696861" [zoom]="3" [styles]="myStyle">
-
-
-  <agm-marker [latitude]="exp.coords.latitude" [longitude]="exp.coords.longitude" *ngFor="let exp of experiencesList">
-    <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
-      <ng-template>
-        <div mwlDraggable dropData="{{exp._id}}" class="card">
-          {{exp._id}}
-        </div>
-      </ng-template>
-    </agm-snazzy-info-window>
-  </agm-marker>
-</agm-map>-->
-<!--<div  id="map"></div>-->
+<div class="row">
+  <div class="col-12">
+    <aol-map [width]="'100%'" [height]="'100%'" *ngIf="noMarker" #titi  (onClick)="onClickMarker($event)">
+      <aol-control>
+        <aol-control-zoom></aol-control-zoom>
+      </aol-control>
+      <aol-view [zoom]="5">
+        <aol-coordinate [x]="5.795122" [y]="45.210225" [srid]="'EPSG:4326'"></aol-coordinate>
+      </aol-view>
+      <aol-layer-tile>
+        <aol-layer-vector>
+          <aol-source-geojson
+            [url]="'https://openlayers.org/en/v4.5.0/examples/data/geojson/countries.geojson'">
+          </aol-source-geojson>
+          <aol-style *ngIf="!noMarker" #toto>
+            <aol-style-stroke
+              [color]="'#f00'"
+              [width]="1">
+            </aol-style-stroke>
+            <aol-style-fill
+              [color]="'rgba(255,0,0,0.1)'">
+            </aol-style-fill>
+          </aol-style>
+        </aol-layer-vector>
+      </aol-layer-tile>
+      <aol-interaction-default></aol-interaction-default>
+      <aol-layer-vector>
+        <aol-source-vector>
+          <aol-feature *ngFor="let exp of listMarker" [id]="'Location' +exp.coords.longitude">
+            <aol-geometry-point >
+              <aol-coordinate [x]=exp.coords.longitude [y]=exp.coords.latitude [srid]="'EPSG:4326'"></aol-coordinate>
+            </aol-geometry-point>
+            <aol-style>
+              <aol-style-icon
+                [src]="'assets/marker.png'"
+                [anchor]="[0.5, 1]"
+                [anchorXUnits]="'fraction'" [anchorYUnits]="'fraction'"
+                [scale]="0.1"
+                [anchorOrigin]="'top-left'">
+              </aol-style-icon>
+            </aol-style>
+          </aol-feature>
+        </aol-source-vector>
+      </aol-layer-vector>
+    </aol-map>
+    <ng-template #markerDetail><swipe></swipe></ng-template>
+  </div>
+</div>

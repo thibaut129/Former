@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import {MarkerService} from "../../services/marker.service";
-import Marker from "../../models/marker.model";
 import {CompanyService} from "../../services/company.service";
 import Company from "../../models/company.model";
 import AboutUser from "../../models/aboutUser.model";
+import {Marker} from "../../models/marker.model";
 
 @Component({
   selector: 'app-bottom',
@@ -26,7 +26,7 @@ export class BottomComponent implements OnInit {
     private markerService: MarkerService,
     private companyService: CompanyService
   ) {
-    this.newMarker = new Marker();
+    this.newMarker = new Marker({longitude: 0, latitude:0});
     this.companiesDictionnary= {} ;
 
     this.companiesLabel = [];
