@@ -3,6 +3,8 @@ import { MapBrowserEvent, Feature,style } from 'openlayers';
 import {Marker} from "../../models/marker.model";
 import * as ol from 'openlayers';
 import Layer = ol.layer.Layer;
+import AboutUser from "../../models/aboutUser.model";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-center',
@@ -10,6 +12,10 @@ import Layer = ol.layer.Layer;
   styleUrls: ['./center.component.scss']
 })
 export class CenterComponent implements OnInit{
+  mapMode:boolean;
+  zoom:number;
+  aboutUser: AboutUser;
+
   noMarker : boolean;
   listMarker : Marker [];
   @ViewChild('serverContentInput') serverContentInput : ElementRef;
@@ -22,7 +28,14 @@ export class CenterComponent implements OnInit{
   });
 
 
-  constructor() {
+  constructor(
+    private data: DataService
+  ) {
+    this.mapMode = true;
+    this.zoom = 5;
+
+    this.data.currentAboutUser.subscribe(message => this.aboutUser = message)
+
     this.noMarker = true;
     this.listMarker = [
       new Marker({longitude:2.333333, latitude:48.866667}),
@@ -34,46 +47,35 @@ export class CenterComponent implements OnInit{
 
   }
 
+  changeZoomMap(){
+    if (this.aboutUser.typeResearch == "Etranger") {
+      this.zoom = 3;
+    } else if (this.aboutUser.typeResearch == "France") {
+      this.zoom = 5;
+
+    } else if (this.aboutUser.typeResearch == "Local") {
+      this.zoom = 7;
+    }
+
+  }
+
+  changeModeMap() {
+    this.mapMode = !this.mapMode;
+    this.changeZoomMap(); // todo: call when modal closes
+  }
+
   onClickMarker(event: MapBrowserEvent) {
-
-
-    let test = event.map.forEachLayerAtPixel(event.pixel, (layer: Layer) => {
-      return layer;
-    });
-
-
-    let toto = event.map.forEachFeatureAtPixel(event.pixel, (feature: Feature) => {
+    let feature = event.map.forEachFeatureAtPixel(event.pixel, (feature: Feature) => {
       return feature;
     });
 
 
-    let vectorTest : ol.layer.Vector = new ol.layer.Vector({
-      source : new ol.source.Vector(),
-      map: this.titi.nativeElement,
-      style : this.style
-    });
+    feature.getGeometry();
+    console.log(feature.getGeometry());
 
-    toto.getGeometry();
-    let geo =new ol.Feature({
-      geometry: new ol.geom.LineString((<any>toto.getGeometry()).getCoordinates()),
-      name: 'My Polygon'
-    });
-
-    console.log(geo.getGeometry());
-    console.log(toto.getGeometry());
-    vectorTest.getSource().addFeature(toto)
-
-
-    /*   if (test){
-         if ((<string>test.getId()).includes("Location")) {
-           console.log(test.getStyleFunction());
-         } else if ((<string>test.getId()).length == 3) {
-           event.map.getFeaturesAtPixel()
-         }
-     }*/
-
-
-
+    if ((<string>feature.getId()).includes("Location")) {
+      this.mapMode = false;
+    }
 
   }
 

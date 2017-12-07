@@ -58,7 +58,9 @@ export class ModalContentComponent implements OnInit {
     this.data.filteredExperiencesListElec.subscribe(message => this.filteredExperiencesListElec = message)
 
     this.idModal = 0;
-    this.aboutUser = new AboutUser();
+
+    this.data.currentAboutUser.subscribe(message => this.aboutUser = message)
+
     this.keywordsList = ["childlike", "worried",
       "arch",
       "hellish",
