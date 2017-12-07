@@ -54,12 +54,6 @@ export class SwipeTestComponent implements OnInit {
 
   }
 
-  select = false;
-
-  // get stateName() {
-  //   return this.select ? 'selected' : 'unselected'
-  // }
-
   doSelect(exp) {
 
     // this.select = !this.select;
