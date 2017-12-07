@@ -1,5 +1,6 @@
 import {
-  AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit,
+  AfterViewInit,
+  Component, OnInit,
   QueryList, ViewChildren
 } from '@angular/core';
 import Experience from "../../models/experience.model";
@@ -31,7 +32,11 @@ declare var Swiper: any;
   ]
 })
 
-export class SwipeTestComponent implements OnInit {
+export class SwipeTestComponent implements OnInit,AfterViewInit {
+  ngAfterViewInit(): void {
+    this.shouldDoIt=true;
+  }
+
 
 
   filteredExperiencesList: Experience[];
@@ -50,8 +55,6 @@ export class SwipeTestComponent implements OnInit {
   ngOnInit() {
     this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
     this.data.cart.subscribe(message => this.cart = message)
-
-
   }
 
   doSelect(exp) {
@@ -91,5 +94,6 @@ export class SwipeTestComponent implements OnInit {
       this.shouldDoIt = false; // set it to false until you need to trigger again
     }
   }
+
 
 }
