@@ -67,7 +67,7 @@ export class PageNotFoundComponent implements OnInit {
   //       this.newTodo = new ToDo()
   //     })
   // }
-  //
+
   // editTodo(todo: ToDo) {
   //   console.log(todo)
   //   if(this.todosList.includes(todo)){

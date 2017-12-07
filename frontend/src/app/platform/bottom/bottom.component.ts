@@ -26,7 +26,7 @@ export class BottomComponent implements OnInit {
     private markerService: MarkerService,
     private companyService: CompanyService
   ) {
-    this.newMarker = new Marker({longitude: 0, latitude:0});
+    this.newMarker = new Marker("1A2Z3E", {longitude: 0, latitude:0}, []);
     this.companiesDictionnary= {} ;
 
     this.companiesLabel = [];

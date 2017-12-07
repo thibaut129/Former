@@ -2,7 +2,7 @@
 
 <!--<div class="row">-->
   <!--<div class="col-12">-->
-    <aol-map [width]="'100%'" [height]="'100%'" *ngIf="noMarker && mapMode" #titi  (onClick)="onClickMarker($event)">
+    <aol-map [width]="'100%'" [height]="'100%'" *ngIf="(noMarker && mapMode)" #titi  (onClick)="onClickMarker($event)">
       <aol-control>
         <aol-control-zoom></aol-control-zoom>
       </aol-control>
@@ -28,9 +28,9 @@
       <aol-interaction-default></aol-interaction-default>
       <aol-layer-vector>
         <aol-source-vector>
-          <aol-feature *ngFor="let exp of listMarker" [id]="'Location' +exp.coords.longitude">
+          <aol-feature *ngFor="let m of listMarker" [id]="m._id">
             <aol-geometry-point >
-              <aol-coordinate [x]=exp.coords.longitude [y]=exp.coords.latitude [srid]="'EPSG:4326'"></aol-coordinate>
+              <aol-coordinate [x]=m.coords.longitude [y]=m.coords.latitude [srid]="'EPSG:4326'"></aol-coordinate>
             </aol-geometry-point>
             <aol-style>
               <aol-style-icon

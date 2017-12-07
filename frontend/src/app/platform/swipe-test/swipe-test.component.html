@@ -1,7 +1,7 @@
 <div class="row"><div class="col-12">
 <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div  (click)="doSelect(exp)" [@selectState]="exp.state" *ngFor="let exp of filteredExperiencesList; let last = last" class="swiper-slide">
+      <div  (click)="doSelect(exp)" [@selectState]="exp.state" *ngFor="let exp of filteredSelected; let last = last" class="swiper-slide">
         <i [hidden]="exp.state != 'selected'" class="icon fa fa-2x fa-check-circle"></i>
         <div class="card top-to-bottom shadow">
           <img class="card-img-top img-responsive" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">

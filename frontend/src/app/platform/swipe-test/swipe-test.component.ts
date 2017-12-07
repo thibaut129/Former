@@ -37,9 +37,7 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
     this.shouldDoIt=true;
   }
 
-
-
-  filteredExperiencesList: Experience[];
+  filteredSelected: Experience[];
 
   filteredExperiencesListSI: Experience[];
   filteredExperiencesListMAM: Experience[];
@@ -49,11 +47,12 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
 
   @ViewChildren('allTheseThings') things: QueryList<any>;
 
-  constructor(private data: DataService
+  constructor(
+    private data: DataService
   ) { }
 
   ngOnInit() {
-    this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
+    this.data.filteredSelected.subscribe(message => this.filteredSelected = message)
     this.data.cart.subscribe(message => this.cart = message)
   }
 
