@@ -49,34 +49,29 @@
     <!--<li (click)="setDepartment('MAM')">MAM <div class="card__date"><div class="card__date__day"><i class="fa fa-users"></i> {{filteredExperiencesListMAM.length}}</div></div></li>-->
 <!--</ul>-->
     <div id="card-container" class="row">
-      <div class="col-lg-4" (click)="setDepartment('BAT')">
+
+      <div class="col-lg-4" (click)="setDepartment('MAM')">
         <div class="card shadow">
           <div class="card-content white-text">
             <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesList.length}}</span>
+              <span class="card__date__day">{{filteredExperiencesListMAM.length}}</span>
               <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
             </div>
-            <div class="card__meta">
-              Bat
-            </div>
-            <span class="card-info">
-            </span>
+            <div class="card__meta">MAM</div>
+            <span class="card-info"></span>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-4" (click)="setDepartment('ITII')">
+      <div class="col-lg-4" (click)="setDepartment('SI')">
         <div class="card shadow">
           <div class="card-content white-text">
             <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesList.length}}</span>
+              <span class="card__date__day">{{filteredExperiencesListSI.length}}</span>
               <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
             </div>
-            <div class="card__meta">
-              ITII
-            </div>
-            <span class="card-info">
-            </span>
+            <div class="card__meta">SI</div>
+            <span class="card-info"></span>
           </div>
         </div>
       </div>
@@ -97,11 +92,49 @@
         </div>
       </div>
 
-      <div class="col-lg-4" (click)="setDepartment('GB')">
+      <div class="col-lg-4">
+        <!--<div class="col-lg-4" (click)="setDepartment('BAT')">-->
         <div class="card shadow">
           <div class="card-content white-text">
             <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesList.length}}</span>
+              <span class="card__date__day">0</span>
+              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
+              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
+            </div>
+            <div class="card__meta">
+              Bat
+            </div>
+            <span class="card-info">
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <!--<div class="col-lg-4" (click)="setDepartment('ITII')">-->
+        <div class="card shadow">
+          <div class="card-content white-text">
+            <div class="card__date">
+              <span class="card__date__day">0</span>
+              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
+              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
+            </div>
+            <div class="card__meta">
+              ITII
+            </div>
+            <span class="card-info">
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!--<div class="col-lg-4" (click)="setDepartment('GB')">-->
+      <div class="col-lg-4">
+        <div class="card shadow">
+          <div class="card-content white-text">
+            <div class="card__date">
+              <span class="card__date__day">0</span>
+              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
               <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
             </div>
             <div class="card__meta">
@@ -113,48 +146,16 @@
         </div>
       </div>
 
-      <div class="col-lg-4" (click)="setDepartment('GE')">
+      <div class="col-lg-4">
+      <!--<div class="col-lg-4" (click)="setDepartment('GE')">-->
         <div class="card shadow">
           <div class="card-content white-text">
             <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesList.length}}</span>
+              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
+              <span class="card__date__day">0</span>
               <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
             </div>
-            <div class="card__meta">
-              GE
-            </div>
-            <span class="card-info">
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4" (click)="setDepartment('MAM')">
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesListMAM.length}}</span>
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">
-              MAM
-            </div>
-            <span class="card-info">
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4" (click)="setDepartment('SI')">
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesListSI.length}}</span>
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">
-              SI
-            </div>
+            <div class="card__meta">GE</div>
             <span class="card-info">
             </span>
           </div>
@@ -166,7 +167,7 @@
   <div class="" [hidden]="idModal != 2">
     <div class="row text-center">
       <!--<div class="col-md-4" *ngFor="let res of keysResearchEnum()" (click)="setTypeResearch(res)"><img [src]="'http://via.placeholder.com/150x100?text='+res+'48'" class="img-responsive rounded"/></div>-->
-      <div class="col-md-4" (click)="setTypeResearch('Etranger')"><img src="../../../assets/etranger.png" class="img-fluid shadow"/>Etranger 46</div>
+      <div class="col-md-4" (click)="setTypeResearch('Etranger')"><img src="../../../assets/etranger.png" class="img-fluid shadow"/>Etranger {{filteredExperiencesList.length}}</div>
       <div class="col-md-4" (click)="setTypeResearch('France')"><img src="../../../assets/france.png" class="img-fluid shadow"/>France 30</div>
       <div class="col-md-4" (click)="setTypeResearch('Local')"><img src="../../../assets/local.png" class="img-fluid shadow"/>Local 12</div>
     </div>
