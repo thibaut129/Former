@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from "../../services/data.service";
 import User from "../../models/user.model";
+import Experience from "../../models/experience.model";
 
 @Component({
   selector: 'app-right',
@@ -10,7 +11,7 @@ import User from "../../models/user.model";
 export class RightComponent implements OnInit {
   @Input() aboutUser: {};
 
-  cart: User[];
+  cart: Experience[];
 
   mockedDate: User;
 
@@ -34,7 +35,7 @@ export class RightComponent implements OnInit {
   }
 
   // dragndrop
-  onDrop({ dropData }: { dropData: User }): void {
+  onDrop({ dropData }: { dropData: Experience }): void {
 
     // add the data in the cart if it's not added yet
     if (!this.cart.includes(dropData)) {
@@ -43,7 +44,7 @@ export class RightComponent implements OnInit {
     console.log(this.cart)
 
     this.dropOverActive = false;
-    this.droppedData = dropData.email;
+    this.droppedData = (<any>dropData).user.email;
     setTimeout(() => {
       this.droppedData = '';
     }, 2000);

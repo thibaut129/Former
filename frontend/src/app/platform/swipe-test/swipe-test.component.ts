@@ -7,6 +7,7 @@ import Experience from "../../models/experience.model";
 import {DataService} from "../../services/data.service";
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import User from "../../models/user.model";
+import {MailService} from "../../services/mail.service";
 declare var Swiper: any;
 
 
@@ -33,45 +34,45 @@ declare var Swiper: any;
 })
 
 export class SwipeTestComponent implements OnInit,AfterViewInit {
-  ngAfterViewInit(): void {
-    this.shouldDoIt=true;
-  }
-
-  filteredSelected: Experience[];
+  shouldDoIt = true; // initialize it to true for the first run
+  filteredExperiencesList: Experience[];
 
   filteredExperiencesListSI: Experience[];
   filteredExperiencesListMAM: Experience[];
   filteredExperiencesListElec: Experience[];
 
-  cart: User[];
-
-  @ViewChildren('allTheseThings') things: QueryList<any>;
+  selectedExperience: Experience[];
 
   constructor(
-    private data: DataService
-  ) { }
+    private data: DataService,
+    private mailService : MailService
+  ) {
+
+  }
 
   ngOnInit() {
-    this.data.filteredSelected.subscribe(message => this.filteredSelected = message)
-    this.data.cart.subscribe(message => this.cart = message)
+    this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
+    this.data.cart.subscribe(message => this.selectedExperience = message)
   }
 
   doSelect(exp) {
-
-    // this.select = !this.select;
     exp.state = (exp.state === 'selected' ? 'unselected' : 'selected');
     if (exp.state === 'selected') { // add to cart
-      this.cart.push(exp.user);
-      console.log(this.cart);
+      console.log(exp);
+      this.selectedExperience.push(exp);
     } else if (exp.state === 'unselected') { // remove to cart
-      const index = this.cart.indexOf(exp.user);
-      this.cart.splice(index, 1);
-      console.log(this.cart);
+      const index = this.selectedExperience.indexOf(exp);
+      this.selectedExperience.splice(index, 1);
     }
+
 
   }
 
-  shouldDoIt = true; // initialize it to true for the first run
+  sendMail(){
+    console.log(this.selectedExperience);
+    this.mailService.sendMail(this.selectedExperience).subscribe();
+  }
+
 
   callFunction(stuff) {
     if (this.shouldDoIt) {
@@ -94,5 +95,8 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
     }
   }
 
+  ngAfterViewInit(): void {
+    this.shouldDoIt=true;
+  }
 
 }

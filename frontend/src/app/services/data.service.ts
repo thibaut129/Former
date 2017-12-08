@@ -17,7 +17,7 @@ export class DataService {
 
   private filteredSelectedSource = new BehaviorSubject<Experience[]>([]);
 
-  private cartSource = new BehaviorSubject<User[]>([]);
+  private cartSource = new BehaviorSubject<Experience[]>([]);
 
 
   // currentMessage = this.messageSource.asObservable();
@@ -73,7 +73,7 @@ export class DataService {
   // }
 
 
-  changeCart(message: User[]) {
+  changeCart(message: Experience[]) {
     this.cartSource.next(message)
   }
 
