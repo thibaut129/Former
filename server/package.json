@@ -7,18 +7,21 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "^2.6.9",
     "ejs": "~2.5.6",
     "express": "^4.16.2",
     "express-mailer": "^0.3.1",
-    "mongoose": "^4.13.5",
+    "mongoose": "^4.13.6",
     "mongoose-paginate": "^5.0.3",
     "morgan": "~1.8.1",
-    "nodemailer": "^4.4.0",
-    "nodemon": "^1.12.1",
+    "nodemailer": "^4.4.1",
+    "nodemon": "^1.12.5",
     "serve-favicon": "^2.4.5",
     "validator": "^9.1.2"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.6.0"
   }
 }

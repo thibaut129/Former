@@ -4,6 +4,7 @@ class AboutUser {
   typeMobility: string // Emploi, Etude
   typeResearch: string // Etranger, France, Local
   currentYear:boolean
+  statut:string; // progress / done
 
 
   constructor(
@@ -13,6 +14,7 @@ class AboutUser {
     this.typeMobility = "" // Emploi, Etude
     this.typeResearch = "" // Etranger, France, Local
     this.currentYear = false
+    this.statut = "progress"
   }
 }
 

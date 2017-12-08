@@ -127,7 +127,7 @@
           </div>
         </div>
       </div>
-      
+
       <!--<div class="col-lg-4" (click)="setDepartment('GB')">-->
       <div class="col-lg-4">
         <div class="card shadow">
@@ -232,7 +232,7 @@
   <!--{{aboutUser}}-->
   <!--<button (click)="newMessage()">New Message</button>-->
   <button type="button" class="btn btn-outline-primary" (click)="nextModal()" [hidden]="idModal !=2 ">Passer</button>
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')" [hidden]="idModal != 3">Terminer</button><br/>
+  <button type="button" class="btn btn-outline-dark" (click)="setStatut('done'); activeModal.close('Close click')" [hidden]="idModal != 3">Terminer</button><br/>
 </div>
 
 </div>

@@ -7,6 +7,8 @@ import {ExperienceService} from "../services/experience.service";
 import {MailService} from "../services/mail.service";
 import Company from "../models/company.model";
 import Experience from "../models/experience.model";
+import { Observable } from 'rxjs/Rx';
+
 @Component({
   selector: 'app-platform',
   templateUrl: './platform.component.html',
@@ -18,7 +20,7 @@ export class PlatformComponent implements OnInit {
 
   companiesList: Company[];
   experiencesList: Experience[];
-  filteredExperiencesList: Experience[];
+  parsedExperiencesList: Experience[];
   filteredExperiencesListSI: Experience[];
   filteredExperiencesListMAM: Experience[];
   filteredExperiencesListElec: Experience[];
@@ -31,17 +33,16 @@ export class PlatformComponent implements OnInit {
   ) {
     this.aboutUser = new AboutUser();
 
-    this.filteredExperiencesList = [];
-    this.filteredExperiencesListSI = [];
-    this.filteredExperiencesListMAM = [];
-    this.filteredExperiencesListElec = [];
+    this.parsedExperiencesList = [];
+    // this.filteredExperiencesListSI = [];
+    // this.filteredExperiencesListMAM = [];
+    // this.filteredExperiencesListElec = [];
   }
 
   ngOnInit() {
 
     // this.data.currentMessage.subscribe(message => this.message = message)
-    this.data.currentAboutUser.subscribe(message => this.aboutUser = message)
-    this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
+    // this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
 
     this.companyService.getCompanies()
       .subscribe(companies => {
@@ -51,18 +52,39 @@ export class PlatformComponent implements OnInit {
           .subscribe(experiences => {
             this.experiencesList = experiences;
 
-            this.parseFilter("SI", this.filteredExperiencesListSI, experiences, companies);
-            this.parseFilter("MAM", this.filteredExperiencesListMAM, experiences, companies);
-            this.parseFilter("ELEC", this.filteredExperiencesListElec, experiences, companies);
+            this.parseFilter(this.parsedExperiencesList, experiences, companies);
+
+            // this.parseFilter("SI", this.filteredExperiencesListSI, experiences, companies);
+            // this.parseFilter("MAM", this.filteredExperiencesListMAM, experiences, companies);
+            // this.parseFilter("ELEC", this.filteredExperiencesListElec, experiences, companies);
 
           })
 
       });
 
+
+    this.data.currentAboutUser.subscribe(message => {
+      this.aboutUser = message
+      let filteredExperienceList = [];
+      // if user filled the modal
+      if (message.statut === "done") {
+        // apply filters
+
+        // synchronous functions
+        filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
+        filteredExperienceList = this.doFilterDepartment(filteredExperienceList, message.department);
+        this.data.changefilteredExperiencesList(filteredExperienceList);
+
+
+      }
+    })
+
+
   }
 
-  parseFilter(department:string, list:Experience[], experiences:Experience[], companies:Company[]) {
-    this.userService.getUsersByDepartment(department)
+  parseFilter(list:Experience[], experiences:Experience[], companies:Company[]) {
+    // this.userService.getUsersByDepartment(department)
+    this.userService.getUsers()
       .subscribe(users => {
         console.log(users);
         for (let exp of experiences) {
@@ -90,22 +112,81 @@ export class PlatformComponent implements OnInit {
 
           if (boolToAdd) {
             list.push(expUser);
-            this.filteredExperiencesList.push(expUser);
+            // this.filteredExperiencesList.push(expUser);
           }
-
         }
 
-        this.data.changefilteredExperiencesList(this.filteredExperiencesList);
-        this.data.changefilteredExperiencesListSI(this.filteredExperiencesListSI);
-        this.data.changefilteredExperiencesListMAM(this.filteredExperiencesListMAM);
-        this.data.changefilteredExperiencesListElec(this.filteredExperiencesListElec);
+        // this.data.changefilteredExperiencesList(this.filteredExperiencesList);
+        this.data.changefilteredExperiencesList(list);
 
-        // console.log(this.filteredExperiencesListElec)
-        // console.log(this.filteredExperiencesListMAM)
-        // console.log(this.filteredExperiencesListSI)
+        //todo: trouver un autre moyen
+        // if (department == "SI")
+        //   this.data.changefilteredExperiencesListSI(this.filteredExperiencesListSI);
+        // else if (department == "MAM")
+        //   this.data.changefilteredExperiencesListMAM(this.filteredExperiencesListMAM);
+        // else if (department == "ELEC")
+        //   this.data.changefilteredExperiencesListElec(this.filteredExperiencesListElec);
       })
   }
 
+  /**
+   * Take the current listFilter and remove all Experiences "Echange" or "Emploi" depending on the typeResearch
+   * @param {Experience[]} list
+   * @param {string} typeResearch can be either "Echange" or "Emploi"
+   * @returns {Array}
+   */
+  doFilterTypeMobility(list:Experience[], typeMobility:string): Experience[] {
+    let newList = [];
+    if ("Echange" === typeMobility) {
+      for (let exp of list) {
+        if (exp.type === typeMobility) {
+          newList.push(exp);
+        }
+      }
+    } else {
+      for (let exp of list) {
+        if (exp.type != "Echange") {
+          newList.push(exp);
+        }
+      }
+    }
+    return newList;
+  }
+
+  doFilterCurrentYear(list:Experience[]): Experience[] {
+    let newList = [];
+    for (let exp of list) {
+      if (exp.year === new Date().getFullYear()) {
+        newList.push(exp);
+      }
+    }
+    return newList;
+  }
+
+  doFilterDepartment(list:any[], department:string): Experience[] {
+    let newList = [];
+    for (let exp of list) {
+      if (exp.user.department === department) {
+        newList.push(exp);
+      }
+    }
+    return newList;
+  }
+
+  doFilterCompany(list:any[], company:string): Experience[] {
+    let newList = [];
+    for (let exp of list) {
+      if (exp.company.name === company) {
+        newList.push(exp);
+      }
+    }
+    return newList;
+  }
+
+  /**
+   * DataService broadcast to Component which subscribed to the var
+   * @param {Experience[]} filteredExperiencesList
+   */
   newFilteredExperiencesList(filteredExperiencesList:Experience[]) {
     console.log('new');
     this.data.changefilteredExperiencesList(filteredExperiencesList);

@@ -78,7 +78,6 @@ export class CenterComponent implements OnInit{
           this.listMarker.push(new Marker('Location'+e._id, {longitude:e.coords.longitude, latitude:e.coords.latitude}, [e]));
 
         } else { // si coords existent deja
-
           console.log("same coords");
 
           for (let m of this.listMarker) {

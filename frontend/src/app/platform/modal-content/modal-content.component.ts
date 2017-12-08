@@ -121,6 +121,11 @@ export class ModalContentComponent implements OnInit {
     this.nextModal();
   }
 
+  setStatut(statut: string) {
+    this.aboutUser.statut = statut;
+    this.newMessage(this.aboutUser);
+  }
+
   addKeyword(keyword:string) {
     this.keywordsSelected.push(keyword);
 
