@@ -46,6 +46,7 @@ import { ModalContentComponent } from './platform/modal-content/modal-content.co
 
 import {DragAndDropModule} from 'angular-draggable-droppable';
 
+
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 import { AngularOpenlayersModule } from 'ngx-openlayers';
