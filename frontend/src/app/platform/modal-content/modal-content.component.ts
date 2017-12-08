@@ -9,6 +9,7 @@ import {typeMobilityEnum} from "../../../environments/environment";
 import {departmentEnum} from "../../../environments/environment";
 import {typeResearchEnum} from "../../../environments/environment";
 import Experience from "../../models/experience.model";
+import {current} from "codelyzer/util/syntaxKind";
 
 @Component({
   selector: 'app-modal-content',
@@ -24,13 +25,15 @@ export class ModalContentComponent implements OnInit {
   keywordsList: string[];
   keywordsSelected: string[];
 
+  counter= {};
+
   @Output() messageEvent = new EventEmitter<string>();
   @Output() aboutUserEvent = new EventEmitter<AboutUser>();
 
-  filteredExperiencesList: Experience[];
-  filteredExperiencesListSI: Experience[];
-  filteredExperiencesListMAM: Experience[];
-  filteredExperiencesListElec: Experience[];
+  filteredExperiencesList: any[];//Experience[];
+  // filteredExperiencesListSI: Experience[];
+  // filteredExperiencesListMAM: Experience[];
+  // filteredExperiencesListElec: Experience[];
 
   // convert enum into iterable Array
   keysMobilityEnum() : Array<string> {
@@ -52,14 +55,27 @@ export class ModalContentComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private data: DataService
 ) {
-    this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
-    this.data.filteredExperiencesListSI.subscribe(message => this.filteredExperiencesListSI = message)
-    this.data.filteredExperiencesListMAM.subscribe(message => this.filteredExperiencesListMAM = message)
-    this.data.filteredExperiencesListElec.subscribe(message => this.filteredExperiencesListElec = message)
-
-    this.idModal = 0;
+    this.counter= {};
 
     this.data.currentAboutUser.subscribe(message => this.aboutUser = message)
+
+    this.data.filteredExperiencesList.subscribe(message => {
+      this.filteredExperiencesList = message
+
+      if (this.aboutUser.statut == "progress") {
+        console.log("get typeMobile Length")
+        this.getLengthOfTypeMobility();
+      }
+      if (this.aboutUser.statut == "typeMobility") {
+        console.log("get typeDepartment Length")
+        this.getLengthOfTypeDepartment();
+      }
+    })
+    // this.data.filteredExperiencesListSI.subscribe(message => this.filteredExperiencesListSI = message)
+    // this.data.filteredExperiencesListMAM.subscribe(message => this.filteredExperiencesListMAM = message)
+    // this.data.filteredExperiencesListElec.subscribe(message => this.filteredExperiencesListElec = message)
+
+    this.idModal = 0;
 
     this.keywordsList = ["childlike", "worried",
       "arch",
@@ -87,6 +103,30 @@ export class ModalContentComponent implements OnInit {
 
   }
 
+  getLengthOfTypeMobility() {
+    this.counter = {};
+
+    for (let e of this.filteredExperiencesList) {
+      if (this.counter[e.type] == null) {
+        this.counter[e.type] = 1;
+      } else {
+        this.counter[e.type]++;
+      }
+    }
+  }
+
+  getLengthOfTypeDepartment() {
+    this.counter = {};
+
+    for (let e of this.filteredExperiencesList) {
+      if (this.counter[e.user.department] == null) {
+        this.counter[e.user.department] = 1;
+      } else {
+        this.counter[e.user.department]++;
+      }
+    }
+  }
+
   nextModal() {
     this.idModal++;
   }
@@ -102,6 +142,7 @@ export class ModalContentComponent implements OnInit {
 
   setTypeMobility(typeMobility: string) {
     this.aboutUser.typeMobility = typeMobility;
+    this.aboutUser.statut = "typeMobility";
 
     this.newMessage(this.aboutUser);
     this.nextModal();
@@ -109,6 +150,7 @@ export class ModalContentComponent implements OnInit {
 
   setDepartment(department: string) {
     this.aboutUser.department = department;
+    this.aboutUser.statut = "typeDepartment";
 
     this.newMessage(this.aboutUser);
     this.nextModal();

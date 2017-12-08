@@ -64,19 +64,33 @@ export class PlatformComponent implements OnInit {
 
 
     this.data.currentAboutUser.subscribe(message => {
-      this.aboutUser = message
+      this.aboutUser = message;
+
+      // synchronous functions
+
       let filteredExperienceList = [];
       // if user filled the modal
-      if (message.statut === "done") {
-        // apply filters
-
-        // synchronous functions
+      if (message.statut === "typeMobility") {
+        filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
+      }
+      if (message.statut === "typeDepartment") {
         filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
         filteredExperienceList = this.doFilterDepartment(filteredExperienceList, message.department);
-        this.data.changefilteredExperiencesList(filteredExperienceList);
-
-
       }
+
+      if (message.statut === "done") {
+        // "Emploi" or "Echange
+        filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
+        // "SI", "MAM", "ELEC", ...
+        filteredExperienceList = this.doFilterDepartment(filteredExperienceList, message.department);
+        // "2017" or all
+        if (message.currentYear) {
+          filteredExperienceList = this.doFilterCurrentYear(filteredExperienceList);
+        }
+      }
+
+      // update filteredExp
+      this.data.changefilteredExperiencesList(filteredExperienceList);
     })
 
 

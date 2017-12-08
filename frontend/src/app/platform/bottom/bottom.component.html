@@ -101,7 +101,7 @@
       <!--<span class="badge badge-danger">Danger</span>-->
       <!--<span class="badge badge-danger">Danger</span>-->
       <!--<span class="badge badge-danger">Danger</span>-->
-      <span class="badge badge-info" [hidden]="!currentYear">2017</span>
+      <span class="badge badge-info" [hidden]="!aboutUser.currentYear">2017</span>
 
     </div>
     </div>
@@ -119,11 +119,11 @@
   </div>
 
   <div class="col-md-2">
-    <div class="btn-group" [hidden]="currentYear">
+    <div class="btn-group" [hidden]="aboutUser.currentYear">
       <button class="btn btn-default shadow" (click)="changeBoolCurrent(true)" >Année courante</button>
       <button class="btn btn-default shadow" (click)="changeBoolCurrent(true)"><i class="fa fa-circle-o"></i></button>
     </div>
-    <div class="btn-group" [hidden]="!currentYear">
+    <div class="btn-group" [hidden]="!aboutUser.currentYear">
       <button class="btn btn-default shadow" (click)="changeBoolCurrent(false)">Année courante</button>
       <button class="btn btn-primary shadow" (click)="changeBoolCurrent(false)"><i class="fa fa-check-circle-o"></i></button>
     </div>

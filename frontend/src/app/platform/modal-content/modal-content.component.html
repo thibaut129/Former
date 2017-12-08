@@ -1,7 +1,7 @@
 <div class="modalComponent">
   <div class="modal-header">
     <div class="container-top">
-      <a [hidden]="idModal == 0" (click)="previousPage(idModal)"><i class="fa fa-2x fa-chevron-left"></i></a>
+      <a *ngIf="idModal != 0" (click)="previousPage(idModal)"><i class="fa fa-2x fa-chevron-left"></i></a>
     </div>
     <h4 class="modal-title">Que recherchez-vous ?</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
@@ -9,171 +9,167 @@
   </button>
 </div>
 <div class="modal-body">
-  <div class="" [hidden]="idModal != 0">
+  <div class="" *ngIf="idModal == 0">
     <div class="row text-center">
       <!--<div class="col-md-6" *ngFor="let mob of keysMobilityEnum()" (click)="setTypeMobility(mob)"><img [src]="'http://via.placeholder.com/150x100?text='+mob" class="img-responsive rounded"/></div>-->
-      <div class="offset-md-2 col-md-4" (click)="setTypeMobility('Emploi')">
-        <img src="../../../assets/emploib.png" class="img-fluid shadow"/>
-        Emploi
+      <div class="offset-md-2"></div>
+      <div *ngFor="let mob of keysMobilityEnum()" (click)="setTypeMobility(mob)" class="col-md-4">
+        <img [src]="'../../../assets/'+mob+'b.png'" class="img-fluid shadow"/>
+        {{mob}} ({{counter[mob] != null ? counter[mob] : 0}})
       </div>
-      <div class="col-md-4" (click)="setTypeMobility('Etude')">
-        <img src="../../../assets/ecoleb.png" class="img-fluid shadow"/>
-      Ecole
-      </div>
+      <!--<div class="offset-md-2 col-md-4" (click)="setTypeMobility('Emploi')">-->
+        <!--<img src="../../../assets/emploib.png" class="img-fluid shadow"/>-->
+        <!--Emploi-->
+      <!--</div>-->
+      <!--<div class="col-md-4" (click)="setTypeMobility('Echange')">-->
+        <!--<img src="../../../assets/Echangeb.png" class="img-fluid shadow"/>-->
+      <!--Ecole-->
+      <!--</div>-->
     </div>
   </div>
 
-  <div class="" [hidden]="idModal != 1">
-    <!--do a ngFor-->
-<!--<ul>-->
+  <div class="" *ngIf="idModal == 1">
 
-    <!--<div *ngFor="let dpt of keysDepartmentEnum()" (click)="setDepartment(dpt.toString())">{{dpt.toString()}} <span class="badge badge-info">12</span></div>-->
-  <!--<li (click)="setDepartment('BAT')">-->
-    <!--BAT <div class="card__date">-->
-    <!--<div class="card__date__day">-->
-      <!--{{filteredExperiencesListSI.length}} <i class="fa fa-user"></i>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--</li>-->
-    <!--<li (click)="setDepartment('ITII')">ITII-->
-      <!--<div class="card__date">-->
-        <!--<div class="card__date__day">-->
-          <!--{{filteredExperiencesList.length}} <i class="fa fa-users"></i>-->
+    <div id="card-container" class="row">
+      <div *ngFor="let dpt of keysDepartmentEnum()" class="col-lg-4" (click)="setDepartment(dpt)">
+        <div class="card shadow">
+          <div class="card-content white-text">
+            <div class="card__date">
+              <span class="card__date__day">{{counter[dpt] != null ? counter[dpt] : 0}}</span>
+              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
+            </div>
+            <div class="card__meta">{{dpt.toString()}}</div>
+            <span class="card-info"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <!--<div class="col-lg-4" (click)="setDepartment('MAM')">-->
+        <!--<div class="card shadow">-->
+          <!--<div class="card-content white-text">-->
+            <!--<div class="card__date">-->
+              <!--<span class="card__date__day"></span>-->
+              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
+            <!--</div>-->
+            <!--<div class="card__meta">MAM</div>-->
+            <!--<span class="card-info"></span>-->
+          <!--</div>-->
         <!--</div>-->
       <!--</div>-->
-    <!--</li>-->
-    <!--<li (click)="setDepartment('ELEC')">ELEC <div class="card__date"><div class="card__date__day">{{filteredExperiencesListElec.length}} <i class="fa fa-user"></i></div></div></li>-->
-    <!--<li (click)="setDepartment('GB')">GB <div class="card__date"><div class="card__date__day"><i class="fa fa-user"></i>{{filteredExperiencesList.length}}</div></div></li>-->
-    <!--<li (click)="setDepartment('GE')">GE <div class="card__date"><div class="card__date__day">{{filteredExperiencesList.length}} <i class="fa fa-users"></i></div></div></li>-->
-    <!--<li (click)="setDepartment('SI')">SI <div class="card__date"><div class="card__date__day">{{filteredExperiencesListSI.length}} <i class="fa fa-users"></i></div></div></li>-->
-    <!--<li (click)="setDepartment('MAM')">MAM <div class="card__date"><div class="card__date__day"><i class="fa fa-users"></i> {{filteredExperiencesListMAM.length}}</div></div></li>-->
-<!--</ul>-->
-    <div id="card-container" class="row">
 
-      <div class="col-lg-4" (click)="setDepartment('MAM')">
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesListMAM.length}}</span>
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">MAM</div>
-            <span class="card-info"></span>
-          </div>
-        </div>
-      </div>
+      <!--<div class="col-lg-4" (click)="setDepartment('SI')">-->
+        <!--<div class="card shadow">-->
+          <!--<div class="card-content white-text">-->
+            <!--<div class="card__date">-->
+              <!--<span class="card__date__day"></span>-->
+              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
+            <!--</div>-->
+            <!--<div class="card__meta">SI</div>-->
+            <!--<span class="card-info"></span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
-      <div class="col-lg-4" (click)="setDepartment('SI')">
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesListSI.length}}</span>
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">SI</div>
-            <span class="card-info"></span>
-          </div>
-        </div>
-      </div>
+      <!--<div class="col-lg-4" (click)="setDepartment('ELEC')">-->
+        <!--<div class="card shadow">-->
+          <!--<div class="card-content white-text">-->
+            <!--<div class="card__date">-->
+              <!--<span class="card__date__day"></span>-->
+              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
+            <!--</div>-->
+            <!--<div class="card__meta">-->
+              <!--Elec-->
+            <!--</div>-->
+            <!--<span class="card-info">-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
-      <div class="col-lg-4" (click)="setDepartment('ELEC')">
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">{{filteredExperiencesListElec.length}}</span>
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">
-              Elec
-            </div>
-            <span class="card-info">
-            </span>
-          </div>
-        </div>
-      </div>
+      <!--<div class="col-lg-4">-->
+        <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('BAT')">&ndash;&gt;-->
+        <!--<div class="card shadow">-->
+          <!--<div class="card-content white-text">-->
+            <!--<div class="card__date">-->
+              <!--<span class="card__date__day">0</span>-->
+              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
+              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
+            <!--</div>-->
+            <!--<div class="card__meta">-->
+              <!--Bat-->
+            <!--</div>-->
+            <!--<span class="card-info">-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
-      <div class="col-lg-4">
-        <!--<div class="col-lg-4" (click)="setDepartment('BAT')">-->
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">0</span>
-              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">
-              Bat
-            </div>
-            <span class="card-info">
-            </span>
-          </div>
-        </div>
-      </div>
+      <!--<div class="col-lg-4">-->
+        <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('ITII')">&ndash;&gt;-->
+        <!--<div class="card shadow">-->
+          <!--<div class="card-content white-text">-->
+            <!--<div class="card__date">-->
+              <!--<span class="card__date__day">0</span>-->
+              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
+              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
+            <!--</div>-->
+            <!--<div class="card__meta">-->
+              <!--ITII-->
+            <!--</div>-->
+            <!--<span class="card-info">-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
-      <div class="col-lg-4">
-        <!--<div class="col-lg-4" (click)="setDepartment('ITII')">-->
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">0</span>
-              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">
-              ITII
-            </div>
-            <span class="card-info">
-            </span>
-          </div>
-        </div>
-      </div>
+      <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('GB')">&ndash;&gt;-->
+      <!--<div class="col-lg-4">-->
+        <!--<div class="card shadow">-->
+          <!--<div class="card-content white-text">-->
+            <!--<div class="card__date">-->
+              <!--<span class="card__date__day">0</span>-->
+              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
+              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
+            <!--</div>-->
+            <!--<div class="card__meta">-->
+              <!--GB-->
+            <!--</div>-->
+            <!--<span class="card-info">-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
 
-      <!--<div class="col-lg-4" (click)="setDepartment('GB')">-->
-      <div class="col-lg-4">
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <span class="card__date__day">0</span>
-              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">
-              GB
-            </div>
-            <span class="card-info">
-            </span>
-          </div>
-        </div>
-      </div>
+      <!--<div class="col-lg-4">-->
+      <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('GE')">&ndash;&gt;-->
+        <!--<div class="card shadow">-->
+          <!--<div class="card-content white-text">-->
+            <!--<div class="card__date">-->
+              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
+              <!--<span class="card__date__day">0</span>-->
+              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
+            <!--</div>-->
+            <!--<div class="card__meta">GE</div>-->
+            <!--<span class="card-info">-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
 
-      <div class="col-lg-4">
-      <!--<div class="col-lg-4" (click)="setDepartment('GE')">-->
-        <div class="card shadow">
-          <div class="card-content white-text">
-            <div class="card__date">
-              <!--<span class="card__date__day">{{filteredExperiencesList.length}}</span>-->
-              <span class="card__date__day">0</span>
-              <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
-            </div>
-            <div class="card__meta">GE</div>
-            <span class="card-info">
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-
-  <div class="" [hidden]="idModal != 2">
+  <div class="" *ngIf="idModal == 2">
     <div class="row text-center">
       <!--<div class="col-md-4" *ngFor="let res of keysResearchEnum()" (click)="setTypeResearch(res)"><img [src]="'http://via.placeholder.com/150x100?text='+res+'48'" class="img-responsive rounded"/></div>-->
-      <div class="col-md-4" (click)="setTypeResearch('Etranger')"><img src="../../../assets/etranger.png" class="img-fluid shadow"/>Etranger {{filteredExperiencesList.length}}</div>
-      <div class="col-md-4" (click)="setTypeResearch('France')"><img src="../../../assets/france.png" class="img-fluid shadow"/>France 30</div>
-      <div class="col-md-4" (click)="setTypeResearch('Local')"><img src="../../../assets/local.png" class="img-fluid shadow"/>Local 12</div>
+      <div class="col-md-4" (click)="setTypeResearch('Etranger')"><img src="../../../assets/etranger.png" class="img-fluid shadow"/>Etranger ({{filteredExperiencesList.length}})</div>
+      <div class="col-md-4" (click)="setTypeResearch('France')"><img src="../../../assets/france.png" class="img-fluid shadow"/>France (0)</div>
+      <div class="col-md-4" (click)="setTypeResearch('Local')"><img src="../../../assets/local.png" class="img-fluid shadow"/>Local (?)</div>
     </div>
   </div>
 
-  <div class="" [hidden]="idModal != 3">
+  <div class="" *ngIf="idModal == 3">
 
     <div class="card">
       <div class="card-block">
@@ -231,8 +227,8 @@
 <div class="modal-footer">
   <!--{{aboutUser}}-->
   <!--<button (click)="newMessage()">New Message</button>-->
-  <button type="button" class="btn btn-outline-primary" (click)="nextModal()" [hidden]="idModal !=2 ">Passer</button>
-  <button type="button" class="btn btn-outline-dark" (click)="setStatut('done'); activeModal.close('Close click')" [hidden]="idModal != 3">Terminer</button><br/>
+  <button type="button" class="btn btn-outline-primary" (click)="nextModal()" *ngIf="idModal ==2 ">Passer</button>
+  <button type="button" class="btn btn-outline-dark" (click)="setStatut('done'); activeModal.close('Close click')" *ngIf="idModal == 3">Terminer</button><br/>
 </div>
 
 </div>

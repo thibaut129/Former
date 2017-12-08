@@ -153,5 +153,4 @@ export class CenterComponent implements OnInit{
 
   }
 
-
 }

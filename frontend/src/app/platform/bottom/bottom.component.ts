@@ -5,6 +5,7 @@ import {CompanyService} from "../../services/company.service";
 import Company from "../../models/company.model";
 import AboutUser from "../../models/aboutUser.model";
 import {Marker} from "../../models/marker.model";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-bottom',
@@ -15,7 +16,6 @@ export class BottomComponent implements OnInit {
   @Input() aboutUser: AboutUser;
 
   newMarker: Marker;
-  currentYear: boolean;
 
   companiesList: Company[];
   companiesDictionnary: {};
@@ -23,10 +23,12 @@ export class BottomComponent implements OnInit {
   companiesListSort: string[][]
 
   constructor(
+    private data: DataService,
     private markerService: MarkerService,
     private companyService: CompanyService
   ) {
-    this.newMarker = new Marker("1A2Z3E", {longitude: 0, latitude:0}, []);
+
+      this.newMarker = new Marker("1A2Z3E", {longitude: 0, latitude:0}, []);
     this.companiesDictionnary= {} ;
 
     this.companiesLabel = [];
@@ -53,29 +55,17 @@ export class BottomComponent implements OnInit {
           }
         }
 
-
         /* json key:letter, value: [companies] transformed into Array [['A...','A....'], ['G...'], ['N..','N..']]
          * so that we can iterate with ngFor */
         for(let key in this.companiesDictionnary)
         {
-          console.log("key: " + key + ", value: " + this.companiesDictionnary[key])
+          // console.log("key: " + key + ", value: " + this.companiesDictionnary[key])
           this.companiesListSort.push(this.companiesDictionnary[key]);
         }
 
       })
 
   }
-
-  // settingsCurrent = {
-  //   theme: 'ios'
-  // };
-
-  // myselectDepartment: any = ['SI', 'ELEC'];
-  // settingsDepartment: any = {
-  //   theme: 'ios',
-  //   select: 'multiple',
-  //   display: 'inline',
-  // };
 
   myselectCompany: any = [];
   settingsCompany: any = {
@@ -90,7 +80,9 @@ export class BottomComponent implements OnInit {
 
 
   changeBoolCurrent(bool:boolean) {
-    this.currentYear = bool;
+    this.aboutUser.currentYear = bool;
+    this.data.changeAboutUser(this.aboutUser);
+
   }
 
   create()  {

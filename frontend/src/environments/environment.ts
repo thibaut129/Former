@@ -8,11 +8,11 @@ export const environment = {
 };
 
 export enum departmentEnum{
-  'Bat', 'Elec', 'SI', 'MAM', 'ITII', 'GB', 'GE'
+  'MAM', 'ELEC', 'SI', 'BAT', 'ITII', 'GB', 'GE'
 }
 
 export enum typeMobilityEnum{
-  'Echange', 'Emploi'
+  'Emploi', 'Echange'
 }
 
 export enum typeCompanyEnum{
