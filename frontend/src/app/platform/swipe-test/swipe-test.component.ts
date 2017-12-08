@@ -35,7 +35,7 @@ declare var Swiper: any;
 
 export class SwipeTestComponent implements OnInit,AfterViewInit {
   shouldDoIt = true; // initialize it to true for the first run
-  filteredExperiencesList: Experience[];
+  filteredSelected: Experience[];
 
   filteredExperiencesListSI: Experience[];
   filteredExperiencesListMAM: Experience[];
@@ -51,7 +51,7 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit() {
-    this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
+    this.data.filteredSelected.subscribe(message => this.filteredSelected = message)
     this.data.cart.subscribe(message => this.selectedExperience = message)
   }
 
