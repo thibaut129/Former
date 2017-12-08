@@ -19,7 +19,7 @@ export class MailService {
   ) { }
 
 
-  sendMail(users : Experience[]): Observable<any>{
+  sendMail(users : { mail: string; data: any[]; }): Observable<any>{
     return this.http.post(`${this.markerUrl}`, users);
   }
 
