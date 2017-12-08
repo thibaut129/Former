@@ -4,7 +4,33 @@ var nodemailer = require("nodemailer");
 
 
 
+
 exports.sendmail = async function(req, res, next) {
+
+    var users = [];
+    users=req.body;
+
+
+
+
+
+
+
+    var table = "<h1>Votre sélection :</h1>";
+
+
+    for ( var i = 0; i < users.length; i++ ) {
+
+        var user = users[i];
+        table=table.concat('<h3>'+user.user.firstname+' '+user.user.lastname+'</h3>');
+        table=table.concat('<b>Département : </b>' +user.user.department+'<br/>');
+        table=table.concat('<b>Option : </b>'+ user.user.option+'<br/>');
+        table=table.concat('<b>Mail : </b>'+ user.user.email+'<br/>');
+        table=table.concat('<b>Entreprise : </b>'+ user.company.name+ ' ('+user.location+')'+'<br/>');
+        table=table.concat('<br/>');
+    }
+
+    console.log(table);
 
 
     var transporter = nodemailer.createTransport({
@@ -21,7 +47,7 @@ exports.sendmail = async function(req, res, next) {
         to: "thibaut129@gmail.com", // list of receivers
         subject: "Hello ✔", // Subject line
         text: "Hello world ✔", // plaintext body
-        html: "<b>Hello world ✔</b>" // html body
+        html: table // html body
     };
 // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, response){

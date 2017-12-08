@@ -4,7 +4,7 @@ var router = express.Router();
 
 var RouteController = require('../../controllers/mailer.controller');
 
-router.get('/', RouteController.sendmail);
+router.post('/', RouteController.sendmail);
 
 
 module.exports = router;
