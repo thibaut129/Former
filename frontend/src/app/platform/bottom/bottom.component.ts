@@ -63,12 +63,17 @@ export class BottomComponent implements OnInit {
           this.companiesListSort.push(this.companiesDictionnary[key]);
         }
 
-      })
+      });
 
   }
 
-  myselectCompany: any = [];
+  // myselectCompany: string[] = [];
   settingsCompany: any = {
+    // onItemTap: function (event, inst) {
+    //   // console.log("item tap")
+    //
+    //   this.data.changeAboutUser(this.aboutUser);
+    // },
     theme: 'ios',
     display: 'inline',
     label: 'Name',
@@ -79,9 +84,16 @@ export class BottomComponent implements OnInit {
   };
 
 
+
+
+  updateAboutUser() {
+    this.data.changeAboutUser(this.aboutUser);
+
+  }
+
   changeBoolCurrent(bool:boolean) {
     this.aboutUser.currentYear = bool;
-    this.data.changeAboutUser(this.aboutUser);
+    this.updateAboutUser();
 
   }
 

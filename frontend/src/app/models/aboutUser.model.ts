@@ -4,6 +4,7 @@ class AboutUser {
   typeMobility: string // Emploi, Etude
   typeResearch: string // Etranger, France, Local
   currentYear:boolean
+  companies:string[]
   statut:string; // progress / done
 
 
@@ -14,6 +15,7 @@ class AboutUser {
     this.typeMobility = "" // Emploi, Etude
     this.typeResearch = "" // Etranger, France, Local
     this.currentYear = false
+    this.companies = []
     this.statut = "progress"
   }
 }

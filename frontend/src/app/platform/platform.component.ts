@@ -34,9 +34,6 @@ export class PlatformComponent implements OnInit {
     this.aboutUser = new AboutUser();
 
     this.parsedExperiencesList = [];
-    // this.filteredExperiencesListSI = [];
-    // this.filteredExperiencesListMAM = [];
-    // this.filteredExperiencesListElec = [];
   }
 
   ngOnInit() {
@@ -54,10 +51,6 @@ export class PlatformComponent implements OnInit {
 
             this.parseFilter(this.parsedExperiencesList, experiences, companies);
 
-            // this.parseFilter("SI", this.filteredExperiencesListSI, experiences, companies);
-            // this.parseFilter("MAM", this.filteredExperiencesListMAM, experiences, companies);
-            // this.parseFilter("ELEC", this.filteredExperiencesListElec, experiences, companies);
-
           })
 
       });
@@ -68,10 +61,10 @@ export class PlatformComponent implements OnInit {
 
       // synchronous functions
 
-      let filteredExperienceList = [];
+      let filteredExperienceList = this.parsedExperiencesList;
       // if user filled the modal
       if (message.statut === "typeMobility") {
-        filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
+        filteredExperienceList = this.doFilterTypeMobility(filteredExperienceList, message.typeMobility);
       }
       if (message.statut === "typeDepartment") {
         filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
@@ -87,6 +80,10 @@ export class PlatformComponent implements OnInit {
         if (message.currentYear) {
           filteredExperienceList = this.doFilterCurrentYear(filteredExperienceList);
         }
+      }
+
+      if (message.companies != []) {
+        filteredExperienceList = this.doFilterCompany(filteredExperienceList, message.companies);
       }
 
       // update filteredExp
@@ -187,11 +184,14 @@ export class PlatformComponent implements OnInit {
     return newList;
   }
 
-  doFilterCompany(list:any[], company:string): Experience[] {
+  doFilterCompany(list:any[], companies:string[]): Experience[] {
     let newList = [];
     for (let exp of list) {
-      if (exp.company.name === company) {
-        newList.push(exp);
+      for (let comp of companies) {
+        if (exp.company.name === comp) {
+          newList.push(exp);
+          break;
+        }
       }
     }
     return newList;

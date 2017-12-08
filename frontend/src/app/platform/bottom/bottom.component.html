@@ -11,27 +11,15 @@
     <!--x Monaco Telecom x Thales<br/>-->
     <!--x Amadeus x Sogeti-->
     <!--</div>-->
-    <select [(ngModel)]="myselectCompany" mbsc-select [mbsc-options]="settingsCompany">
+    <!--<div (click)="updateAboutUser()">-->
+    <select [(ngModel)]="aboutUser.companies" mbsc-select [mbsc-options]="settingsCompany">
+    <!--<select [(ngModel)]="aboutUser.companies" mbsc-select [mbsc-options]="settingsCompany" [onItemTap]="updateAboutUser()">-->
       <optgroup *ngFor="let companies of companiesListSort" [label]="companies[0][0]">
         <option *ngFor="let company of companies" [ngValue]="company" >{{company}}</option>
       </optgroup>
-
-      <!--<optgroup label="A">-->
-        <!--<option value="A0">Amadeus</option>-->
-        <!--<option value="A1" >Avisto</option>-->
-        <!--<option value="A2" >Air France</option>-->
-      <!--</optgroup>-->
-      <!--<optgroup label="N">-->
-        <!--<option value="N1">Nestlé</option>-->
-        <!--<option value="N2">NXP</option>-->
-      <!--</optgroup>-->
-      <!--<optgroup label="S">-->
-        <!--<option value="S1">Spontex</option>-->
-        <!--<option value="S2">Sogeti</option>-->
-        <!--<option value="S2">Supralog</option>-->
-      <!--</optgroup>-->
-      <!-- Showing partial data. Download full source. -->
     </select>
+    <!--</div>-->
+
     <!--</div>-->
 
   </div>
