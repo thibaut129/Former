@@ -4,6 +4,7 @@ import AboutUser from "../models/aboutUser.model";
 import {UserService} from "../services/user.service";
 import {CompanyService} from "../services/company.service";
 import {ExperienceService} from "../services/experience.service";
+import {MailService} from "../services/mail.service";
 import Company from "../models/company.model";
 import Experience from "../models/experience.model";
 @Component({
@@ -37,6 +38,7 @@ export class PlatformComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // this.data.currentMessage.subscribe(message => this.message = message)
     this.data.currentAboutUser.subscribe(message => this.aboutUser = message)
     this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)

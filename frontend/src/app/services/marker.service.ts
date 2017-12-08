@@ -1,4 +1,4 @@
-import Marker from '../models/marker.model';
+
 import { Observable } from 'rxjs/Rx';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Response} from '@angular/http';
@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 
 
 import 'rxjs/add/operator/map';
+import {Marker} from "../models/marker.model";
 
 @Injectable()
 export class MarkerService {

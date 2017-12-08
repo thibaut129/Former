@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {HttpClient} from "@angular/common/http";
+import User from "../models/user.model";
+import {Observable} from "rxjs/Rx";
+import Experience from "../models/experience.model";
 
 
 
@@ -16,11 +19,10 @@ export class MailService {
   ) { }
 
 
-  sendMail(){
-    console.log("Alicia la viet");
-    return this.http.get(`http://localhost:3000/api/mailer`)
-      .map((res:Response) => res.json());
+  sendMail(users : Experience[]): Observable<any>{
+    return this.http.post(`${this.markerUrl}`, users);
   }
+
 
 
 }

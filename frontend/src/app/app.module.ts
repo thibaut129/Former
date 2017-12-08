@@ -61,6 +61,7 @@ import { UserService } from './services/user.service';
 import { ExperienceService } from './services/experience.service';
 import { MarkerService } from './services/marker.service';
 import { CompanyService } from './services/company.service';
+import {MailService} from "./services/mail.service";
 
 
 mobiscroll.apiKey = 'f8d8cc78';
@@ -120,6 +121,7 @@ mobiscroll.apiKey = 'f8d8cc78';
     ExperienceService,
     MarkerService,
     CompanyService,
+    MailService,
     DataService,
     NgbActiveModal
   ],
