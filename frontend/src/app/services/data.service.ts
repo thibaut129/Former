@@ -14,6 +14,9 @@ export class DataService {
   private filteredExperiencesListSISource = new BehaviorSubject<Experience[]>([]);
   private filteredExperiencesListMAMSource = new BehaviorSubject<Experience[]>([]);
   private filteredExperiencesListElecSource = new BehaviorSubject<Experience[]>([]);
+
+  private filteredSelectedSource = new BehaviorSubject<Experience[]>([]);
+
   private cartSource = new BehaviorSubject<Experience[]>([]);
 
 
@@ -23,6 +26,8 @@ export class DataService {
   filteredExperiencesListSI = this.filteredExperiencesListSISource.asObservable();
   filteredExperiencesListMAM = this.filteredExperiencesListMAMSource.asObservable();
   filteredExperiencesListElec = this.filteredExperiencesListElecSource.asObservable();
+  filteredSelected = this.filteredSelectedSource.asObservable();
+
   cart = this.cartSource.asObservable();
 
   constructor() { }
@@ -45,6 +50,10 @@ export class DataService {
 
   changefilteredExperiencesListElec(message: Experience[]) {
     this.filteredExperiencesListElecSource.next(message)
+  }
+
+  changefilteredSelected(message: Experience[]) {
+    this.filteredSelectedSource.next(message)
   }
 
   // changefilteredExperiencesListBat(message: Experience[]) {
