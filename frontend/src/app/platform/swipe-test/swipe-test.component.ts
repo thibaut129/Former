@@ -42,6 +42,7 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
   filteredExperiencesListElec: Experience[];
 
   selectedExperience: Experience[];
+  cart : any [];
 
   constructor(
     private data: DataService,
@@ -53,16 +54,21 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
   ngOnInit() {
     this.data.filteredSelected.subscribe(message => this.filteredSelected = message)
     this.data.cart.subscribe(message => this.selectedExperience = message)
+    this.cart = [];
   }
 
   doSelect(exp) {
     exp.state = (exp.state === 'selected' ? 'unselected' : 'selected');
     if (exp.state === 'selected') { // add to cart
-      console.log(exp);
       this.selectedExperience.push(exp);
+      let experience = {id : exp._id, user : exp.user, company : exp.company.name, location : exp.location};
+      console.log(experience);
+      this.cart.push(experience);
     } else if (exp.state === 'unselected') { // remove to cart
       const index = this.selectedExperience.indexOf(exp);
       this.selectedExperience.splice(index, 1);
+      const indexOfUnselected = this.cart.findIndex(i => i.id === exp.id);
+      this.cart.splice(indexOfUnselected,1);
     }
 
 
@@ -70,7 +76,8 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
 
   sendMail(){
     console.log(this.selectedExperience);
-    this.mailService.sendMail(this.selectedExperience).subscribe();
+    const mailObject = {mail : "thibaut.terris@gmail.com", data : this.cart};
+    this.mailService.sendMail(mailObject).subscribe();
   }
 
 
