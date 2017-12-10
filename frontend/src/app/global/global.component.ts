@@ -180,7 +180,7 @@ export class GlobalComponent implements OnInit, AfterViewInit {
     let finish = 0;
 
     this.view.animate({
-      center: location,
+      center: location.city,
       duration: duration
     }, () => {
       finish++;
@@ -200,7 +200,7 @@ export class GlobalComponent implements OnInit, AfterViewInit {
         this.next(true, ++index);
     });
 
-    this.content.nativeElement.innerHTML = '<p>You clicked here:</p><code>' + location.toString() +
+    this.content.nativeElement.innerHTML = '<p>'+location.exp+'</p><code>' + location.city.toString() +
       '</code>';
     this.overlay.setPosition(location);
 
@@ -212,7 +212,7 @@ export class GlobalComponent implements OnInit, AfterViewInit {
     if (index < locations.length) {
       let delay = index === 0 ? 0 : 750;
       setTimeout(() => {
-        this.flyTo(locations[index].city, index);
+        this.flyTo(locations[index], index);
       }, delay);
     }
     return true;
@@ -231,7 +231,7 @@ export class GlobalComponent implements OnInit, AfterViewInit {
       let cityExp= {city : city, exp:expInformation};
       this.cityTable.push(cityExp);
     }
-    //this.next(true, 0)
+    this.next(true, 0)
 
 
   }
