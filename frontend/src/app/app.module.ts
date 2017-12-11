@@ -64,6 +64,10 @@ import { MarkerService } from './services/marker.service';
 import { CompanyService } from './services/company.service';
 import {MailService} from "./services/mail.service";
 
+/** 'Enum' in DB **/
+import {DepartmentEnumService} from "./services/departmentEnum.service";
+import {FilterEnumService} from "./services/filterEnum.service";
+
 
 mobiscroll.apiKey = 'f8d8cc78';
 
@@ -124,7 +128,9 @@ mobiscroll.apiKey = 'f8d8cc78';
     CompanyService,
     MailService,
     DataService,
-    NgbActiveModal
+    NgbActiveModal,
+    DepartmentEnumService,
+    FilterEnumService
   ],
   bootstrap: [AppComponent]
 })
