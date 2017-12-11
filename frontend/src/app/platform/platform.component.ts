@@ -81,8 +81,8 @@ export class PlatformComponent implements OnInit {
           filteredExperienceList = this.doFilterCurrentYear(filteredExperienceList);
         }
       }
-
-      if (message.companies != []) {
+      console.log(message.companies);
+      if (message.companies.length !=0) {
         filteredExperienceList = this.doFilterCompany(filteredExperienceList, message.companies);
       }
 

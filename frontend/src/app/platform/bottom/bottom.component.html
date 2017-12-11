@@ -12,7 +12,7 @@
     <!--x Amadeus x Sogeti-->
     <!--</div>-->
     <!--<div (click)="updateAboutUser()">-->
-    <select [(ngModel)]="aboutUser.companies" mbsc-select [mbsc-options]="settingsCompany">
+    <select  mbsc-select [mbsc-options]="settingsCompany">
     <!--<select [(ngModel)]="aboutUser.companies" mbsc-select [mbsc-options]="settingsCompany" [onItemTap]="updateAboutUser()">-->
       <optgroup *ngFor="let companies of companiesListSort" [label]="companies[0][0]">
         <option *ngFor="let company of companies" [ngValue]="company" >{{company}}</option>

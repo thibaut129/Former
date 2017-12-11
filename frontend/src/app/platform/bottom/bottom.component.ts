@@ -65,6 +65,7 @@ export class BottomComponent implements OnInit {
 
       });
 
+    console.log(this.aboutUser.companies)
   }
 
   // myselectCompany: string[] = [];
@@ -72,8 +73,17 @@ export class BottomComponent implements OnInit {
     // onItemTap: function (event, inst) {
     //   // console.log("item tap")
     //
-    //   this.data.changeAboutUser(this.aboutUser);
     // },
+    onChange: (event, inst) => {
+
+      let test = inst.getVal();
+      let companyArray: string []=[]
+      for(let company of test){
+        companyArray.push(company);
+      }
+      this.aboutUser.companies=companyArray;
+      this.data.changeAboutUser(this.aboutUser);
+    },
     theme: 'ios',
     display: 'inline',
     label: 'Name',
@@ -87,7 +97,6 @@ export class BottomComponent implements OnInit {
 
 
   updateAboutUser() {
-    this.data.changeAboutUser(this.aboutUser);
 
   }
 
