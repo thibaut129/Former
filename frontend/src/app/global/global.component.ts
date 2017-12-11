@@ -200,9 +200,10 @@ export class GlobalComponent implements OnInit, AfterViewInit {
         this.next(true, ++index);
     });
 
+
     this.content.nativeElement.innerHTML = '<p>'+location.exp+'</p><code>' + location.city.toString() +
       '</code>';
-    this.overlay.setPosition(location);
+    this.overlay.setPosition(location.city);
 
 
   }
@@ -231,9 +232,8 @@ export class GlobalComponent implements OnInit, AfterViewInit {
       let cityExp= {city : city, exp:expInformation};
       this.cityTable.push(cityExp);
     }
+
     this.next(true, 0)
-
-
   }
 
   removeMarker() {
@@ -252,7 +252,7 @@ export class GlobalComponent implements OnInit, AfterViewInit {
 
   addMarkerList() {
 
-    for (let exp of this.filteredExperiencesListElec) {
+    for (let exp of this.filteredExperiencesList) {
 
       this.addMarker(exp);
     }
@@ -275,7 +275,7 @@ export class GlobalComponent implements OnInit, AfterViewInit {
         scale: 0.5,
         anchor: [0.5, 1],
         anchorOrigin: 'top-left',
-        src: '../../assets/marker-si.png'
+        src: '../../assets/marker-'+(<any>exp).user.department.toLowerCase()+'.png'
       }))
     });
 
