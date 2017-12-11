@@ -25,6 +25,7 @@ exports.createExperience = async function(experience){
         coords: experience.coords,
         companyID: experience.companyID,
         userID: experience.userID,
+        filters: experience.filters,
         created: new Date()
     })
 

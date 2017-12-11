@@ -9,6 +9,7 @@ class Experience {
   };
   companyID: string;
   userID: string;
+  filters: string[];
   created: Date;
 
   constructor(
@@ -22,6 +23,7 @@ class Experience {
       }
     this.companyID = ""
     this.userID = ""
+    this.filters = []
     this.created = new Date()
   }
 }
