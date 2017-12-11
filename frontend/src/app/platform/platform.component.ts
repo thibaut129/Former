@@ -21,9 +21,6 @@ export class PlatformComponent implements OnInit {
   companiesList: Company[];
   experiencesList: Experience[];
   parsedExperiencesList: Experience[];
-  filteredExperiencesListSI: Experience[];
-  filteredExperiencesListMAM: Experience[];
-  filteredExperiencesListElec: Experience[];
 
   constructor(
     private data: DataService,
@@ -67,13 +64,13 @@ export class PlatformComponent implements OnInit {
         filteredExperienceList = this.doFilterTypeMobility(filteredExperienceList, message.typeMobility);
       }
       if (message.statut === "typeDepartment") {
-        filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
+        filteredExperienceList = this.doFilterTypeMobility(filteredExperienceList, message.typeMobility);
         filteredExperienceList = this.doFilterDepartment(filteredExperienceList, message.department);
       }
 
       if (message.statut === "done") {
         // "Emploi" or "Echange
-        filteredExperienceList = this.doFilterTypeMobility(this.parsedExperiencesList, message.typeMobility);
+        filteredExperienceList = this.doFilterTypeMobility(filteredExperienceList, message.typeMobility);
         // "SI", "MAM", "ELEC", ...
         filteredExperienceList = this.doFilterDepartment(filteredExperienceList, message.department);
         // "2017" or all
@@ -127,16 +124,7 @@ export class PlatformComponent implements OnInit {
           }
         }
 
-        // this.data.changefilteredExperiencesList(this.filteredExperiencesList);
         this.data.changefilteredExperiencesList(list);
-
-        //todo: trouver un autre moyen
-        // if (department == "SI")
-        //   this.data.changefilteredExperiencesListSI(this.filteredExperiencesListSI);
-        // else if (department == "MAM")
-        //   this.data.changefilteredExperiencesListMAM(this.filteredExperiencesListMAM);
-        // else if (department == "ELEC")
-        //   this.data.changefilteredExperiencesListElec(this.filteredExperiencesListElec);
       })
   }
 

@@ -77,24 +77,28 @@ export class ModalContentComponent implements OnInit {
 
     this.idModal = 0;
 
-    this.keywordsList = ["childlike", "worried",
-      "arch",
-      "hellish",
-      "ask",
-      "dazzling",
-      "tacky",
-      "apparel",
-      "quill",
-      "wiggly",
-      "food",
-      "field",
-      "delightful",
-      "roasted",
-      "class",
-      "walk",
-      "current",
-      "pointless",
-      "work"]
+    this.keywordsList = [
+    "Artificial Intelligence",
+    "Synthetic Biology",
+    "Computer Architecture",
+    "Computer Graphics, Vision",
+    "Animation",
+    "Game Science",
+    "Computing for Development",
+    "Data Science",
+    "Data Management",
+    "Data Visualization",
+    "Human Computer Interaction",
+    "Machine Learning",
+    "Molecular Information Systems",
+    "Natural Language Processing",
+    "Software Engineering",
+    "Robotics",
+    "Security and Privacy",
+    "Systems and Networking",
+    "Theory of Computation",
+    "Ubiquitous Computing",
+    "Wireless and Sensor Systems"];
 
     this.keywordsSelected = []
   }

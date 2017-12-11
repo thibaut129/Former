@@ -34,10 +34,10 @@
             </aol-geometry-point>
             <aol-style>
               <aol-style-icon
-                [src]="'assets/marker-.png'"
+                [src]="'assets/marker-'+m.experiences[0].user.department.toLowerCase()+'.png'"
                 [anchor]="[0.5, 1]"
                 [anchorXUnits]="'fraction'" [anchorYUnits]="'fraction'"
-                [scale]="0.6"
+                [scale]="0.4 + 0.1*m.experiences.length"
                 [anchorOrigin]="'top-left'">
               </aol-style-icon>
             </aol-style>

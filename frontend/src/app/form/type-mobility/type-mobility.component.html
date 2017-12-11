@@ -5,9 +5,8 @@
 <h1>Renseigner un </h1>
 <br/><br/>
 <div class="text-center" [class.toggled]="nextPage">
-  <!--<a class="btn btn-default" href="form/2">Stage / Emploi</a>-->
-  <a class="btn btn-default" (click)="setStatus('Emploi')">Stage / Emploi</a>
+  <button class="btn btn-default" (click)="setStatus('Emploi')">Stage / Emploi</button>
   <br/>
-  <!--<a class="btn btn-default" href="form/2">Semestre à l'étranger</a>-->
-  <a class="btn btn-default" (click)="setStatus('Echange')">Semestre à l'étranger</a>
+  <button class="btn btn-default" disabled>Semestre à l'étranger</button>
+  <!--<button class="btn btn-default" (click)="setStatus('Echange')">Semestre à l'étranger</button>-->
 </div>

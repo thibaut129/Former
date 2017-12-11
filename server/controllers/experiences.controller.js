@@ -26,6 +26,7 @@ exports.createExperience = async function(req, res, next){
         coords: req.body.coords,
         companyID: req.body.companyID,
         userID: req.body.userID,
+        filters: req.body.filters,
         created: req.body.date,
     }
 

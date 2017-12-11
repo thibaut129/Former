@@ -4,6 +4,10 @@ import {UserService} from "../services/user.service";
 import ToDo from "../models/todo.model";
 import User from "../models/user.model";
 import {MbscScrollerOptions} from "@mobiscroll/angular-trial/dist/src/js/core/core";
+import {DepartmentEnum} from "../models/departmentEnum.model";
+import {DepartmentEnumService} from "../services/departmentEnum.service";
+import {FilterEnumService} from "../services/filterEnum.service";
+import {FilterEnum} from "../models/filterEnum.model";
 
 @Component({
   selector: 'app-page-not-found',
@@ -14,7 +18,9 @@ export class PageNotFoundComponent implements OnInit {
 
   constructor(
     // private todoService: TodoService,
-    private userService: UserService
+    private userService: UserService,
+    // private departmentEnumService: DepartmentEnumService
+    private filterEnumService: FilterEnumService
   ) { }
 
   // public newTodo: ToDo = new ToDo()
@@ -23,6 +29,7 @@ export class PageNotFoundComponent implements OnInit {
   // editTodos: ToDo[] = [];
 
   public newUser: User = new User()
+  // public newDpt: DepartmentEnum = new DepartmentEnum()
 
   usersList: User[];
   editUsers: User[] = [];
@@ -115,6 +122,44 @@ export class PageNotFoundComponent implements OnInit {
         this.newUser = new User()
       })
   }
+
+  // createTag() {
+  //   let keywordsList = [
+  //     "Artificial Intelligence",
+  //     "Synthetic Biology",
+  //     "Computer Architecture",
+  //     "Computer Graphics, Vision",
+  //     "Animation",
+  //     "Game Science",
+  //     "Computing for Development",
+  //     "Data Science",
+  //     "Data Management",
+  //     "Data Visualization",
+  //     "Human Computer Interaction",
+  //     "Machine Learning",
+  //     "Molecular Information Systems",
+  //     "Natural Language Processing",
+  //     "Software Engineering",
+  //     "Robotics",
+  //     "Security and Privacy",
+  //     "Systems and Networking",
+  //     "Theory of Computation",
+  //     "Ubiquitous Computing",
+  //     "Wireless and Sensor Systems"];
+  //
+  //   for (let k of keywordsList) {
+  //     this.filterEnumService.createFilterEnum(new FilterEnum(k))
+  //       .subscribe((res) => {
+  //       })
+  //   }
+  // }
+
+  // createDpt() {
+  //   this.departmentEnumService.createDepartmentEnum(this.newDpt)
+  //     .subscribe((res) => {
+  //       this.newDpt = new DepartmentEnum()
+  //     })
+  // }
 
   editUser(user: User) {
     console.log(user)
