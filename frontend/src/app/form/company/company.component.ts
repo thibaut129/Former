@@ -2,13 +2,26 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CompanyService} from "../../services/company.service";
 import Company from "../../models/company.model";
 
+import {trigger, state, style, animate, transition} from '@angular/animations';
+
 import {FilterPipe, SortByPipe} from '../pipes'
 
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
-  styleUrls: ['./company.component.scss']
-})
+  styleUrls: ['./company.component.scss'],
+  animations: [
+    trigger('newCompanyState', [
+      state('show', style({
+        opacity: 1
+      })),
+      state('hide',   style({
+        opacity: 0
+      })),
+      transition('show => hide', animate('600ms ease-out')),
+      transition('hide => show', animate('1000ms ease-in'))
+    ])
+  ]})
 export class CompanyComponent implements OnInit {
   newCompanyView: boolean;
   // @Output() newCompanyViewChange = new EventEmitter<boolean>();
@@ -81,4 +94,7 @@ export class CompanyComponent implements OnInit {
     }
   }
 
+  get stateNewCompany() {
+    return this.newCompany.name ? 'show' : 'hide'
+  }
 }

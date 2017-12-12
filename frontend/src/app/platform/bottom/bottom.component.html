@@ -24,89 +24,7 @@
 
   </div>
 
-  <div class="col-md-2">
-
-    <!--<button class="btn btn-warning" (click)="create()">Generer Marker</button>-->
-    <!--<p class="text-center">-->
-    <!--Toutes les années <br/>-->
-    <!--2017 <br/>-->
-    <!--2016 <br/>-->
-    <!--2015 <br/>-->
-    <!--</p>-->
-  </div>
-  <!--<div class="col-md-2">-->
-    <!--<select [(ngModel)]="myselectDepartment" mbsc-select [mbsc-options]="settingsDepartment" >-->
-      <!--<option value="BAT">BAT</option>-->
-      <!--<option value="ELEC">ELEC</option>-->
-      <!--<option value="GB">GB</option>-->
-      <!--<option value="GE">GE</option>-->
-      <!--<option value="MAM">MAM</option>-->
-      <!--<option value="SI">SI</option>-->
-    <!--</select>-->
-
-    <!--<form>-->
-      <!--<div class="form-group">-->
-        <!--<select multiple class="form-control">-->
-          <!--<option>BAT</option>-->
-          <!--<option>ELEC</option>-->
-          <!--<option>GB</option>-->
-          <!--<option>GE</option>-->
-          <!--<option>MAM</option>-->
-          <!--<option>SI</option>-->
-        <!--</select>-->
-      <!--</div>-->
-    <!--</form>-->
-  <!--</div>-->
-  <div class="col-md-4">
-    <div class="card" style="height:15vh">
-    <div class="card-block">
-      <!--<span *ngFor="let key of aboutUser.filters" class="badge badge-primary">{{key}}</span>-->
-      <div *ngFor="let key of aboutUser.filters">
-        <span class="badge badge-primary" (click)="removeKeyword(key)">{{key}}</span>
-      </div>
-      <!--<span class="badge badge-default">Default</span>-->
-      <!--<span class="badge badge-default">Default</span>-->
-      <!--<span class="badge badge-default">Default</span>-->
-      <!--<span class="badge badge-default">Default</span>-->
-      <!--<span class="badge badge-default">Default</span>-->
-      <!--<span class="badge badge-default">Default</span>-->
-      <!--<span class="badge badge-primary">Primary</span>-->
-      <!--<span class="badge badge-success">Success</span>-->
-      <!--<span class="badge badge-success">Success</span>-->
-      <!--<span class="badge badge-success">Success</span>-->
-      <!--<span class="badge badge-success">Success</span>-->
-      <!--<span class="badge badge-success">Success</span>-->
-      <!--<span class="badge badge-info">Info</span>-->
-      <!--<span class="badge badge-info">Info</span>-->
-      <!--<span class="badge badge-info">Info</span>-->
-      <!--<span class="badge badge-success">Success</span>-->
-      <!--<span class="badge badge-info">Info</span>-->
-      <!--<span class="badge badge-info">Info</span>-->
-      <!--<span class="badge badge-info">Info</span>-->
-      <!--<span class="badge badge-info">Info</span>-->
-      <!--<span class="badge badge-warning">Warning</span>-->
-      <!--<span class="badge badge-warning">Warning</span>-->
-      <!--<span class="badge badge-warning">Warning</span>-->
-      <!--<span class="badge badge-danger">Danger</span>-->
-      <!--<span class="badge badge-danger">Danger</span>-->
-      <!--<span class="badge badge-danger">Danger</span>-->
-      <!--<span class="badge badge-danger">Danger</span>-->
-      <!--<span class="badge badge-danger">Danger</span>-->
-      <span class="badge badge-info" [hidden]="!aboutUser.currentYear">2017</span>
-
-    </div>
-    </div>
-
-    <!--<form>-->
-      <!--<div class="form-group">-->
-        <!--<select multiple class="form-control">-->
-          <!--<option>AL</option>-->
-          <!--<option>CASPAR</option>-->
-          <!--<option>IAM</option>-->
-          <!--<option>IHM</option>-->
-        <!--</select>-->
-      <!--</div>-->
-    <!--</form>-->
+  <div class="col-md-1">
   </div>
 
   <div class="col-md-2">
@@ -118,28 +36,28 @@
       <button class="btn btn-default shadow" (click)="changeBoolCurrent(false)">Année courante</button>
       <button class="btn btn-primary shadow" (click)="changeBoolCurrent(false)"><i class="fa fa-check-circle-o"></i></button>
     </div>
-      <!-- Rounded switch -->
-    <!--Année Courante-->
 
-    <!--<label class="switch">-->
-      <!--<input type="checkbox">-->
-      <!--<span class="slider round"></span>-->
-    <!--</label>-->
+  </div>
 
-    <!--<mbsc-form [options]="settingsCurrent">-->
-      <!--<div class="mbsc-form-group">-->
-       <!--<mbsc-switch [(ngModel)]="currentYear"></mbsc-switch>-->
-      <!--</div>-->
-    <!--</mbsc-form>-->
+  <div class="col-md-5">
+    <div class="card" style="height:20vh">
+      <div class="card-block">
+        <!--<span *ngFor="let key of aboutUser.filters" class="badge badge-primary">{{key}}</span>-->
+        <span *ngFor="let key of aboutUser.filters" class="badge badge-primary" (click)="removeKeyword(key)">{{key}}</span>
+        <span class="badge badge-info" [hidden]="!aboutUser.currentYear">2017</span>
+
+      </div>
+    </div>
 
     <!--<form>-->
-      <!--<div class="form-group">-->
-        <!--<select multiple class="form-control">-->
-          <!--<option>Stage</option>-->
-          <!--<option>Emploi</option>-->
-          <!--<option>Echange</option>-->
-        <!--</select>-->
-      <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<select multiple class="form-control">-->
+    <!--<option>AL</option>-->
+    <!--<option>CASPAR</option>-->
+    <!--<option>IAM</option>-->
+    <!--<option>IHM</option>-->
+    <!--</select>-->
+    <!--</div>-->
     <!--</form>-->
   </div>
 </div>

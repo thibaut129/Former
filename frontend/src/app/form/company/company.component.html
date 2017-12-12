@@ -22,7 +22,7 @@
 
       <!--<div class="col-md-4" *ngFor="let company of companiesList" (click)="getCompany(company)">-->
       <div class="col-md-4" *ngFor="let company of companiesList | filter : newCompany.name | slice:0:6; let i=index" (click)="getCompany(company)">
-        <img src="http://via.placeholder.com/150x100" class="img-responsive rounded"/><br/>
+        <img [src]="'../../../assets/'+company.type.toLowerCase()+'.png'" class="img-fluid rounded"/><br/>
         {{company.name}} - {{company.type}}
       </div>
 
@@ -43,11 +43,15 @@
     <div class="">
       <a class="btn btn-default" (click)="setStatus(false)"><i class="fa fa-chevron-left"></i></a>
     </div>
-    <div class="row text-center" [hidden]="newCompany.name == ''">
-      <div class="col-md-4" (click)="createCompany('Start Up')"><img src="http://via.placeholder.com/150x100?text=StartUp" class="img-responsive rounded"/></div>
-      <div class="col-md-4" (click)="createCompany('PME')"><img src="http://via.placeholder.com/150x100?text=PME" class="img-responsive rounded"/></div>
-      <div class="col-md-4" (click)="createCompany('Labo')"><img src="http://via.placeholder.com/150x100?text=Labo" class="img-responsive rounded"/></div>
-      <div class="col-md-4" (click)="createCompany('Grande Entreprise')"><img src="http://via.placeholder.com/150x100?text=Grande Entr" class="img-responsive rounded"/></div>
+    <div class="row text-center" [@newCompanyState]="stateNewCompany">
+      <div class="col-md-4" (click)="createCompany('Start Up')"><img src="../../../assets/startup.png" class="img-fluid rounded"/> Start Up</div>
+      <div class="col-md-4" (click)="createCompany('PME')"><img src="../../../assets/pme.png" class="img-fluid rounded"/> PME</div>
+      <div class="col-md-4" (click)="createCompany('Labo')"><img src="../../../assets/labo.png" class="img-fluid rounded"/> Labo</div>
+      <div class="col-md-4" (click)="createCompany('Grande Entreprise')"><img src="../../../assets/grande%20entreprise.png" class="img-fluid rounded"/> Grande Entreprise</div>
+      <!--<div class="col-md-4" (click)="createCompany('Start Up')"><img src="http://via.placeholder.com/150x100?text=StartUp" class="img-fluid rounded"/></div>-->
+      <!--<div class="col-md-4" (click)="createCompany('PME')"><img src="http://via.placeholder.com/150x100?text=PME" class="img-fluid rounded"/></div>-->
+      <!--<div class="col-md-4" (click)="createCompany('Labo')"><img src="http://via.placeholder.com/150x100?text=Labo" class="img-fluid rounded"/></div>-->
+      <!--<div class="col-md-4" (click)="createCompany('Grande Entreprise')"><img src="http://via.placeholder.com/150x100?text=Grande Entr" class="img-fluid rounded"/></div>-->
     </div>
   </div>
 </div>

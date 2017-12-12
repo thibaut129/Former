@@ -37,10 +37,6 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
   shouldDoIt = true; // initialize it to true for the first run
   filteredSelected: Experience[];
 
-  // filteredExperiencesListSI: Experience[];
-  // filteredExperiencesListMAM: Experience[];
-  // filteredExperiencesListElec: Experience[];
-
   selectedExperience: Experience[];
   cart : any [];
 

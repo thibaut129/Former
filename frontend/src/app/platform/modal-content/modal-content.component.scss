@@ -25,6 +25,10 @@ $to: rgb(4, 141, 254);
   color: white;
 }
 
+.badge-default {
+  background-color: #efefef;
+}
+
 img {
     //background-color: white;
   @include gradient($to, $from);

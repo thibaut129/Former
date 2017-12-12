@@ -1,37 +1,40 @@
 <div class="top">
-
 </div>
 
 <div class="content">
   <div class="text-center">
     <ul>
-      <li mwlDraggable dropData="">
-        <img height="100" width="100" src="../../../assets/all-markers.png" class="img-fluid"/>
-        Tous
-        <!--<i class="fa fa-map-marker"></i>-->
-        <!--<i class="fa fa-2x fa-map-marker"></i>-->
-        <!--<i class="fa fa-3x fa-map-marker"></i>-->
-        <!--<i class="fa fa-2x fa-map-marker"></i>-->
-        <!--<i class="fa fa-map-marker"></i>-->
+      <!--<li (click)="changeModeMap(true)">-->
+        <!--<img height="55" width="55" src="../../../assets/map.png" class="img-fluid"/>-->
+      <!--</li>-->
+      <!--<li (click)="changeModeMap(false)">-->
+        <!--<img height="58" width="58" src="../../../assets/team.png" class="img-fluid"/>-->
+      <!--</li>-->
+
+      <li (click)="changeModeMap()">
+        <img [hidden]="mapMode" [@popOverState]="stateMapMode" height="58" width="58" src="../../../assets/back-arrow.png" class="img-fluid"/>
+        <img [hidden]="!mapMode" [@popOverState]="stateUnMapMode" height="58" width="58" src="../../../assets/team.png" class="img-fluid"/>
       </li>
-      <li (click)="openModal()"
-        [class.dropOverActive]="dropOverActive"
-          mwlDroppable
-          (dragEnter)="dropOverActive = true"
-          (dragLeave)="dropOverActive = false"
-          (drop)="onDrop($event)">
-        <i [hidden]="droppedData || dropOverActive" class="fa fa-3x fa-envelope-o"></i>
-        <i [hidden]="!dropOverActive" class="fa fa-3x fa-envelope-open-o"></i>
-        <i [hidden]="!droppedData" class="fa fa-3x fa-check-circle"></i>
+
+      <li>
+        <img [hidden]="cart.length != 0" [@mailState]="" height="58" width="58" src="../../../assets/e-mail-envelope.png" class="img-fluid"/>
+        <img [hidden]="cart.length == 0" [@mailState]="" height="58" width="58" src="../../../assets/message.png" class="img-fluid"/>
       </li>
+
+      <!--<li (click)="openModal()"-->
+        <!--[class.dropOverActive]="dropOverActive"-->
+          <!--mwlDroppable-->
+          <!--(dragEnter)="dropOverActive = true"-->
+          <!--(dragLeave)="dropOverActive = false"-->
+          <!--(drop)="onDrop($event)">-->
+        <!--<i [hidden]="droppedData || dropOverActive" class="fa fa-3x fa-envelope-o"></i>-->
+        <!--<i [hidden]="!dropOverActive" class="fa fa-3x fa-envelope-open-o"></i>-->
+        <!--<i [hidden]="!droppedData" class="fa fa-3x fa-check-circle"></i>-->
+      <!--</li>-->
     </ul>
   </div>
 </div>
 
 <div class="bottom">
   <app-modal></app-modal>
-  <!--<div class="text-center">-->
-    <!--<img src="./assets/former-logo.jpg" height="100" width="100">-->
-
-  <!--</div>-->
 </div>

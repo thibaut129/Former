@@ -13,6 +13,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
+img {
+  //height: 50%;
+  width: 20vw;
+}
 .swiper-container {
   //transform: scale(0.9);
 
@@ -39,7 +44,7 @@ body {
 }
 
 .swiper-pagination{
-  position: fixed;
+  //position: fixed;
 }
 
 .swiper-slide .icon {

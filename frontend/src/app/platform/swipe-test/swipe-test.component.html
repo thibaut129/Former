@@ -1,30 +1,33 @@
-<div class="row"><div class="col-12">
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div  (click)="doSelect(exp)" [@selectState]="exp.state" *ngFor="let exp of filteredSelected; let last = last" class="swiper-slide">
-        <i [hidden]="exp.state != 'selected'" class="icon fa fa-2x fa-check-circle"></i>
-        <div class="card top-to-bottom shadow">
-          <img class="card-img-top img-responsive" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
-          <div class="card-block">
-            <h4 class="card-title">{{exp.company.name}}</h4>
-            <div class="meta">
-              <a href="#">{{exp.company.type}}</a>
+<div class="row"><br/></div>
+<div class="row">
+  <div class="col-12">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div  (click)="doSelect(exp)" [@selectState]="exp.state" *ngFor="let exp of filteredSelected; let last = last" class="swiper-slide">
+            <i [hidden]="exp.state != 'selected'" class="icon fa fa-2x fa-check-circle"></i>
+            <div class="card top-to-bottom shadow">
+              <!--<img class="card-img-top img-responsive" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">-->
+              <img class="card-img-top img-fluid" [src]="'../../../assets/'+exp.company.type.toLowerCase()+'.png'">
+              <div class="card-block">
+                <h4 class="card-title">{{exp.company.name}}</h4>
+                <div class="meta">
+                  <a href="#">{{exp.company.type}}</a>
+                </div>
+                <div class="card-text">
+                  {{exp.user.firstname}} {{exp.user.lastname}}
+                </div>
+              </div>
+              <div class="card-footer">
+                <span class="float-right">{{exp.year}}</span>
+                <span><i class=""></i><b>{{exp.user.department}}</b> {{exp.user.option}}</span>
+              </div>
             </div>
-            <div class="card-text">
-              {{exp.user.firstname}} {{exp.user.lastname}}
-            </div>
+            {{last ? callFunction(exp) : ''}}
           </div>
-          <div class="card-footer">
-            <span class="float-right">{{exp.year}}</span>
-            <span><i class=""></i><b>{{exp.user.department}}</b> {{exp.user.option}}</span>
-          </div>
-        </div>
-        {{last ? callFunction(exp) : ''}}
       </div>
+      <!-- Add Pagination -->
+      <button type="button" class="btn btn-primary" (click)="sendMail()">Send Mail</button>
+      <div class="swiper-pagination"></div>
+    </div>
   </div>
-  <!-- Add Pagination -->
-  <button type="button" class="btn btn-primary" (click)="sendMail()">Send Mail</button>
-  <div class="swiper-pagination"></div>
-</div>
-</div>
 </div>

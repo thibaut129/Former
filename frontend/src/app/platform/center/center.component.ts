@@ -20,9 +20,6 @@ export class CenterComponent implements OnInit{
   aboutUser: AboutUser;
 
   filteredExperiencesList: Experience[];
-  // filteredExperiencesListSI: Experience[];
-  // filteredExperiencesListMAM: Experience[];
-  // filteredExperiencesListElec: Experience[];
 
   noMarker : boolean;
   listMarker : Marker [];
@@ -37,7 +34,7 @@ export class CenterComponent implements OnInit{
   constructor(
     private data: DataService
   ) {
-    this.mapMode = true;
+    // this.mapMode = true;
     this.zoom = 5;
     this.xMap = 5.795122;
     this.yMap = 45.210225;
@@ -48,22 +45,14 @@ export class CenterComponent implements OnInit{
       this.changeZoomMap()
 
     })
-    // this.data.filteredExperiencesList.subscribe(message => this.filteredExperiencesList = message)
-    // this.data.filteredExperiencesListSI
-    //   .subscribe(message => {
-    //       this.filteredExperiencesListSI = message
-    //       this.listMarker.push(new Marker("Location123456", {longitude:2.333333, latitude:48.866667}, this.filteredExperiencesListSI));
-    //   })
-    // this.data.filteredExperiencesListMAM.subscribe(message => {
-    //   this.filteredExperiencesListMAM = message;
-    //   this.listMarker.push(new Marker("Locationazerty", {longitude:7.261953, latitude:43.710173}, this.filteredExperiencesListMAM));
-    // })
 
     this.noMarker = true;
 
   }
 
   ngOnInit() {
+    this.data.mapMode.subscribe(message => this.mapMode = message)
+
     this.data.filteredExperiencesList.subscribe(message =>{
 
       console.log('update filteredExperiencesList');
@@ -108,27 +97,11 @@ export class CenterComponent implements OnInit{
     return false;
   }
 
-  changeZoomMap(){
-    this.xMap += 0.000001;
-    this.yMap += 0.000001;
-    if (this.aboutUser.typeResearch == "Etranger") {
-      this.zoom = 3;
-      this.xMap = -20;
-      this.yMap = 45;
-    } else if (this.aboutUser.typeResearch == "France") {
-      this.xMap = 2.5;
-      this.yMap = 47;
-      this.zoom = 6;
-
-    } else if (this.aboutUser.typeResearch == "Local") {
-      this.zoom = 7;
-      this.xMap = 5.795122;
-      this.yMap = 45.210225;
-    }
-  }
 
   changeModeMap() {
     this.mapMode = !this.mapMode;
+
+    this.data.changeMapMode(this.mapMode);
     this.data.changefilteredSelected(this.filteredExperiencesList);
   }
 
@@ -148,9 +121,31 @@ export class CenterComponent implements OnInit{
         }
       }
       this.mapMode = false;
+      this.data.changeMapMode(this.mapMode);
+
 
     }
 
+  }
+
+
+  changeZoomMap(){
+    this.xMap += 0.000001;
+    this.yMap += 0.000001;
+    if (this.aboutUser.typeResearch == "Etranger") {
+      this.zoom = 3;
+      this.xMap = -20;
+      this.yMap = 45;
+    } else if (this.aboutUser.typeResearch == "France") {
+      this.xMap = 2.5;
+      this.yMap = 47;
+      this.zoom = 6;
+
+    } else if (this.aboutUser.typeResearch == "Local") {
+      this.zoom = 7;
+      this.xMap = 5.795122;
+      this.yMap = 45.210225;
+    }
   }
 
 }
