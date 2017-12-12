@@ -27,27 +27,34 @@
         <mbsc-form>
           <div class="mbsc-form-group">
             <ul mbsc-treelist [(ngModel)]="inlineList" [mbsc-options]="listInlineSettings" [ngModelOptions]="{standalone: true}">
-              <li data-val="SI">SI
-                <ul>
-                  <li data-val="IHM">IHM</li>
-                  <li data-val="AL">AL</li>
-                  <li data-val="WEB">WEB</li>
+              <li *ngFor="let dEnum of departmentsEnumList">{{dEnum.name}}
+                <ul *ngFor="let o of dEnum.option">
+                  {{o}}
+                  <!--<li>{{o}}</li>-->
                 </ul>
               </li>
-              <li data-val="Elec">ELEC
-                <ul>
-                  <li data-val="1">1</li>
-                  <li data-val="2">2</li>
-                  <li data-val="3">3</li>
-                </ul>
-              </li>
-              <li data-val="MAM">MAM
-                <ul>
-                  <li data-val="IMAFA">IMAFA</li>
-                  <li data-val="INUM">INUM</li>
-                  <li data-val="SD">SD</li>
-                </ul>
-              </li>
+
+              <!--<li data-val="SI">SI-->
+                <!--<ul>-->
+                  <!--<li data-val="IHM">IHM</li>-->
+                  <!--<li data-val="AL">AL</li>-->
+                  <!--<li data-val="WEB">WEB</li>-->
+                <!--</ul>-->
+              <!--</li>-->
+              <!--<li data-val="Elec">ELEC-->
+                <!--<ul>-->
+                  <!--<li data-val="1">1</li>-->
+                  <!--<li data-val="2">2</li>-->
+                  <!--<li data-val="3">3</li>-->
+                <!--</ul>-->
+              <!--</li>-->
+              <!--<li data-val="MAM">MAM-->
+                <!--<ul>-->
+                  <!--<li data-val="IMAFA">IMAFA</li>-->
+                  <!--<li data-val="INUM">INUM</li>-->
+                  <!--<li data-val="SD">SD</li>-->
+                <!--</ul>-->
+              <!--</li>-->
             </ul>
           </div>
         </mbsc-form>

@@ -3,24 +3,6 @@
 <a class="btn btn-primary" href="/global">global</a>
 <div class="row">
 
-  <select [(ngModel)]="myselectCompany" mbsc-select [mbsc-options]="settingsCompany" >
-    <optgroup label="A">
-      <option value="0">Adaline Shiver</option>
-      <option value="1" >Adella Cornell</option>
-      <option value="2" >Adolph Scriber</option>
-      <option value="3" disabled>Adrianna Merritt</option>
-      <option value="4" disabled>Adrianne Marotta</option>
-    </optgroup>
-    <optgroup label="B">
-      <option value="78">Barbara Mackay</option>
-      <option value="79">Barbera Phu</option>
-      <option value="80">Barbie Kaczorowski</option>
-      <option value="81">Barney Flurry</option>
-      <option value="82">Beatriz Remer</option>
-    </optgroup>
-    <!-- Showing partial data. Download full source. -->
-  </select>
-
   <mbsc-form>
     <div class="mbsc-form-group">
       <div class="mbsc-form-group-title">Embedded treelist scroller</div>
@@ -71,15 +53,15 @@
 
           <ng-container *ngIf="!editUsers.includes(user); else editTD">
             <td>{{user._id}}
-              <button class="btn btn-success" (click)="doneUser(user)">
-                <i  class="fa fa-check"></i>
-              </button>
-              <button class="btn btn-primary" (click)="editUser(user)">
-                <i  class="fa fa-pencil"></i>
-              </button>
-              <button class="btn btn-danger" (click)="deleteUser(user)">
-                <i  class="fa fa-trash"></i>
-              </button>
+              <!--<button class="btn btn-success" (click)="doneUser(user)">-->
+                <!--<i  class="fa fa-check"></i>-->
+              <!--</button>-->
+              <!--<button class="btn btn-primary" (click)="editUser(user)">-->
+                <!--<i  class="fa fa-pencil"></i>-->
+              <!--</button>-->
+              <!--<button class="btn btn-danger" (click)="deleteUser(user)">-->
+                <!--<i  class="fa fa-trash"></i>-->
+              <!--</button>-->
             </td>
             <td>{{user.firstname}}</td>
             <td>{{user.lastname}}</td>
@@ -101,86 +83,21 @@
 
 
           <td class="o">
-            <button class="btn btn-success" (click)="doneUser(user)">
-              <i  class="fa fa-check"></i>
-            </button>
-            <button class="btn btn-primary" (click)="editUser(user)">
-              <i  class="fa fa-pencil"></i>
-            </button>
-            <button class="btn btn-danger" (click)="deleteUser(user)">
-              <i  class="fa fa-trash"></i>
-            </button>
+            <!--<button class="btn btn-success" (click)="doneUser(user)">-->
+              <!--<i  class="fa fa-check"></i>-->
+            <!--</button>-->
+            <!--<button class="btn btn-primary" (click)="editUser(user)">-->
+              <!--<i  class="fa fa-pencil"></i>-->
+            <!--</button>-->
+            <!--<button class="btn btn-danger" (click)="deleteUser(user)">-->
+              <!--<i  class="fa fa-trash"></i>-->
+            <!--</button>-->
           </td>
 
         </tr>
         </tbody>
       </table>
     </div>
-
-    <!--    <div class="todos" *ngIf="todosList">
-          <table class="table">
-            <thead class="h">
-            <tr class="h">
-              <th class="h">Title</th>
-              <th class="h">Description</th>
-              <th class="h">Date</th>
-              <th class="h">Status</th>
-              <th class="h">Options</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="todo" (dblclick)="editTodo(todo)" *ngFor="let todo of todosList">
-
-              <ng-container *ngIf="!editTodos.includes(todo); else editTD">
-                <td>{{todo.title}}</td>
-                <td>{{todo.description}}</td>
-                <td>{{todo.date | date}}</td>
-                <td>{{todo.status}}</td>
-              </ng-container>
-
-              <ng-template #editTD>
-                <td><input type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" class="form-control"></td>
-                <td><input type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description"
-                           class="form-control"></td>
-                <td>{{todo.date | date}}</td>
-                <td>
-                  <input type="text" name="status" id="status" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.status" placeholder="Status" class="form-control">
-                </td>
-              </ng-template>
-
-              <td class="o">
-                <button class="btn btn-success" (click)="doneTodo(todo)">
-                  <i  class="fa fa-check"></i>
-                </button>
-                <button class="btn btn-primary" (click)="editTodo(todo)">
-                  <i  class="fa fa-pencil"></i>
-                </button>
-                <button class="btn btn-danger" (click)="deleteTodo(todo)">
-                  <i  class="fa fa-trash"></i>
-                </button>
-              </td>
-
-            </tr>
-            </tbody>
-          </table>
-        </div>
-
-
-    <form>
-      <div class="form-row">
-
-        <div class="col-md-5">
-          <input type="text" name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title" class="form-control">
-        </div>
-        <div class="col-md-5">
-          <input name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control"
-                 id="description">
-        </div>
-        <div class="col-md-2">
-          <button type="submit" class="btn btn-primary" (click)="createTodo()">Add Todo</button>
-        </div>
-      </div>
-    </form>-->
 
     <form>
     <div class="form-row">

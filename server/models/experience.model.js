@@ -35,6 +35,9 @@ var ExperienceSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
+    filters: {
+        type: [String]
+    },
     created: {
         type: Date,
         default: Date.now

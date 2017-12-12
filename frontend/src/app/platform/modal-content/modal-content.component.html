@@ -29,135 +29,20 @@
   </div>
 
   <div class="" *ngIf="idModal == 1">
-
     <div id="card-container" class="row">
-      <div *ngFor="let dpt of keysDepartmentEnum()" class="col-lg-4" (click)="setDepartment(dpt)">
+      <div *ngFor="let dpt of departmentsEnumList" class="col-lg-4" (click)="setDepartment(dpt.name)">
         <div class="card shadow">
           <div class="card-content white-text">
             <div class="card__date">
-              <span class="card__date__day">{{counter[dpt] != null ? counter[dpt] : 0}}</span>
+              <span class="card__date__day">{{counter[dpt.name] != null ? counter[dpt.name] : 0}}</span>
               <span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>
             </div>
-            <div class="card__meta">{{dpt.toString()}}</div>
+            <div class="card__meta">{{dpt.name}}</div>
             <span class="card-info"></span>
           </div>
         </div>
       </div>
     </div>
-
-
-      <!--<div class="col-lg-4" (click)="setDepartment('MAM')">-->
-        <!--<div class="card shadow">-->
-          <!--<div class="card-content white-text">-->
-            <!--<div class="card__date">-->
-              <!--<span class="card__date__day"></span>-->
-              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
-            <!--</div>-->
-            <!--<div class="card__meta">MAM</div>-->
-            <!--<span class="card-info"></span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<div class="col-lg-4" (click)="setDepartment('SI')">-->
-        <!--<div class="card shadow">-->
-          <!--<div class="card-content white-text">-->
-            <!--<div class="card__date">-->
-              <!--<span class="card__date__day"></span>-->
-              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
-            <!--</div>-->
-            <!--<div class="card__meta">SI</div>-->
-            <!--<span class="card-info"></span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<div class="col-lg-4" (click)="setDepartment('ELEC')">-->
-        <!--<div class="card shadow">-->
-          <!--<div class="card-content white-text">-->
-            <!--<div class="card__date">-->
-              <!--<span class="card__date__day"></span>-->
-              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
-            <!--</div>-->
-            <!--<div class="card__meta">-->
-              <!--Elec-->
-            <!--</div>-->
-            <!--<span class="card-info">-->
-            <!--</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<div class="col-lg-4">-->
-        <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('BAT')">&ndash;&gt;-->
-        <!--<div class="card shadow">-->
-          <!--<div class="card-content white-text">-->
-            <!--<div class="card__date">-->
-              <!--<span class="card__date__day">0</span>-->
-              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
-              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
-            <!--</div>-->
-            <!--<div class="card__meta">-->
-              <!--Bat-->
-            <!--</div>-->
-            <!--<span class="card-info">-->
-            <!--</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<div class="col-lg-4">-->
-        <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('ITII')">&ndash;&gt;-->
-        <!--<div class="card shadow">-->
-          <!--<div class="card-content white-text">-->
-            <!--<div class="card__date">-->
-              <!--<span class="card__date__day">0</span>-->
-              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
-              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
-            <!--</div>-->
-            <!--<div class="card__meta">-->
-              <!--ITII-->
-            <!--</div>-->
-            <!--<span class="card-info">-->
-            <!--</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('GB')">&ndash;&gt;-->
-      <!--<div class="col-lg-4">-->
-        <!--<div class="card shadow">-->
-          <!--<div class="card-content white-text">-->
-            <!--<div class="card__date">-->
-              <!--<span class="card__date__day">0</span>-->
-              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
-              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
-            <!--</div>-->
-            <!--<div class="card__meta">-->
-              <!--GB-->
-            <!--</div>-->
-            <!--<span class="card-info">-->
-            <!--</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<div class="col-lg-4">-->
-      <!--&lt;!&ndash;<div class="col-lg-4" (click)="setDepartment('GE')">&ndash;&gt;-->
-        <!--<div class="card shadow">-->
-          <!--<div class="card-content white-text">-->
-            <!--<div class="card__date">-->
-              <!--&lt;!&ndash;<span class="card__date__day">{{filteredExperiencesList.length}}</span>&ndash;&gt;-->
-              <!--<span class="card__date__day">0</span>-->
-              <!--<span class="card__date__month"><i class="fa fa-2x fa-user"></i></span>-->
-            <!--</div>-->
-            <!--<div class="card__meta">GE</div>-->
-            <!--<span class="card-info">-->
-            <!--</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
   </div>
 
   <div class="" *ngIf="idModal == 2">
@@ -173,38 +58,13 @@
 
     <div class="card">
       <div class="card-block">
-        <span *ngFor="let key of keywordsList">
-          <span class="badge badge-default" (click)="addKeyword(key)" [hidden]="keywordsSelected.includes(key)">{{key}}</span>
-          <span class="badge badge-primary" (click)="removeKeyword(key)" [hidden]="!keywordsSelected.includes(key)">{{key}}</span>
+      <span *ngFor="let key of filtersEnumList">
+          <span class="badge badge-default" (click)="addKeyword(key.name)" [hidden]="keywordsSelected.includes(key.name)">{{key.name}} ({{counter[key.name] != null ? counter[key.name] : 0}})</span>
+          <span class="badge badge-primary" (click)="removeKeyword(key.name)" [hidden]="!keywordsSelected.includes(key.name)">{{key.name}} ({{counter[key.name] != null ? counter[key.name] : 0}})</span>
+        <!--<span *ngFor="let key of keywordsList">-->
+          <!--<span class="badge badge-default" (click)="addKeyword(key)" [hidden]="keywordsSelected.includes(key)">{{key}}</span>-->
+          <!--<span class="badge badge-primary" (click)="removeKeyword(key)" [hidden]="!keywordsSelected.includes(key)">{{key}}</span>-->
         </span>
-        <!--<span class="badge badge-default">Default</span>-->
-        <!--<span class="badge badge-default">Default</span>-->
-        <!--<span class="badge badge-default">Default</span>-->
-        <!--<span class="badge badge-default">Default</span>-->
-        <!--<span class="badge badge-default">Default</span>-->
-        <!--<span class="badge badge-default">Default</span>-->
-        <!--<span class="badge badge-primary">Primary</span>-->
-        <!--<span class="badge badge-success">Success</span>-->
-        <!--<span class="badge badge-success">Success</span>-->
-        <!--<span class="badge badge-success">Success</span>-->
-        <!--<span class="badge badge-success">Success</span>-->
-        <!--<span class="badge badge-success">Success</span>-->
-        <!--<span class="badge badge-info">Info</span>-->
-        <!--<span class="badge badge-info">Info</span>-->
-        <!--<span class="badge badge-info">Info</span>-->
-        <!--<span class="badge badge-success">Success</span>-->
-        <!--<span class="badge badge-info">Info</span>-->
-        <!--<span class="badge badge-info">Info</span>-->
-        <!--<span class="badge badge-info">Info</span>-->
-        <!--<span class="badge badge-info">Info</span>-->
-        <!--<span class="badge badge-warning">Warning</span>-->
-        <!--<span class="badge badge-warning">Warning</span>-->
-        <!--<span class="badge badge-warning">Warning</span>-->
-        <!--<span class="badge badge-danger">Danger</span>-->
-        <!--<span class="badge badge-danger">Danger</span>-->
-        <!--<span class="badge badge-danger">Danger</span>-->
-        <!--<span class="badge badge-danger">Danger</span>-->
-        <!--<span class="badge badge-danger">Danger</span>-->
       </div>
     </div>
 

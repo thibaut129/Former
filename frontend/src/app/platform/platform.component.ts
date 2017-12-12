@@ -83,6 +83,11 @@ export class PlatformComponent implements OnInit {
         filteredExperienceList = this.doFilterCompany(filteredExperienceList, message.companies);
       }
 
+      if (message.filters.length !=0) {
+        console.log("doFilterTag");
+        filteredExperienceList = this.doFilterTag(filteredExperienceList, message.filters);
+      }
+
       // update filteredExp
       this.data.changefilteredExperiencesList(filteredExperienceList);
     })
@@ -177,6 +182,21 @@ export class PlatformComponent implements OnInit {
     for (let exp of list) {
       for (let comp of companies) {
         if (exp.company.name === comp) {
+          newList.push(exp);
+          break;
+        }
+      }
+    }
+    return newList;
+  }
+
+  doFilterTag(list:any[], tags:string[]): Experience[] {
+    let newList = [];
+    for (let exp of list) {
+      console.log(exp.filters);
+      for (let t of tags) {
+        console.log(t);
+        if ((exp.filters != null) && (exp.filters.includes(t))) {
           newList.push(exp);
           break;
         }

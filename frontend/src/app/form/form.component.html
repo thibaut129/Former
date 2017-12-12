@@ -10,12 +10,13 @@
   <!--{{companySelected.type}}-->
   <!--{{companySelected.experience}}-->
   <!--<br/>-->
-  <!--{{newExperience.type}}-->
-  <!--{{newExperience.location}}-->
-  <!--({{newExperience.coords.latitude}}, {{newExperience.coords.longitude}})-->
-  <!--{{newExperience.companyID}}-->
-  <!--{{newExperience.userID}}-->
-  <!--{{newExperience.year}}-->
+  {{newExperience.type}}
+  {{newExperience.location}}
+  ({{newExperience.coords.latitude}}, {{newExperience.coords.longitude}})
+  {{newExperience.filters.length}}
+  {{newExperience.companyID}}
+  {{newExperience.userID}}
+  {{newExperience.year}}
   <div class="row">
     <div class="container-form">
       <div class="container-top" [hidden]="id == 1">
@@ -51,19 +52,21 @@
         <!--<app-new-company [(newCompanyView)]="newCompanyView" [hidden]="!newCompanyView"></app-new-company>-->
       </div>
 
-      <!--<div class="container-content-3" [hidden]="id != 4">-->
-        <!--<app-subject></app-subject>-->
-      <!--</div>-->
-
       <div class="container-content-3" [hidden]="id != 4">
-        <app-personal-info [(getNewUser)]="newUser"></app-personal-info>
+        <app-subject
+          [(filters)]="newExperience.filters"
+        ></app-subject>
       </div>
 
       <div class="container-content-3" [hidden]="id != 5">
-        <app-photo></app-photo>
+        <app-personal-info [(getNewUser)]="newUser"></app-personal-info>
       </div>
 
       <div class="container-content-3" [hidden]="id != 6">
+        <app-photo></app-photo>
+      </div>
+
+      <div class="container-content-3" [hidden]="id != 7">
         <app-summary
           [newExperience]="newExperience"
           [newUser]="newUser"
@@ -76,15 +79,15 @@
         <!--<app-legal></app-legal>-->
       <!--</div>-->
 
-      <div class="container-content-3" [hidden]="id != 7">
+      <div class="container-content-3" [hidden]="id != 8">
         <app-confirmation-form></app-confirmation-form>
       </div>
       <div class="container-footer">
-        <div class="bottom" [hidden]="id <= 1 || id == 3 || id >= 6">
+        <div class="bottom" [hidden]="id <= 1 || id == 3 || id >= 7">
           <!--<a class="btn btn-default btn-lg btn-next pull-right" (click)="createCompany()">Create Company</a>-->
           <a class="btn btn-default btn-lg btn-next pull-right" (click)="nextPage(id)">Suivant</a>
         </div>
-        <div class="bottom" [hidden]="id != 6">
+        <div class="bottom" [hidden]="id != 7">
           <div class="checkbox">
             <label><input type="checkbox" [(ngModel)]="legalAccepted">J'ai lu et j'accepte les conditions générales d'utilisation</label>
           </div>

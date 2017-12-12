@@ -10,6 +10,10 @@ import {departmentEnum} from "../../../environments/environment";
 import {typeResearchEnum} from "../../../environments/environment";
 import Experience from "../../models/experience.model";
 import {current} from "codelyzer/util/syntaxKind";
+import {DepartmentEnumService} from "../../services/departmentEnum.service";
+import {DepartmentEnum} from "../../models/departmentEnum.model";
+import {FilterEnum} from "../../models/filterEnum.model";
+import {FilterEnumService} from "../../services/filterEnum.service";
 
 @Component({
   selector: 'app-modal-content',
@@ -22,40 +26,34 @@ export class ModalContentComponent implements OnInit {
   message:string;
   aboutUser: AboutUser;
 
-  keywordsList: string[];
+  // keywordsList: string[];
   keywordsSelected: string[];
 
   counter= {};
+  departmentsEnumList: DepartmentEnum[];
+  filtersEnumList: FilterEnum[];
 
   @Output() messageEvent = new EventEmitter<string>();
   @Output() aboutUserEvent = new EventEmitter<AboutUser>();
 
   filteredExperiencesList: any[];//Experience[];
-  // filteredExperiencesListSI: Experience[];
-  // filteredExperiencesListMAM: Experience[];
-  // filteredExperiencesListElec: Experience[];
-
-  // convert enum into iterable Array
-  keysMobilityEnum() : Array<string> {
-    var keys = Object.keys(typeMobilityEnum);
-    return keys.slice(keys.length / 2);
-  }
-
-  keysDepartmentEnum() : Array<string> {
-    var keys = Object.keys(departmentEnum);
-    return keys.slice(keys.length / 2);
-  }
-
-  keysResearchEnum() : Array<string> {
-    var keys = Object.keys(typeResearchEnum);
-    return keys.slice(keys.length / 2);
-  }
 
   constructor(
     public activeModal: NgbActiveModal,
-    private data: DataService
+    private departmentEnumService: DepartmentEnumService,
+    private filterEnumService: FilterEnumService,
+  private data: DataService
 ) {
     this.counter= {};
+
+    this.departmentEnumService.getDepartmentsEnum()
+      .subscribe(departmentsEnum => {
+        this.departmentsEnumList = departmentsEnum
+      })
+    this.filterEnumService.getFiltersEnum()
+      .subscribe(filtersEnum => {
+        this.filtersEnumList = filtersEnum
+      })
 
     this.data.currentAboutUser.subscribe(message => this.aboutUser = message)
 
@@ -70,35 +68,38 @@ export class ModalContentComponent implements OnInit {
         console.log("get typeDepartment Length")
         this.getLengthOfTypeDepartment();
       }
+      if (this.aboutUser.statut == "typeDepartment") {
+        console.log("get Tags Length")
+        this.getLengthOfTags();
+      }
+
+
     })
-    // this.data.filteredExperiencesListSI.subscribe(message => this.filteredExperiencesListSI = message)
-    // this.data.filteredExperiencesListMAM.subscribe(message => this.filteredExperiencesListMAM = message)
-    // this.data.filteredExperiencesListElec.subscribe(message => this.filteredExperiencesListElec = message)
 
     this.idModal = 0;
 
-    this.keywordsList = [
-    "Artificial Intelligence",
-    "Synthetic Biology",
-    "Computer Architecture",
-    "Computer Graphics, Vision",
-    "Animation",
-    "Game Science",
-    "Computing for Development",
-    "Data Science",
-    "Data Management",
-    "Data Visualization",
-    "Human Computer Interaction",
-    "Machine Learning",
-    "Molecular Information Systems",
-    "Natural Language Processing",
-    "Software Engineering",
-    "Robotics",
-    "Security and Privacy",
-    "Systems and Networking",
-    "Theory of Computation",
-    "Ubiquitous Computing",
-    "Wireless and Sensor Systems"];
+    // this.keywordsList = [
+    // "Artificial Intelligence",
+    // "Synthetic Biology",
+    // "Computer Architecture",
+    // "Computer Graphics, Vision",
+    // "Animation",
+    // "Game Science",
+    // "Computing for Development",
+    // "Data Science",
+    // "Data Management",
+    // "Data Visualization",
+    // "Human Computer Interaction",
+    // "Machine Learning",
+    // "Molecular Information Systems",
+    // "Natural Language Processing",
+    // "Software Engineering",
+    // "Robotics",
+    // "Security and Privacy",
+    // "Systems and Networking",
+    // "Theory of Computation",
+    // "Ubiquitous Computing",
+    // "Wireless and Sensor Systems"];
 
     this.keywordsSelected = []
   }
@@ -127,6 +128,19 @@ export class ModalContentComponent implements OnInit {
         this.counter[e.user.department] = 1;
       } else {
         this.counter[e.user.department]++;
+      }
+    }
+  }
+
+  getLengthOfTags() {
+    this.counter = {};
+
+    for (let e of this.filteredExperiencesList) {
+      for (let f of e.filters)
+      if (this.counter[f] == null) {
+        this.counter[f] = 1;
+      } else {
+        this.counter[f]++;
       }
     }
   }
@@ -186,4 +200,22 @@ export class ModalContentComponent implements OnInit {
 
     this.aboutUser.filters = this.keywordsSelected;
   }
+
+
+  // convert enum into iterable Array
+  keysMobilityEnum() : Array<string> {
+    var keys = Object.keys(typeMobilityEnum);
+    return keys.slice(keys.length / 2);
+  }
+
+  // keysDepartmentEnum() : Array<string> {
+  //   var keys = Object.keys(departmentEnum);
+  //   return keys.slice(keys.length / 2);
+  // }
+  //
+  // keysResearchEnum() : Array<string> {
+  //   var keys = Object.keys(typeResearchEnum);
+  //   return keys.slice(keys.length / 2);
+  // }
+
 }

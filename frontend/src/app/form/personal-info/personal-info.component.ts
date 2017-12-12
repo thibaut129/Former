@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import User from "../../models/user.model";
+import {DepartmentEnumService} from "../../services/departmentEnum.service";
+import {DepartmentEnum} from "../../models/departmentEnum.model";
 
 @Component({
   selector: 'app-personal-info',
@@ -10,7 +12,11 @@ export class PersonalInfoComponent implements OnInit {
   @Input() getNewUser: User;
   @Output() getNewUserChange = new EventEmitter<User>();
 
-  constructor() { }
+  departmentsEnumList: DepartmentEnum[];
+
+  constructor(
+    private departmentEnumService: DepartmentEnumService
+  ) { }
 
   public newUserChild: User = new User();
 
@@ -20,6 +26,11 @@ export class PersonalInfoComponent implements OnInit {
     this.getNewUserChange.emit(status);
   }
   ngOnInit() {
+    this.departmentEnumService.getDepartmentsEnum()
+      .subscribe(departmentsEnum => {
+        this.departmentsEnumList = departmentsEnum
+        console.log(departmentsEnum)
+      })
   }
 
   inlineList="";

@@ -60,7 +60,10 @@
   <div class="col-md-4">
     <div class="card" style="height:15vh">
     <div class="card-block">
-      <span *ngFor="let key of aboutUser.filters" class="badge badge-primary">{{key}}</span>
+      <!--<span *ngFor="let key of aboutUser.filters" class="badge badge-primary">{{key}}</span>-->
+      <div *ngFor="let key of aboutUser.filters">
+        <span class="badge badge-primary" (click)="removeKeyword(key)">{{key}}</span>
+      </div>
       <!--<span class="badge badge-default">Default</span>-->
       <!--<span class="badge badge-default">Default</span>-->
       <!--<span class="badge badge-default">Default</span>-->

@@ -93,7 +93,14 @@ export class BottomComponent implements OnInit {
     select: 'multiple'
   };
 
+  removeKeyword(keyword:string) {
+    let index = this.aboutUser.filters.indexOf(keyword, 0);
+    if (index > -1) {
+      this.aboutUser.filters.splice(index, 1);
+    }
+    this.data.changeAboutUser(this.aboutUser);
 
+  }
 
 
   updateAboutUser() {
