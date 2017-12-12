@@ -47,7 +47,7 @@ export class RightComponent implements OnInit {
   constructor(
     private data: DataService
   ) {
-    this.cart = []
+    // this.cart = []
     this.mockedDate = new User();
   }
 
@@ -58,11 +58,20 @@ export class RightComponent implements OnInit {
     this.data.mapMode.subscribe(message => this.mapMode = message)
   }
 
-  changeModeMap(bool:boolean) {
+  changeModeMap() {
     this.mapMode = !this.mapMode;
 
     this.data.changeMapMode(this.mapMode);
     this.data.changefilteredSelected(this.filteredExperiencesList);
+  }
+
+  displayCart(bool:boolean) {
+    if (this.cart.length > 0) {
+      this.mapMode = bool;
+
+      this.data.changeMapMode(this.mapMode);
+      this.data.changefilteredSelected(this.cart);
+    }
   }
 
   get stateMapMode() {

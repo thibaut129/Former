@@ -16,7 +16,7 @@
         <img [hidden]="!mapMode" [@popOverState]="stateUnMapMode" height="58" width="58" src="../../../assets/team.png" class="img-fluid"/>
       </li>
 
-      <li>
+      <li (click)="displayCart(false)">
         <img [hidden]="cart.length != 0" [@mailState]="" height="58" width="58" src="../../../assets/e-mail-envelope.png" class="img-fluid"/>
         <img [hidden]="cart.length == 0" [@mailState]="" height="58" width="58" src="../../../assets/message.png" class="img-fluid"/>
       </li>

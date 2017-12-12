@@ -14,9 +14,9 @@ body {
   padding: 0;
 }
 
-img {
+.card-img-top {
   //height: 50%;
-  width: 20vw;
+  width: 19vw;
 }
 .swiper-container {
   //transform: scale(0.9);
@@ -70,6 +70,10 @@ img {
     linear-gradient(to bottom, $from, $to) 1;
 }
 
+.send-btn {
+  padding: 0 10px 0 10px;
+  margin: 10px;
+}
 .shadow {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
