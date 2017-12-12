@@ -10,8 +10,8 @@
               <img class="card-img-top img-fluid" [src]="'../../../assets/'+exp.company.type.toLowerCase()+'.png'">
               <div class="card-block">
                 <h4 class="card-title">{{exp.company.name}}</h4>
-                <div class="meta">
-                  <a href="#">{{exp.company.type}}</a>
+                <div style="color:#007bff" class="meta">
+                  {{exp.company.type}}
                 </div>
                 <div class="card-text">
                   {{exp.user.firstname}} {{exp.user.lastname}}
@@ -28,7 +28,8 @@
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
     </div>
-    <div [hidden]="cart.length < 1" (click)="sendMail()" class="shadow pull-right send-btn">
+    <!--<div [hidden]="selectedExperience.length < 1" (click)="sendMail()" class="shadow pull-right send-btn">-->
+    <div [@mailState]="stateCart" (click)="sendMail()" class="shadow pull-right send-btn">
       Envoyer <img height="64" width="64" src="../../../assets/send.png">
     </div>
   </div>

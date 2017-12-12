@@ -29,6 +29,22 @@ declare var Swiper: any;
       transition('* => selected', animate('100ms ease-in')),
       transition('unselected => selected', animate('100ms ease-in')),
       transition('selected => unselected', animate('100ms ease-out'))
+    ]),
+    trigger('mailState', [
+      state('full', style({
+        transform: 'translateX(0)',
+        opacity: 1
+
+      })),
+      state('empty', style({
+        transform: 'translateX(0)',
+        opacity: 0
+      })),
+      transition('full => *', [
+        style({transform: 'translateX(0)'}),
+            animate('50ms', style({ transform: 'translateX(100%)'}))
+      ]),
+      transition('empty => full', animate('100ms ease-in')),
     ])
   ]
 })
@@ -44,13 +60,12 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
     private data: DataService,
     private mailService : MailService
   ) {
-
+    this.cart = [];
   }
 
   ngOnInit() {
     this.data.filteredSelected.subscribe(message => this.filteredSelected = message)
     this.data.cart.subscribe(message => this.selectedExperience = message)
-    this.cart = [];
   }
 
   doSelect(exp) {
@@ -74,8 +89,18 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
     console.log(this.selectedExperience);
     const mailObject = {mail : "thibaut.terris@gmail.com", data : this.cart};
     this.mailService.sendMail(mailObject).subscribe();
+
+    // reset cart
+    this.cart = [];
+    for (let e of this.filteredSelected) {
+      (<any>e).state = 'unselected';
+    }
+    this.data.changeCart(this.cart);
   }
 
+  get stateCart() {
+    return this.selectedExperience.length < 1 ? 'empty' : 'full'
+  }
 
   callFunction(stuff) {
     if (this.shouldDoIt) {
@@ -101,5 +126,6 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
   ngAfterViewInit(): void {
     this.shouldDoIt=true;
   }
+
 
 }
