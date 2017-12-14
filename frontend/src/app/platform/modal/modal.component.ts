@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalContentComponent} from "../modal-content/modal-content.component";
@@ -10,7 +10,10 @@ import {ModalContentComponent} from "../modal-content/modal-content.component";
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, AfterViewInit {
+  ngAfterViewInit(): void {
+    this.open();
+  }
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {

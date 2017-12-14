@@ -29,8 +29,12 @@
       <div class="swiper-pagination"></div>
     </div>
     <!--<div [hidden]="selectedExperience.length < 1" (click)="sendMail()" class="shadow pull-right send-btn">-->
-    <div [@mailState]="stateCart" (click)="sendMail()" class="shadow pull-right send-btn">
+    <div class="form-inline pull-right">
+    <input [@mailState]="stateCart" [(ngModel)]="email" type="email" placeholder="@" class="form-control">
+
+    <div [@mailState]="stateCart" (click)="callSendMail()" class="shadow pull-right send-btn">
       Envoyer <img height="64" width="64" src="../../../assets/send.png">
+    </div>
     </div>
   </div>
 </div>

@@ -55,12 +55,14 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
 
   selectedExperience: Experience[];
   cart : any [];
+  email: string;
 
   constructor(
     private data: DataService,
     private mailService : MailService
   ) {
     this.cart = [];
+    this.email="";
   }
 
   ngOnInit() {
@@ -85,9 +87,25 @@ export class SwipeTestComponent implements OnInit,AfterViewInit {
 
   }
 
+  validateEmail() {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(this.email.toLowerCase());
+  }
+
+  callSendMail() {
+    if (this.validateEmail()) {
+      this.sendMail();
+    } else {
+      console.log("wrong email");
+    }
+  }
   sendMail(){
     console.log(this.selectedExperience);
-    const mailObject = {mail : "thibaut.terris@gmail.com", data : this.cart};
+    // const mailObject = {mail : "thibaut.terris@gmail.com", data : this.selectedExperience};
+
+    // todo: check valid email
+
+    const mailObject = {mail : this.email, data : this.selectedExperience};
     this.mailService.sendMail(mailObject).subscribe();
 
     // reset cart
