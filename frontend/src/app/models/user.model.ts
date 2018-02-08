@@ -13,8 +13,8 @@ class User {
     this.lastname = ""
     this.email = ""
     this.date = new Date()
-    this.department = "ELEC"
-    this.option = "GSE"
+    this.department = "MAM"
+    this.option = "IMAFA"
   }
 }
 

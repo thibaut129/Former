@@ -114,7 +114,26 @@ export class GlobalComponent implements OnInit, AfterViewInit {
       } as olx.animation.PanOptions
     });
 
+ // var vectorLayer = new ol.layer.Vector({
+ //        source: new ol.source.Vector({
+ //          url: 'https://openlayers.org/en/v4.6.4/examples/data/geojson/countries.geojson',
+ //          format: new ol.format.GeoJSON()
+ //        })
+ //      });
 
+ //    this.map = new ol.Map({
+ //        layers: [vectorLayer],
+ //        target: 'map',
+ //        view: new ol.View({
+ //          center: [0, 0],
+ //          zoom: 1
+ //        }),
+ //      overlays : [this.overlay],
+ //      // Improve user experience by loading tiles while animating. Will make
+ //      // animations stutter on mobile or slow devices.
+ //      loadTilesWhileAnimating: true
+ //    });
+ //  }
 
     this.map = new ol.Map({
       target: 'map',

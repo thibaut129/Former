@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^4.4.6",
     "@angular/platform-browser-dynamic": "^4.4.6",
     "@angular/router": "^4.4.6",
-    "@mobiscroll/angular-trial": "^4.0.0-beta",
+    "@mobiscroll/angular-trial": "^4.0.0-beta3.1",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
     "@types/openlayers": "^4.3.11",
     "@types/swiper": "^3.4.5",

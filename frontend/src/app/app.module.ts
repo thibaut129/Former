@@ -1,3 +1,4 @@
+import { MbscModule, mobiscroll } from '@mobiscroll/angular-trial';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -53,8 +54,6 @@ import { AngularOpenlayersModule } from 'ngx-openlayers';
 
 /** Map **/
 import {AgmSnazzyInfoWindowModule} from "@agm/snazzy-info-window";
-import { MbscModule, mobiscroll } from '@mobiscroll/angular-trial';
-
 /** Service **/
 import {DataService} from "./services/data.service";
 import { TodoService } from './services/todo.service';
@@ -69,7 +68,7 @@ import {DepartmentEnumService} from "./services/departmentEnum.service";
 import {FilterEnumService} from "./services/filterEnum.service";
 
 
-mobiscroll.apiKey = 'f8d8cc78';
+mobiscroll.apiKey = '1d6462c4';
 
 @NgModule({
   declarations: [
@@ -100,11 +99,11 @@ mobiscroll.apiKey = 'f8d8cc78';
     FilterPipe, SortByPipe,
   ],
   imports: [
+    MbscModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyBm2qiQBy-OfNNSYy6vQ6pW3pIv2syva0c",
       libraries: ["places"]
     }),
-    MbscModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
