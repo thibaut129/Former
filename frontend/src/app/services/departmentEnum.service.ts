@@ -11,7 +11,7 @@ import {DepartmentEnum} from "../models/departmentEnum.model";
 @Injectable()
 export class DepartmentEnumService {
 
-  api_url = 'http://localhost:3000';
+  api_url = 'http://62.210.76.158:8083';
   departmentEnumUrl = `${this.api_url}/api/departmentEnum`;
 
   constructor(

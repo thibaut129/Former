@@ -11,7 +11,7 @@ import Experience from "../models/experience.model";
 @Injectable()
 export class MailService {
 
-  api_url = 'http://localhost:3000';
+  api_url = 'http://62.210.76.158:8083';
   markerUrl = `${this.api_url}/api/mailer`;
 
   constructor(

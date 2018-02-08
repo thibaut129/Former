@@ -11,7 +11,7 @@ import {FilterEnum} from "../models/filterEnum.model";
 @Injectable()
 export class FilterEnumService {
 
-  api_url = 'http://localhost:3000';
+  api_url = 'http://62.210.76.158:8083';
   filterEnumUrl = `${this.api_url}/api/filterEnum`;
 
   constructor(
